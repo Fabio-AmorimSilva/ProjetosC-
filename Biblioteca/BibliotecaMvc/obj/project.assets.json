@@ -535,6 +535,30 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "BibliotecaContextLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "BibliotecaEntitiesLib": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BibliotecaContextLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BibliotecaContextLib.dll": {}
+        }
+      },
+      "BibliotecaEntitiesLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/BibliotecaEntitiesLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BibliotecaEntitiesLib.dll": {}
+        }
       }
     }
   },
@@ -1442,10 +1466,21 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BibliotecaContextLib/1.0.0": {
+      "type": "project",
+      "path": "../BibliotecaContextLib/BibliotecaContextLib.csproj",
+      "msbuildProject": "../BibliotecaContextLib/BibliotecaContextLib.csproj"
+    },
+    "BibliotecaEntitiesLib/1.0.0": {
+      "type": "project",
+      "path": "../BibliotecaEntitiesLib/BibliotecaEntitiesLib.csproj",
+      "msbuildProject": "../BibliotecaEntitiesLib/BibliotecaEntitiesLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BibliotecaContextLib >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.5",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.5",
@@ -1477,7 +1512,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/BibliotecaContextLib.csproj": {
+              "projectPath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/BibliotecaContextLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

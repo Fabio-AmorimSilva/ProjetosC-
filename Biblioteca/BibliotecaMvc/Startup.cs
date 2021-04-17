@@ -12,6 +12,8 @@ using BibliotecaMvc.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO;
+using BibliotecaContextLib;
 
 namespace BibliotecaMvc
 {
@@ -27,6 +29,13 @@ namespace BibliotecaMvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //Ligação com o banco de dados local
+            string dataBasePath = Path.Combine("..", "Biblioteca.db");
+
+            services.AddDbContext<Biblioteca>(options => 
+                options.UseSqlite($"Data Souce={dataBasePath}"));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));

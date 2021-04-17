@@ -80,3 +80,7 @@
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/ref/BibliotecaMvc.dll
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/BibliotecaMvc.pdb
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/BibliotecaMvc.genruntimeconfig.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaContextLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaEntitiesLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaContextLib.pdb
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaEntitiesLib.pdb

@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "BibliotecaMvc/1.0.0": {
         "dependencies": {
+          "BibliotecaContextLib": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "5.0.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
           "Microsoft.AspNetCore.Identity.UI": "5.0.5",
@@ -777,6 +778,26 @@
         }
       },
       "System.Memory/4.5.3": {},
+      "BibliotecaContextLib/1.0.0": {
+        "dependencies": {
+          "BibliotecaEntitiesLib": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Sqlite": "5.0.5"
+        },
+        "runtime": {
+          "BibliotecaContextLib.dll": {}
+        },
+        "compile": {
+          "BibliotecaContextLib.dll": {}
+        }
+      },
+      "BibliotecaEntitiesLib/1.0.0": {
+        "runtime": {
+          "BibliotecaEntitiesLib.dll": {}
+        },
+        "compile": {
+          "BibliotecaEntitiesLib.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -2713,6 +2734,16 @@
       "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "path": "system.memory/4.5.3",
       "hashPath": "system.memory.4.5.3.nupkg.sha512"
+    },
+    "BibliotecaContextLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BibliotecaEntitiesLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
       "type": "referenceassembly",
