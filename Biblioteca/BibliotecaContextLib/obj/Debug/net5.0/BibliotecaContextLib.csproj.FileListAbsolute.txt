@@ -1,0 +1,15 @@
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/bin/Debug/net5.0/BibliotecaContextLib.deps.json
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/bin/Debug/net5.0/BibliotecaContextLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/bin/Debug/net5.0/ref/BibliotecaContextLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/bin/Debug/net5.0/BibliotecaContextLib.pdb
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/bin/Debug/net5.0/BibliotecaEntitiesLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/bin/Debug/net5.0/BibliotecaEntitiesLib.pdb
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.csprojAssemblyReference.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.GeneratedMSBuildEditorConfig.editorconfig
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.AssemblyInfoInputs.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.AssemblyInfo.cs
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.csproj.CoreCompileInputs.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.csproj.CopyComplete
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/ref/BibliotecaContextLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaContextLib/obj/Debug/net5.0/BibliotecaContextLib.pdb

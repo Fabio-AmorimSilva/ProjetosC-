@@ -1,0 +1,12 @@
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/bin/Debug/net5.0/BibliotecaEntitiesLib.deps.json
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/bin/Debug/net5.0/BibliotecaEntitiesLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/bin/Debug/net5.0/ref/BibliotecaEntitiesLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/bin/Debug/net5.0/BibliotecaEntitiesLib.pdb
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.csprojAssemblyReference.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.GeneratedMSBuildEditorConfig.editorconfig
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.AssemblyInfoInputs.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.AssemblyInfo.cs
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.csproj.CoreCompileInputs.cache
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/ref/BibliotecaEntitiesLib.dll
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaEntitiesLib/obj/Debug/net5.0/BibliotecaEntitiesLib.pdb
