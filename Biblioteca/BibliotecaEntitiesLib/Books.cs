@@ -5,6 +5,8 @@ namespace BibliotecaEntitiesLib
 {
     public class Books
     {
+        [Required]
+        public int Id{get; set;}
 
         [Required]
         public int ISBN{get; set;}

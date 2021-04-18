@@ -34,7 +34,7 @@ namespace BibliotecaMvc
             string dataBasePath = Path.Combine("..", "Biblioteca.db");
 
             services.AddDbContext<Biblioteca>(options => 
-                options.UseSqlite($"Data Souce={dataBasePath}"));
+                options.UseSqlite($"Data Source={dataBasePath}"));
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(

@@ -84,3 +84,4 @@
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaEntitiesLib.dll
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaContextLib.pdb
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/bin/Debug/net5.0/BibliotecaEntitiesLib.pdb
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Home/Books.cshtml.g.cs

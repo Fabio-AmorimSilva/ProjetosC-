@@ -6,6 +6,8 @@ namespace BibliotecaEntitiesLib
     public class Author
     {
         [Required]
+        public int Id{get; set;} 
+        [Required]
         [StringLength(40)]
         public string Name{get; set;}
         [Required]
