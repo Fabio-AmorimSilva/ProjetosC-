@@ -42,9 +42,24 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             return View(model);
         }
 
-        public IActionResult AddB(Books book){
+        public IActionResult AddB(){
     
            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult AddB(Books book){
+
+            if(ModelState.IsValid){
+                db.Books.Add(book);
+                db.SaveChangesAsync();
+                return RedirectToPage("/AddB");
+            }
+
+
+            return View();
+
         }
 
 
