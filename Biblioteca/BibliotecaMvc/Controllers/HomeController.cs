@@ -12,36 +12,22 @@ namespace BibliotecaMvc.Controllers
 {
     public class HomeController : Controller
     {
-
-        private Biblioteca db;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, Biblioteca injectedContext)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            db = injectedContext;
+          
         }
 
         public IActionResult Index()
         {
             var model = new TodayDate{
-                daynow = DateTime.Now
+                daynow = DateTime.Today,
 
             };
 
             return View(model);
-        }
-
-        public IActionResult Books(){
-
-          var model = new BooksViewModel{
-              Books = db.Books.ToList(),
-              Authors = db.Authors.ToList()
-              
-          };
-
-          return View(model);
-
         }
 
         public IActionResult Privacy()

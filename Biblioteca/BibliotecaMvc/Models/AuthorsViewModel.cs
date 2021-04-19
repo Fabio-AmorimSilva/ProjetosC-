@@ -3,10 +3,9 @@ using BibliotecaEntitiesLib;
 
 namespace BibliotecaMvc.Models
 {
-    public class BooksViewModel
+    public class AuthorsViewModel
     {
-        public IList<Books> Books{get; set;}
+        public IList<Author> Authors{get; set;}
 
-        
     }
 }

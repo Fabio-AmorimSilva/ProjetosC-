@@ -1,0 +1,20 @@
+@model BibliotecaMvc.Models.BooksViewModel;
+
+@{
+    ViewData["Title"] = "Library More Books";
+
+}
+
+<form class="form" method="POST">
+    <label>ISBN: </label>
+        <input class="form-control" asp-for="Books[0].ISBN" required/>
+    <label>Title: </label>
+        <input class="form-control" asp-for="Books[0].Title" required>
+    <label>Author: </label>
+        <input class="form-control" asp-for="Books[0].Author" required>
+    <label>Genre: </label>
+        <input class="form-control" asp-for="Books[0].Genre" required>
+    <label>Year: </label>
+        <input class="form-control" asp-for="Books[0].Year" required>
+    <input class="btn btn-dark" type="submit">
+</form>

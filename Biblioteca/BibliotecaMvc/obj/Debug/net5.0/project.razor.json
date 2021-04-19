@@ -15624,6 +15624,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/Books.cshtml",
+      "TargetPath": "Views\\Library\\Books.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15634,8 +15639,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Home/Books.cshtml",
-      "TargetPath": "Views\\Home\\Books.cshtml",
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/AddB.cshtml",
+      "TargetPath": "Views\\Library\\AddB.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/DataAdd/AuthorsAdd.cshtml",
+      "TargetPath": "Views\\Library\\DataAdd\\AuthorsAdd.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15656,6 +15666,11 @@
     {
       "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/Authors.cshtml",
+      "TargetPath": "Views\\Library\\Authors.cshtml",
       "FileKind": "mvc"
     },
     {

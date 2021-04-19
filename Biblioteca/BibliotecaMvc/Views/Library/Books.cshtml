@@ -1,0 +1,31 @@
+@model BibliotecaMvc.Models.BooksViewModel;
+
+@{
+    ViewData["Title"] = "Library Books";
+
+}
+
+<table class="table table-stripped table-bordered table-hover">
+    <thead class="thead-dark">
+        <th>Id</th>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Year</th>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.ISBN</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Genre</td>
+                <td>@book.Year</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
