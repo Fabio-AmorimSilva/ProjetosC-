@@ -15669,6 +15669,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/DeleteBook.cshtml",
+      "TargetPath": "Views\\Library\\DeleteBook.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/Authors.cshtml",
       "TargetPath": "Views\\Library\\Authors.cshtml",
       "FileKind": "mvc"

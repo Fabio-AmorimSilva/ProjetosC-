@@ -1,0 +1,13 @@
+@model BibliotecaEntitiesLib.Books;
+
+@{
+    ViewData["Title"] = "Library Delete Books";
+
+}
+
+<form class="form" method="POST">
+    <legend>Delete Book from library</legend>
+    <label>Id: </label>
+        <input class="form-control" asp-for="Id" required/>
+    <input class="btn btn-dark" type="submit">
+</form>

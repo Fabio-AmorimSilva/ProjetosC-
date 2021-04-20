@@ -50,11 +50,11 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
 
 
         [HttpPost]
-        public IActionResult AddBook(Books book){
+        public IActionResult AddB(Books book){
 
             if(ModelState.IsValid){
                 db.Books.Add(book);
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToPage("/AddB");
             }
 
@@ -80,6 +80,26 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
                 bookId.Genre = book.Genre;
                 bookId.Year = book.Year;
 
+                db.SaveChanges();
+
+            }
+
+            return View();
+
+        }
+
+        public IActionResult DeleteBook(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult DeleteBook(Books book){
+
+            var bookId = db.Books.Where(b => b.Id == book.Id).First();
+            if(bookId != null){
+                db.Books.Remove(bookId);
                 db.SaveChanges();
 
             }
