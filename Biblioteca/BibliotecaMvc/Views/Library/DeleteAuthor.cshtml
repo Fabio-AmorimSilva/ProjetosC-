@@ -1,0 +1,13 @@
+@model BibliotecaEntitiesLib.Author;
+
+@{
+    ViewData["Title"] = "Delete Author";
+
+}
+
+<form class="form" method="POST">
+    <legend>Authors Information</legend>
+    <label>Id: </label>
+        <input class="form-control" asp-for="Id" required/>
+    <input class="btn btn-dark" type="submit">
+</form>

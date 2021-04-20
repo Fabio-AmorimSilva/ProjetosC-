@@ -1,0 +1,17 @@
+@model BibliotecaEntitiesLib.Author;
+
+@{
+    ViewData["Title"] = "Add More Authors";
+
+}
+
+<form class="form" method="POST">
+    <legend>Authors Information</legend>
+    <label>Name: </label>
+        <input class="form-control" asp-for="Name" required/>
+    <label>Book: </label>
+        <input class="form-control" asp-for="Books" required/>
+    <label>Country: </label>
+        <input class="form-control" asp-for="Country" required/>
+    <input class="btn btn-dark" type="submit">
+</form>

@@ -15649,6 +15649,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/AddA.cshtml",
+      "TargetPath": "Views\\Library\\AddA.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -15671,6 +15676,11 @@
     {
       "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/DeleteBook.cshtml",
       "TargetPath": "Views\\Library\\DeleteBook.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/DeleteAuthor.cshtml",
+      "TargetPath": "Views\\Library\\DeleteAuthor.cshtml",
       "FileKind": "mvc"
     },
     {

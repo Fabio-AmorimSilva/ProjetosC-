@@ -108,17 +108,43 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
 
         }
 
+        public IActionResult AddA(){
+
+            return View();
+
+        }
+
         [HttpPost]
-        public IActionResult AuthorsAdd(Author author){
+        public IActionResult AddA(Author author){
 
             if(ModelState.IsValid){
                 db.Authors.Add(author);
                 db.SaveChanges();
-                return RedirectToPage("/Authors");
+                return RedirectToPage("/AddA");
 
             }
 
             return View();
+        }
+
+        public IActionResult DeleteAuthor(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult DeleteAuthor(Author author){
+
+            var authorId = db.Authors.Where(a => a.Id == author.Id).First();
+            if(authorId != null){
+                db.Authors.Remove(authorId);
+                db.SaveChanges();
+
+            }
+
+            return View();
+
         }
         
     }
