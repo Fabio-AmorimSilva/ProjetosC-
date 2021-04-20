@@ -1,12 +1,14 @@
 @model BibliotecaEntitiesLib.Books;
 
 @{
-    ViewData["Title"] = "Library More Books";
+    ViewData["Title"] = "Library Update Books";
 
 }
 
 <form class="form" method="POST">
-    <legend>Add Book</legend>
+    <legend>Update Book Information</legend>
+    <label>Id: </label>
+        <input class="form-control" asp-for="Id" required/>
     <label>ISBN: </label>
         <input class="form-control" asp-for="ISBN" required/>
     <label>Title: </label>

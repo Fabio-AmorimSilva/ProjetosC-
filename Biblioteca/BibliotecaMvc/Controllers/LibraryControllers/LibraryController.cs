@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using BibliotecaContextLib;
 using BibliotecaEntitiesLib;
@@ -49,7 +50,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
 
 
         [HttpPost]
-        public IActionResult AddB(Books book){
+        public IActionResult AddBook(Books book){
 
             if(ModelState.IsValid){
                 db.Books.Add(book);
@@ -62,6 +63,30 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
 
         }
 
+        public IActionResult UpdateBook(){
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult UpdateBook(Books book){
+
+            var bookId = db.Books.Where(b => b.Id == book.Id).First();
+            if(bookId != null){
+
+                bookId.ISBN = book.ISBN;
+                bookId.Title = book.Title;
+                bookId.Author = book.Author;
+                bookId.Genre = book.Genre;
+                bookId.Year = book.Year;
+
+                db.SaveChanges();
+
+            }
+
+            return View();
+
+        }
 
         [HttpPost]
         public IActionResult AuthorsAdd(Author author){

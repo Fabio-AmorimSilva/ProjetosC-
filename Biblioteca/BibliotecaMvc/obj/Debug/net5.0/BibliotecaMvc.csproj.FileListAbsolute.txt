@@ -87,4 +87,5 @@
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/DataAdd/AuthorsAdd.cshtml.g.cs
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/Authors.cshtml.g.cs
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/Books.cshtml.g.cs
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/UpdateBook.cshtml.g.cs
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/AddB.cshtml.g.cs
