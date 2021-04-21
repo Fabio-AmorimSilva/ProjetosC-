@@ -1,0 +1,24 @@
+@model BibliotecaEntitiesLib.Author;
+
+@{
+    ViewData["Title"] = "Search Author";
+
+}
+
+<form class="form" method="POST">
+    <legend>Author Information</legend>
+    <label>Id: </label>
+        <input class="form-control" asp-for="Id" required/>
+    <input class="btn btn-dark" type="submit">
+</form>
+
+if(Model != null){
+    <p>Id: @Model.Id</p>
+    <p>ISBN: @Model.Name/p>
+    <p>Title: @Model.Books</p>
+    <p>Author: @Model.Country</p>
+
+}else{
+    <p>Author not found! Type a Id existent em database.</p>
+
+}

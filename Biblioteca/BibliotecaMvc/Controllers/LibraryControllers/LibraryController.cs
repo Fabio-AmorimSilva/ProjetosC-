@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BibliotecaContextLib;
@@ -63,6 +65,22 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
 
         }
 
+        public IActionResult SearchBook(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult SearchBook(Books book){
+
+            IEnumerable<Books> model = db.Books
+            .Where(bId => bId.Id == book.Id);
+
+            return View(model);
+
+        }
+
         public IActionResult UpdateBook(){
 
             return View();
@@ -125,6 +143,19 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             }
 
             return View();
+        }
+
+        public IActionResult SearchAuthor(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult SearchAuthor(Author author){
+
+            return View(author);
+
         }
 
 

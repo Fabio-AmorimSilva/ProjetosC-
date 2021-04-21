@@ -1,0 +1,23 @@
+@model BibliotecaMvc.Models.BooksViewModel;
+
+@{
+    ViewData["Title"] = "Search Book";
+
+}
+
+<form class="form" method="POST">
+    <legend>Book Information</legend>
+    <label>Id: </label>
+        <input class="form-control" required/>
+    <input class="btn btn-dark" type="submit">
+</form>
+
+@if(Model != null){
+    <p>Id: @Model.Book.Id</p>
+    <p>ISBN: @Model.Book.ISBN</p>
+    <p>Title: @Model.Book.Title</p>
+    <p>Author: @Model.Book.Author</p>
+    <p>Genre: @Model.Book.Genre</p>
+    <p>Year: @Model.Book.Year</p>
+
+}
