@@ -15694,6 +15694,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Library/UpdateAuthor.cshtml",
+      "TargetPath": "Views\\Library\\UpdateAuthor.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"

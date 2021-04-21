@@ -92,3 +92,4 @@
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/DeleteBook.cshtml.g.cs
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/AddA.cshtml.g.cs
 /home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/DeleteAuthor.cshtml.g.cs
+/home/fabio/Documentos/Linguagens de Programação/C#.NET/ProjetosC#/Biblioteca/BibliotecaMvc/obj/Debug/net5.0/Razor/Views/Library/UpdateAuthor.cshtml.g.cs

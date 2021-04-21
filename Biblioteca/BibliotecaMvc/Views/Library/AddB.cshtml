@@ -8,7 +8,7 @@
 <form class="form" method="POST">
     <legend>Add Book</legend>
     <label>ISBN: </label>
-        <input class="form-control" asp-for="ISBN" required/>
+        <input class="form-control" asp-for="ISBN" maxlength="9999999999" minlength="1" required/>
     <label>Title: </label>
         <input class="form-control" asp-for="Title" required>
     <label>Author: </label>
@@ -16,6 +16,6 @@
     <label>Genre: </label>
         <input class="form-control" asp-for="Genre" required>
     <label>Year: </label>
-        <input class="form-control" asp-for="Year" required>
+        <input class="form-control" asp-for="Year" maxlength="2021" minlength="1" required>
     <input class="btn btn-dark" type="submit">
 </form>

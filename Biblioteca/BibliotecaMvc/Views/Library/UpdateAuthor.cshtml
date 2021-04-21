@@ -1,0 +1,18 @@
+@model BibliotecaEntitiesLib.Author;
+
+@{
+    ViewData["Title"] = "Update Author Information";
+}
+
+<form class="form" method="POST">
+    <legend>Update Author Information</legend>
+    <label>Id: </label>
+        <input class="form-control" asp-for="Id" required/>
+    <label>Name: </label>
+        <input class="form-control" asp-for="Name" required/>
+    <label>Books: </label>
+        <input class="form-control" asp-for="Books" required/>
+    <label>Country: </label>
+        <input class="form-control" asp-for="Country" required/>
+    <input class="btn btn-dark" type="submit">
+</form>

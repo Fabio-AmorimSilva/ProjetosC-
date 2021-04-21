@@ -61,6 +61,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+
 }
 .footer {
   position: absolute;
@@ -68,4 +69,41 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+/*My configuration*/
+input.btn-dark{
+  margin-top: 10px;
+  margin-left: 170px;
+
+}
+
+input:out-of-range.form{
+  border: 1px dashed red;
+
+}
+
+form{
+  margin-left: 360px;
+
+}
+
+.form-control{
+  width: 60%;
+
+}
+
+ul{
+  list-style: none;
+
+}
+
+ul li{
+  margin-top: 5px;
+  
+}
+
+.btn-primary{
+  width: 200px;
+
 }

@@ -127,6 +127,30 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             return View();
         }
 
+
+        public IActionResult UpdateAuthor(){
+
+            return View();
+
+        }
+
+
+        [HttpPost]
+        public IActionResult UpdateAuthor(Author author){
+
+            var oldAuthor = db.Authors.Where(old => old.Id == author.Id).First();
+            if(oldAuthor != null){
+                oldAuthor.Name = author.Name;
+                oldAuthor.Books = author.Books;
+                oldAuthor.Country = author.Country;
+
+                db.SaveChanges();
+
+            }
+
+            return View();
+        }
+
         public IActionResult DeleteAuthor(){
 
             return View();
