@@ -112,3 +112,9 @@ input.btn-dark{
   margin-bottom: 30px;
 
 }
+
+input.btn-dark::after{
+  content: "Submit";
+  
+}
+
