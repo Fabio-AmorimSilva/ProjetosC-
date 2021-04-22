@@ -8,17 +8,26 @@
 <form class="form" method="POST">
     <legend>Author Information</legend>
     <label>Id: </label>
-        <input class="form-control" asp-for="Id" required/>
+        <input class="form-control" name="id" required/>
     <input class="btn btn-dark" type="submit">
 </form>
 
-if(Model != null){
-    <p>Id: @Model.Id</p>
-    <p>ISBN: @Model.Name/p>
-    <p>Title: @Model.Books</p>
-    <p>Author: @Model.Country</p>
-
-}else{
-    <p>Author not found! Type a Id existent em database.</p>
+@if(Model != null){
+   <table class="table table-bordered table-stripped table-hover">
+       <thead class="thead-dark">
+           <th>Id</th>
+           <th>Name</th>
+           <th>Books</th>
+           <th>Country</th>
+       </thead>
+       <tbody>
+           <tr>
+               <td>@Model.Id</td>
+               <td>@Model.Name</td>
+               <td>@Model.Books</td>
+               <td>@Model.Country</td>
+           </tr>
+       </tbody>
+   </table>
 
 }

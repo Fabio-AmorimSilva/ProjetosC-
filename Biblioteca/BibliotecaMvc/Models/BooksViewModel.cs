@@ -7,8 +7,5 @@ namespace BibliotecaMvc.Models
     {
         public IList<Books> Books{get; set;}
 
-        public Books Book{get; set;}
-
-
     }
 }

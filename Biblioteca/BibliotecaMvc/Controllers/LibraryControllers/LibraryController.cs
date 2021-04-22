@@ -57,7 +57,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             if(ModelState.IsValid){
                 db.Books.Add(book);
                 db.SaveChanges();
-                return RedirectToPage("/AddB");
+                return RedirectToPage("/Books");
             }
 
 
@@ -72,10 +72,14 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         }
 
         [HttpPost]
-        public IActionResult SearchBook(Books book){
+        public IActionResult SearchBook(int? id){
 
-            IEnumerable<Books> model = db.Books
-            .Where(bId => bId.Id == book.Id);
+            var model = db.Books.Where(b => b.Id == id).First();
+            if(model == null){
+                return NotFound("Book not found in database.");
+
+            }
+
 
             return View(model);
 
@@ -99,6 +103,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
                 bookId.Year = book.Year;
 
                 db.SaveChanges();
+                return RedirectToPage("/Books");
 
             }
 
@@ -119,6 +124,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             if(bookId != null){
                 db.Books.Remove(bookId);
                 db.SaveChanges();
+                return RedirectToPage("/Books");
 
             }
 
@@ -138,7 +144,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             if(ModelState.IsValid){
                 db.Authors.Add(author);
                 db.SaveChanges();
-                return RedirectToPage("/AddA");
+                return RedirectToPage("/Authors");
 
             }
 
@@ -152,9 +158,15 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         }
 
         [HttpPost]
-        public IActionResult SearchAuthor(Author author){
+        public IActionResult SearchAuthor(int? id){
 
-            return View(author);
+            var model = db.Authors.Where(a => a.Id == id).First();
+            if(model == null){
+                return NotFound("Author not found in database.");
+
+            }
+
+            return View(model);
 
         }
 
@@ -176,6 +188,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
                 oldAuthor.Country = author.Country;
 
                 db.SaveChanges();
+                return RedirectToPage("/Authors");
 
             }
 
@@ -195,6 +208,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
             if(authorId != null){
                 db.Authors.Remove(authorId);
                 db.SaveChanges();
+                return RedirectToPage("/Authors");
 
             }
 

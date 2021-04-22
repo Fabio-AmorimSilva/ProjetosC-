@@ -1,4 +1,4 @@
-@model BibliotecaMvc.Models.BooksViewModel;
+@model BibliotecaEntitiesLib.Books;
 
 @{
     ViewData["Title"] = "Search Book";
@@ -8,16 +8,28 @@
 <form class="form" method="POST">
     <legend>Book Information</legend>
     <label>Id: </label>
-        <input class="form-control" required/>
+        <input class="form-control" name="id" required/>
     <input class="btn btn-dark" type="submit">
 </form>
 
 @if(Model != null){
-    <p>Id: @Model.Book.Id</p>
-    <p>ISBN: @Model.Book.ISBN</p>
-    <p>Title: @Model.Book.Title</p>
-    <p>Author: @Model.Book.Author</p>
-    <p>Genre: @Model.Book.Genre</p>
-    <p>Year: @Model.Book.Year</p>
+   <table class="table table-bordered table-stripped table-hover">
+       <thead class="thead-dark">
+           <th>Id</th>
+           <th>Title</th>
+           <th>Author</th>
+           <th>Genre</th>
+           <th>Year</th>
+       </thead>
+       <tbody>
+           <tr>
+               <td>@Model.Id</td>
+               <td>@Model.Title</td>
+               <td>@Model.Author</td>
+               <td>@Model.Genre</td>
+               <td>@Model.Year</td>
+           </tr>
+       </tbody>
+   </table>
 
 }
