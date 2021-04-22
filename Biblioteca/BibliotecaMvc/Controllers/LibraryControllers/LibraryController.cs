@@ -74,7 +74,11 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult SearchBook(int? id){
 
-            var model = db.Books.Where(b => b.Id == id).First();
+            if(!id.HasValue){
+                return NotFound("The id is not a valid number");
+            }
+
+            var model = db.Books.SingleOrDefault(b => b.Id == id);
             if(model == null){
                 return NotFound("Book not found in database.");
 
@@ -93,7 +97,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult UpdateBook(Books book){
 
-            var bookId = db.Books.Where(b => b.Id == book.Id).First();
+            var bookId = db.Books.SingleOrDefault(b => b.Id == book.Id);
             if(bookId != null){
 
                 bookId.ISBN = book.ISBN;
@@ -120,7 +124,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult DeleteBook(Books book){
 
-            var bookId = db.Books.Where(b => b.Id == book.Id).First();
+            var bookId = db.Books.SingleOrDefault(b => b.Id == book.Id);
             if(bookId != null){
                 db.Books.Remove(bookId);
                 db.SaveChanges();
@@ -160,7 +164,11 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult SearchAuthor(int? id){
 
-            var model = db.Authors.Where(a => a.Id == id).First();
+             if(!id.HasValue){
+                return NotFound("The id is not a valid number");
+            }
+
+            var model = db.Authors.SingleOrDefault(a => a.Id == id);
             if(model == null){
                 return NotFound("Author not found in database.");
 
@@ -181,7 +189,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult UpdateAuthor(Author author){
 
-            var oldAuthor = db.Authors.Where(old => old.Id == author.Id).First();
+            var oldAuthor = db.Authors.SingleOrDefault(old => old.Id == author.Id);
             if(oldAuthor != null){
                 oldAuthor.Name = author.Name;
                 oldAuthor.Books = author.Books;
@@ -204,7 +212,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult DeleteAuthor(Author author){
 
-            var authorId = db.Authors.Where(a => a.Id == author.Id).First();
+            var authorId = db.Authors.SingleOrDefault(a => a.Id == author.Id);
             if(authorId != null){
                 db.Authors.Remove(authorId);
                 db.SaveChanges();
