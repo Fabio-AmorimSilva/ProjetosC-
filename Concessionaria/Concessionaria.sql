@@ -10,18 +10,21 @@
 DROP TABLE IF EXISTS [Agencia];
 CREATE TABLE [Agencia]
 (
-    [AgenciaID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    [NomeAgencia] TEXT NOT NULL UNIQUE,
-    [GerenteAgencia] TEXT NOT NULL PRIMARY KEY,
+    [AgenciaID] INTEGER NOT NULL PRIMARY KEY ,
+    [NomeAgencia] TEXT NOT NULL,
+    [GerenteAgencia] TEXT NOT NULL,
     [CidadeAgencia] TEXT NOT NULL
 
 );
+
+INSERT INTO Agencia(AgenciaID, NomeAgencia, GerenteAgencia, CidadeAgencia) 
+    VALUES('Auto Jandira', 'Pedro', 'Jandira');
 
 -- Carro
 DROP TABLE IF EXISTS [Gerente];
 CREATE TABLE [Gerente]
 (
-    [GerenteID] INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
+    [GerenteID] INTEGER PRIMARY KEY NOT NULL,
     [AgenciaID] INTEGER NOT NULL,
     [Nome] TEXT NOT NULL,
     [Telefone] INTEGER NOT NULL,
@@ -33,7 +36,7 @@ CREATE TABLE [Gerente]
 DROP TABLE IF EXISTS [Vendedor];
 CREATE TABLE [Vendedor]
 (
-    [VendedorID] INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
+    [VendedorID] INTEGER PRIMARY KEY NOT NULL,
     [AgenciaID] INTEGER NOT NULL,
     [Nome] TEXT NOT NULL,
     [Telefone] INTEGER NOT NULL,
@@ -45,7 +48,7 @@ CREATE TABLE [Vendedor]
 DROP TABLE IF EXISTS [Carro];
 CREATE TABLE [Carro]
 (
-    [CarroID] INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT,
+    [CarroID] INTEGER PRIMARY KEY NOT NULL,
     [AgenciaID] INTEGER NOT NULL,
     [Marca] TEXT NOT NULL,
     [Modelo] TEXT NOT NULL,
