@@ -2,7 +2,7 @@
 
 namespace ConcessionariaContextLib
 {
-    public class Class1
+    public class Concessionaria
     {
     }
 }

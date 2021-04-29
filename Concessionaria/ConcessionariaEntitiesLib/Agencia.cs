@@ -2,7 +2,7 @@
 
 namespace ConcessionariaEntitiesLib
 {
-    public class Class1
+    public class Agencia
     {
     }
 }
