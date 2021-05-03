@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ConcessionariaContextLib;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConcessionariaMvc
 {
@@ -22,6 +25,12 @@ namespace ConcessionariaMvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            string dataBasePath = Path.Combine("..", "Concessionaria.db");
+
+            services.AddDbContext<Concessionaria>(
+                options => options.UseSqlite($"Data Source={dataBasePath}"));
+
             services.AddControllersWithViews();
         }
 
