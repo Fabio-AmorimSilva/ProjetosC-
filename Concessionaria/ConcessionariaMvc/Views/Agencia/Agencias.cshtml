@@ -1,0 +1,22 @@
+@model ConcessionariaMvc.Models.AgenciaViewModel;
+
+@{
+    ViewData["Title"] = "Agencias";
+
+}
+
+<table class="table table-stripped table-bodered">
+    <th>CNPJ</th>
+    <th>Nome</th>
+    <th>Gerente</th>
+    <th>Cidade</th>
+    @foreach (var agencia in Model.Agencias)
+    {
+        <tr>
+            <td>@agencia.AgenciaID</td>
+            <td>@agencia.NomeAgencia</td>
+            <td>@agencia.GerenteAgencia</td>
+            <td>@agencia.CidadeAgencia</td>
+        </tr>
+    }
+</table>

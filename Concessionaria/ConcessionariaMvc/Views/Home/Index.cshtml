@@ -1,8 +1,29 @@
-﻿@{
+﻿@model ConcessionariaMvc.Models.HomeViewModel;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <h2>Bem-vindo</h2>
+    <h3>Hoje é dia @Model.data.DayOfWeek</h3>
 </div>
+
+
+<h4>Opções da Concessionaria</h4>
+<ul>
+    <li>
+        <a class="link-item btn-dark"
+        asp-controller="Carro"
+        asp-action="Carros">
+            Lista de Carros
+        </a>
+    </li>
+    <li>
+        <a class="link-item btn-dark"
+        asp-controller="Agencia"
+        asp-action="Agencias">
+            Lista de Agências
+        </a>
+    </li>
+</ul>

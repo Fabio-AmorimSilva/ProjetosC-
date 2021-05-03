@@ -18,9 +18,10 @@ namespace ConcessionariaMvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(HomeViewModel home)
         {
-            return View();
+            var data = home;
+            return View(data);
         }
 
         public IActionResult Privacy()
