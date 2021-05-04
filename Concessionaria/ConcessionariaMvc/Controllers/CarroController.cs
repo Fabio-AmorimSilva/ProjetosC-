@@ -45,13 +45,12 @@ namespace ConcessionariaMvc.Controllers
             if(ModelState.IsValid){
                 db.Carros.Add(carro);
                 db.SaveChanges();
-                return RedirectToPage("/Carros");
+                
 
             }
 
-
             return View();
-
+            
         }
 
         public IActionResult ConsultaCarro(){
@@ -74,20 +73,20 @@ namespace ConcessionariaMvc.Controllers
 
         public IActionResult DeletaCarro(){
             return View();
-            
+
         }
 
         [HttpPost]
         public IActionResult DeletaCarro(int? id){
 
             Carro carroBusca = db.Carros.SingleOrDefault(carro => carro.CarroID == id);
-            if(carroBusca == null){
+            if(!id.HasValue){
                 return NotFound("Carro não encontrado na base dados. Por favor, inserir outro id");
 
             }else{
 
                 db.Carros.Remove(carroBusca);
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return View();
 
             }
