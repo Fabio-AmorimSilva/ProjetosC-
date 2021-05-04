@@ -1,0 +1,20 @@
+@model ConcessionariaMvc.Models.CarroViewModel;
+
+@{
+    ViewData["Title"] = "Inserir Carros";
+
+}
+
+
+<form class="form" method="POST">
+    <legend>Informações Carro: </legend>
+    <label for="id">Chassi: </label>
+        <input class="form-control" asp-for="Carro.CarroID" name="id" required/>
+    <label for="marca" >Marca: </label>
+        <input class="form-control" asp-for="Carro.Marca" name="marca" required/>
+    <label for="modelo" >Model: </label>
+        <input class="form-control" asp-for="Carro.Modelo" name="modelo" required/>
+    <label for="ano" >Ano: </label>
+        <input class="form-control" asp-for="Carro.Ano" name="ano" required/>
+    <input class="btn btn-dark" type="submit" placeholder="Enviar"></input>
+</form>

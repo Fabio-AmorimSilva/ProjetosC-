@@ -35,8 +35,7 @@ CREATE TABLE [Gerentes]
     [GerenteID] INTEGER PRIMARY KEY NOT NULL,
     [AgenciaID] INTEGER NOT NULL,
     [Nome] TEXT NOT NULL,
-    [Telefone] INTEGER NOT NULL,
-    FOREIGN KEY (AgenciaID) REFERENCES Agencia(AgenciaID)
+    [Telefone] INTEGER NOT NULL
 
 );
 
@@ -59,8 +58,7 @@ CREATE TABLE [Vendedores]
     [AgenciaID] INTEGER NOT NULL,
     [Nome] TEXT NOT NULL,
     [Telefone] INTEGER NOT NULL,
-    [NumeroVendas] INTEGER NOT NULL,
-    FOREIGN KEY(AgenciaID) REFERENCES Agencia(AgenciaID)
+    [NumeroVendas] INTEGER NOT NULL
 );
 
 INSERT INTO Vendedores(VendedorID, AgenciaID, Nome, Telefone, NumeroVendas)
@@ -82,8 +80,7 @@ CREATE TABLE [Carros]
     [AgenciaID] INTEGER NOT NULL,
     [Marca] TEXT NOT NULL,
     [Modelo] TEXT NOT NULL,
-    [Ano] INTEGER NOT NULL,
-    FOREIGN KEY(AgenciaID) REFERENCES Agencia(AgenciaID)
+    [Ano] INTEGER NOT NULL
 );
 
 INSERT INTO Carros(CarroID, AgenciaID, Marca, Modelo, Ano)

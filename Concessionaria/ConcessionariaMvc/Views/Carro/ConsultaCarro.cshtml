@@ -1,0 +1,31 @@
+@model ConcessionariaEntitiesLib.Carro;
+
+@{
+    ViewData["Title"] = "Consulta de Carro";
+
+}
+
+<form class="form" method="POST">
+    <label for="id">Chassi: </label>
+        <input class="form-control" name="id" required/>
+    <input class="btn btn-dark" type="submit"/>
+</form>
+
+@if(Model != null){
+    <table class="table table-hover table-stripped table-bordered">
+        <thead>
+            <th>Chassi</th>
+            <th>Modelo</th>
+            <th>Marca</th>
+            <th>Ano</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.CarroID</td>
+                <td>@Model.Modelo</td>
+                <td>@Model.Marca</td>
+                <td>@Model.Ano</td>
+            </tr>
+        </tbody>
+    </table>
+}

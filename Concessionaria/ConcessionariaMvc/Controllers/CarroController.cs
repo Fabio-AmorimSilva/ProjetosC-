@@ -23,6 +23,7 @@ namespace ConcessionariaMvc.Controllers
 
         }
 
+        [HttpGet]
         public async Task<IActionResult> Carros(){
 
             var model = new CarroViewModel{
@@ -33,12 +34,19 @@ namespace ConcessionariaMvc.Controllers
 
         }
 
+        public IActionResult AddCarro(){
+            return View();
+
+        }
+
+        [HttpPost]
         public IActionResult AddCarro(Carro carro){
 
             if(ModelState.IsValid){
                 db.Carros.Add(carro);
-                db.SaveChangesAsync();
-                return View("/Carros");
+                db.SaveChanges();
+                return RedirectToPage("/Carros");
+
             }
 
 
@@ -46,18 +54,30 @@ namespace ConcessionariaMvc.Controllers
 
         }
 
+        public IActionResult ConsultaCarro(){
+            return View();
+
+        }
+
+        [HttpPost]
         public IActionResult ConsultaCarro(int? id){
 
             Carro carroBusca = db.Carros.SingleOrDefault(carro => carro.CarroID == id); 
-            if(carroBusca == null){
+            if(!id.HasValue){
                 return NotFound("Carro não encontrado na base de dados. Por favor inserir outro id");
 
             }
 
-            return View();
+            return View(carroBusca);
 
         }
 
+        public IActionResult DeletaCarro(){
+            return View();
+            
+        }
+
+        [HttpPost]
         public IActionResult DeletaCarro(int? id){
 
             Carro carroBusca = db.Carros.SingleOrDefault(carro => carro.CarroID == id);
