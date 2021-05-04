@@ -1,7 +1,7 @@
 -- Fabio Amorim da Silva @2021-04-29 [YYYY-MM-DD]
 -- São Paulo, 2021
 -- Brazil
--- Database : Concessionaria
+-- Database : Concessionaria.db
 -- Origin: Sqlite3
 --
 --
@@ -10,7 +10,7 @@
 DROP TABLE IF EXISTS [Agencias];
 CREATE TABLE [Agencias]
 (
-    [AgenciaID] INTEGER NOT NULL PRIMARY KEY,
+    [AgenciaID] INTEGER PRIMARY KEY NOT NULL,
     [NomeAgencia] TEXT NOT NULL,
     [GerenteAgencia] TEXT NOT NULL,
     [CidadeAgencia] TEXT NOT NULL

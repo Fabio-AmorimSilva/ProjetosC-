@@ -1,0 +1,17 @@
+@model ConcessionariaMvc.Models.AgenciaViewModel;
+
+@{
+    ViewData["Title"] = "Inserir Agência";
+
+}
+
+<form class="form" method="POST">
+    <legend>Informações Agência: </legend>
+    <label>Nome: </label>
+        <input class="form-control" asp-for="Agencia.NomeAgencia" required/>
+    <label>Gerente: </label>
+        <input class="form-control" asp-for="Agencia.GerenteAgencia" required/>
+    <label>Cidade: </label>
+        <input class="form-control" asp-for="Agencia.CidadeAgencia" required/>
+    <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>

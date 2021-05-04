@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using ConcessionariaContextLib;
+using ConcessionariaEntitiesLib;
 using ConcessionariaMvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,24 @@ namespace ConcessionariaMvc.Controllers
             };
             
             return View(model);
+
+        }
+
+        public IActionResult AddAgencia(){
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult AddAgencia(Agencia agencia){
+
+            if(ModelState.IsValid){
+                db.Agencias.Add(agencia);
+                db.SaveChanges();
+
+            }
+
+            return View();
 
         }
 

@@ -54,12 +54,6 @@ namespace ConcessionariaMvc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "Carro",
-                    pattern: "Carro",
-                    defaults: new {controller = "Carro", action = "AddCarro"}
-                );
-
-                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

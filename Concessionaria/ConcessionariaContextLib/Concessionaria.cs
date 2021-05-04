@@ -34,7 +34,8 @@ namespace ConcessionariaContextLib
 
             modelBuilder.Entity<Agencia>()
             .Property(Agencia => Agencia.CidadeAgencia)
-            .IsRequired().HasMaxLength(40);
+            .IsRequired()
+            .HasMaxLength(40);
 
             //Modelagem da classe Gerente
             modelBuilder.Entity<Gerente>()
