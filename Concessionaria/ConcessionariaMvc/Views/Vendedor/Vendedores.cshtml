@@ -1,0 +1,24 @@
+@model ConcessionariaMvc.Models.VendedorViewModel;
+
+@{
+    ViewData["Title"] = "Lista de Vendedores";
+
+}
+
+<table class="table table-hover table-bordered table-stripped">
+    <thead>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Vendas</th>
+    </thead>
+    <tbody>
+        @foreach (var vendedor in Model.Vendedores)
+        {   
+            <tr>
+                <td>@vendedor.VendedorID</td>
+                <td>@vendedor.Nome</td>
+                <td>@vendedor.NumeroVendas</td>
+            </tr>
+        }
+    </tbody>
+</table>

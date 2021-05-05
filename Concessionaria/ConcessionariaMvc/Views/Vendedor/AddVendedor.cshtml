@@ -1,0 +1,18 @@
+@model ConcessionariaMvc.Models.VendedorViewModel;
+
+@{
+    ViewData["Title"] = "Inserir Vendedor";
+
+}
+
+<form class="form" method="POST">
+    <label for="id">CPF: </label>
+        <input class="form-control" asp-for="Vendedor.VendedorID" name="id" required/>
+    <label for="nome">Nome: </label>
+        <input class="form-control" asp-for="Vendedor.Nome" name="nome" required/>
+    <label for="telefone">Telefone: </label>
+        <input class="form-control" asp-for="Vendedor.Telefone" name="telefone" required/>
+    <label for="vendas">Número Vendas: </label>
+       <input class="form-control" asp-for="Vendedor.NumeroVendas" name="vendas" required/>
+    <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>

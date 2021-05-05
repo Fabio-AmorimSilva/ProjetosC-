@@ -4,6 +4,8 @@ namespace ConcessionariaEntitiesLib
     {
         public int VendedorID{get; set;}
         public string Nome{get; set;}
+
+        public int Telefone{get; set;}
         public int NumeroVendas{get; set;}
 
 

@@ -70,6 +70,10 @@ namespace ConcessionariaContextLib
             .HasMaxLength(40);
 
             modelBuilder.Entity<Vendedor>()
+            .Property(Vendedor => Vendedor.Telefone)
+            .IsRequired();
+
+            modelBuilder.Entity<Vendedor>()
             .Property(Vendedor => Vendedor.NumeroVendas)
             .IsRequired();
 
