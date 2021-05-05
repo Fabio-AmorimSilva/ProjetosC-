@@ -1,0 +1,16 @@
+@model ConcessionariaMvc.Models.GerenteViewModel;
+
+@{
+    ViewData["Title"] = "Adiciona Gerente";
+
+}
+
+<form class="form" method="POST">
+    <label for="id">CPF: </label>
+        <input class="form-control" asp-for="Gerente.GerenteID" name="id" required/>
+    <label for="nome">Nome: </label>
+        <input class="form-control" asp-for="Gerente.Nome" name="nome" required/>
+    <label for="telefone">Telefone: </label>
+        <input class="form-control" asp-for="Gerente.Telefone" name="telefone" required/>
+    <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>

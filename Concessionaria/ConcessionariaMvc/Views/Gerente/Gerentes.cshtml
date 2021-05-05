@@ -1,0 +1,22 @@
+@model ConcessionariaMvc.Models.GerenteViewModel;
+
+@{
+    ViewData["Title"] = "Lista de Gerentes";
+
+}
+
+<table class="table table-stripped table-hover table-bordered">
+    <thead>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Telefone</th>
+    </thead>
+    @foreach (var gerente in Model.Gerentes)
+    {
+        <tr>
+            <td>@gerente.GerenteID</td>
+            <td>@gerente.Nome</td>
+            <td>@gerente.Telefone</td>
+        </tr>
+    }
+</table>

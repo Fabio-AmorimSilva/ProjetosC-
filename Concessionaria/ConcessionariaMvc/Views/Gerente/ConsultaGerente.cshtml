@@ -1,0 +1,29 @@
+@model ConcessionariaEntitiesLib.Gerente;
+
+@{
+    ViewData["Title"] = "Consulta de Gerente";
+
+}
+
+<form class="form" method="POST">
+    <label for="id">CPF: </label>
+        <input class="form-control" name="id" required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar"/>
+</form>
+
+@if(Model != null){
+    <table class="table table-stripped table-hover table-bordered">
+        <thead>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.GerenteID</td>
+                <td>@Model.Nome</td>
+                <td>@Model.Telefone</td>
+            </tr>
+        </tbody>
+    </table>
+}
