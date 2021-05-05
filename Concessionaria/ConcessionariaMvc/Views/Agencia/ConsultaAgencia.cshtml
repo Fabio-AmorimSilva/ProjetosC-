@@ -1,0 +1,33 @@
+@model ConcessionariaEntitiesLib.Agencia;
+
+@{
+    ViewData["Title"] = "Consulta de Agência";
+
+}
+
+<form class="form" method="POST">
+    <legend>Consulta da agência</legend>
+    <label for="id">
+        <input class="form-control" name="id" required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar"/>
+    </label>
+</form>
+
+@if(Model != null){
+    <table class="table table-bordered table-stripped table-hover">
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Gerente</th>
+            <th>Cidade</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.AgenciaID</td>
+                <td>@Model.NomeAgencia</td>
+                <td>@Model.GerenteAgencia</td>
+                <td>@Model.CidadeAgencia</td>
+            </tr>
+        </tbody>
+    </table>
+}

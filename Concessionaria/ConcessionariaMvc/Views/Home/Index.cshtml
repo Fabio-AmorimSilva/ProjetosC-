@@ -11,7 +11,7 @@
 
 
 <h4>Opções da Concessionaria</h4>
-<ul>
+<ul class="opagencia">
     <li>
         <a class="link-item btn btn-dark"
         asp-controller="Carro"
@@ -54,5 +54,18 @@
             Inserir Agência
         </a>
     </li>
-   
+    <li>
+        <a class="link-item btn btn-dark"
+        asp-controller="Agencia"
+        asp-action="ConsultaAgencia">
+            Consulta Agência
+        </a>
+    </li>
+    <li>
+        <a class="link-item btn btn-dark"
+        asp-controller="Agencia"
+        asp-action="DeletaAgencia">
+            Deleta Agência
+        </a>
+    </li>
 </ul>
