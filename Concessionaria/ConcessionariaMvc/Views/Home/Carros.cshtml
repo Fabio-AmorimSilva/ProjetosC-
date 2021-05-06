@@ -1,0 +1,25 @@
+@model ConcessionariaMvc.Models.CarroViewModel;
+
+@{
+    ViewData["Title"] = "Lista de Carros";
+
+}
+
+<table class="table table-stripped table-bordered table-hover">
+    <thead>
+        <th>Chassi</th>
+        <th>Model</th>
+        <th>Marca</th>
+        <th>Ano</th>
+        <th>Agencia</th>
+    </thead>
+    @foreach (var carro in Model.Carros)
+    {
+        <tr>
+            <td>@carro.CarroID</td>
+            <td>@carro.Modelo</td>
+            <td>@carro.Marca</td>
+            <td>@carro.Ano</td>
+        </tr>
+    }
+</table>

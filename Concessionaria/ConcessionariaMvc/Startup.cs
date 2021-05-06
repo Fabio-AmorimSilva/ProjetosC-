@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Headers;
 
 namespace ConcessionariaMvc
 {
@@ -32,6 +33,16 @@ namespace ConcessionariaMvc
                 options => options.UseSqlite($"Data Source={dataBasePath}"));
 
             services.AddControllersWithViews();
+
+            services.AddHttpClient(name: "ConcessionariaService",
+                configureClient: options =>
+                {
+                    options.BaseAddress = new Uri("http://localhost:5000/api/Carros");
+                    options.DefaultRequestHeaders.Accept.Add(
+                        new MediaTypeWithQualityHeaderValue(
+                            "application/json", 1.0)
+                    );
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

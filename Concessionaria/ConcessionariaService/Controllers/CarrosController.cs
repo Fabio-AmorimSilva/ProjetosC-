@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ConcessionariaEntitiesLib;
 using ConcessionariaService.Carros;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,26 @@ namespace ConcessionariaService.Controllers
 
         }
 
+        [HttpPost]
+        [ProducesResponseType(201, Type = typeof(Carro))]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> CriaAsync([FromBody] Carro c){
+
+            if(c == null){
+                return BadRequest();
+
+            }
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState);
+
+            }
+
+            Carro add = await repoCarros.CriaAsync(c);
+            return CreatedAtRoute(
+                routeName: nameof(c.CarroID),
+                routeValues: new { id = add.CarroID},
+                value: add);
+        }
        
 
     }
