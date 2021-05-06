@@ -28,7 +28,7 @@ namespace ConcessionariaService.Controllers
         [HttpPost]
         [ProducesResponseType(201, Type = typeof(Carro))]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> CriaAsync([FromBody] Carro c){
+        public async Task<IActionResult> Cria([FromBody] Carro c){
 
             if(c == null){
                 return BadRequest();
@@ -40,10 +40,9 @@ namespace ConcessionariaService.Controllers
             }
 
             Carro add = await repoCarros.CriaAsync(c);
-            return CreatedAtRoute(
-                routeName: nameof(c.CarroID),
-                routeValues: new { id = add.CarroID},
-                value: add);
+            
+            return View();
+            
         }
        
 
