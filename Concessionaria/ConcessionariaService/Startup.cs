@@ -36,6 +36,8 @@ namespace ConcessionariaService
             services.AddDbContext<Concessionaria>(
                 options => options.UseSqlite($"Data Source={dataBasePath}"));
 
+            services.AddScoped<Carros.ICarros, Carros.Carros>();
+
             services.AddControllers(options =>
             {
                 Console.WriteLine("Formatadores Padrões de saída.");
