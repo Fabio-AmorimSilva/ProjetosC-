@@ -51,8 +51,9 @@ namespace ConcessionariaService.Carros
 
         public Carro Atualiza(int id, Carro c)
         {
-            if(c != null){
-                Carro carroBusca = db.Carros.SingleOrDefault(carro => carro.CarroID == id);
+            
+            Carro carroBusca = db.Carros.SingleOrDefault(carro => carro.CarroID == id);
+            if(c != null && c.CarroID == id){
                 carroBusca.Marca = c.Marca;
                 carroBusca.Modelo = c.Modelo;
                 carroBusca.Ano = c.Ano;

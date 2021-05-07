@@ -44,6 +44,34 @@ namespace ConcessionariaService.Controllers
             return View();
             
         }
+
+        [HttpPut("id")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult Atualiza(int id, Carro c){
+
+            if(c == null || c.CarroID != id){
+                return BadRequest(); //400 Bad Request
+
+            }
+
+            if(!ModelState.IsValid){
+                return BadRequest(); //400 Bad Request
+
+            }
+
+            var existe = repoCarros.Retorna(id);
+            if(existe == null){
+                return NotFound(); //404 Resource not found
+
+            }
+
+            repoCarros.Atualiza(id, c);
+            return new ContentResult(); 
+
+        }
+    
        
 
     }
