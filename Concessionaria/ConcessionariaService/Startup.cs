@@ -38,6 +38,8 @@ namespace ConcessionariaService
 
             services.AddScoped<Carros.ICarros, Carros.Carros>();
 
+            services.AddCors();
+
             services.AddControllers(options =>
             {
                 Console.WriteLine("Formatadores Padrões de saída.");
@@ -79,6 +81,13 @@ namespace ConcessionariaService
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(configurePolicy: options =>{
+                options.WithMethods("GET", "POST", "PUT", "DELETE");
+                options.WithOrigins(
+                    "http://localhost:5002" //Para o cliente MVC
+                );
+            });
 
             app.UseEndpoints(endpoints =>
             {

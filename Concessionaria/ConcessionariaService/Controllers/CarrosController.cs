@@ -71,6 +71,28 @@ namespace ConcessionariaService.Controllers
             return new ContentResult(); 
 
         }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult Deleta(int id){
+
+            var existe = repoCarros.Retorna(id);
+            if(existe == null){
+                return NotFound(); //404 Resource not found
+
+            }
+
+            bool? deletado = repoCarros.Deleta(id);
+            if(deletado.HasValue && deletado.Value){
+                return new NoContentResult(); //204 No content
+
+            }else{
+                return BadRequest($"Carro {id} foi encontrado, mas a remoção falhou.");
+                
+            }
+        }
     
        
 
