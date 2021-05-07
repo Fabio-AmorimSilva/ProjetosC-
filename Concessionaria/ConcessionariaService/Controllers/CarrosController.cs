@@ -45,11 +45,11 @@ namespace ConcessionariaService.Controllers
             
         }
 
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public IActionResult Atualiza(int id, Carro c){
+        public IActionResult Atualiza(int id, [FromBody] Carro c){
 
             if(c == null || c.CarroID != id){
                 return BadRequest(); //400 Bad Request
@@ -57,7 +57,7 @@ namespace ConcessionariaService.Controllers
             }
 
             if(!ModelState.IsValid){
-                return BadRequest(); //400 Bad Request
+                return BadRequest(ModelState); //400 Bad Request
 
             }
 
@@ -68,7 +68,7 @@ namespace ConcessionariaService.Controllers
             }
 
             repoCarros.Atualiza(id, c);
-            return new ContentResult(); 
+            return new NoContentResult(); //204 No Content
 
         }
 
@@ -90,7 +90,7 @@ namespace ConcessionariaService.Controllers
 
             }else{
                 return BadRequest($"Carro {id} foi encontrado, mas a remoção falhou.");
-                
+
             }
         }
     

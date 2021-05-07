@@ -53,10 +53,13 @@ namespace ConcessionariaService.Carros
         {
             
             Carro carroBusca = db.Carros.SingleOrDefault(carro => carro.CarroID == id);
-            if(c != null && c.CarroID == id){
+            if(carroBusca != null){
+                carroBusca.CarroID = c.CarroID;
                 carroBusca.Marca = c.Marca;
                 carroBusca.Modelo = c.Modelo;
                 carroBusca.Ano = c.Ano;
+                carroBusca.Agencia = c.Agencia;
+                db.SaveChanges();
                 return carroBusca;
 
             }else{
