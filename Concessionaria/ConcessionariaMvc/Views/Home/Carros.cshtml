@@ -1,4 +1,4 @@
-@model ConcessionariaMvc.Models.CarroViewModel;
+@model IEnumerable<ConcessionariaEntitiesLib.Carro>;
 
 @{
     ViewData["Title"] = "Lista de Carros";
@@ -13,7 +13,7 @@
         <th>Ano</th>
         <th>Agencia</th>
     </thead>
-    @foreach (var carro in Model.Carros)
+    @foreach (var carro in Model)
     {
         <tr>
             <td>@carro.CarroID</td>

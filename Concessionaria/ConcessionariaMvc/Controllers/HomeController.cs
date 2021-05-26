@@ -33,7 +33,7 @@ namespace ConcessionariaMvc.Controllers
             return View(data);
         }
 
-        public async Task<IActionResult> Carros(HttpContext context, RequestDelegate next){
+        public async Task<IActionResult> Carros(){
 
             string uri = $"api/Carros";
             var client = clientFactory.CreateClient(

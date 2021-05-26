@@ -37,7 +37,7 @@ namespace ConcessionariaMvc
             services.AddHttpClient(name: "ConcessionariaService",
                 configureClient: options =>
                 {
-                    options.BaseAddress = new Uri("http://localhost:5000/api/Carros");
+                    options.BaseAddress = new Uri("http://localhost:5001");
                     options.DefaultRequestHeaders.Accept.Add(
                         new MediaTypeWithQualityHeaderValue(
                             "application/json", 1.0)
