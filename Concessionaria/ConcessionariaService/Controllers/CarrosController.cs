@@ -25,7 +25,7 @@ namespace ConcessionariaService.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         [ProducesResponseType(201, Type = typeof(Carro))]
         [ProducesResponseType(400)]
         public async Task<IActionResult> Cria([FromBody] Carro c){

@@ -1,0 +1,16 @@
+@model ConcessionariaMvc.Models.CarroViewModel;
+
+@{
+    ViewData["Title"] = "Adiciona Carros via Api";
+}
+
+
+<form class="form" method="POST">
+    <label for="name">Marca: </label>
+        <input class="form-control" asp-for="Carro.Marca" name="marca" required/>
+    <label for="modelo">Modelo: </label>
+        <input class="form-control" asp-for="Carro.Modelo" name="modelo" required/>
+    <label for="ano">Ano: </label>
+        <input class="form-control" asp-for="Carro.Ano" name="ano" required/>
+    <input class="btn btn-dark" type="submit" placeholder="Enviar"/>
+</form>

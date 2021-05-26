@@ -53,6 +53,29 @@ namespace ConcessionariaMvc.Controllers
             
         }
 
+        public IActionResult AddC(){
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddC(Carro carro){
+
+            string uri = $"api/Carros";
+            var client = clientFactory.CreateClient(
+                name: "ConcessionariaService"
+            );
+
+            var request = new HttpRequestMessage(
+                method: HttpMethod.Post, requestUri: uri
+            );
+
+            HttpResponseMessage response = await client.PostAsJsonAsync<Carro>("Carros", carro);
+
+            return View();
+
+        }
+
         public IActionResult Privacy()
         {
             return View();
