@@ -72,6 +72,8 @@ namespace ConcessionariaMvc.Controllers
 
             HttpResponseMessage response = await client.PostAsJsonAsync<Carro>("Carros", carro);
 
+            var existe = 0;
+
             return View();
 
         }
