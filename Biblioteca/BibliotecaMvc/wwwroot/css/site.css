@@ -113,8 +113,3 @@ input.btn-dark{
 
 }
 
-input.btn-dark::after{
-  content: "Submit";
-  
-}
-
