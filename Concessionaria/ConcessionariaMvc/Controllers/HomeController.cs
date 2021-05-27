@@ -12,19 +12,29 @@ using ConcessionariaEntitiesLib;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Text;
+using System.Text.Json;
+using ConcessionariaContextLib;
 
 namespace ConcessionariaMvc.Controllers
 {
     public class HomeController : Controller
     {
+
+        private Concessionaria db;
         private readonly ILogger<HomeController> _logger;
         private readonly IHttpClientFactory clientFactory;
 
-        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
+        private readonly HttpClient _httpClient;
+
+        private JsonSerializerOptions JsonConvert;
+
+
+        public HomeController(ILogger<HomeController> logger, Concessionaria injectedContext, IHttpClientFactory httpClientFactory, HttpClient client)
         {
             _logger = logger;
+            db = injectedContext;
             clientFactory = httpClientFactory;
-        
+            _httpClient = client;
         }
 
         public IActionResult Index(HomeViewModel home)
@@ -35,7 +45,7 @@ namespace ConcessionariaMvc.Controllers
 
         public async Task<IActionResult> Carros(){
 
-            string uri = $"api/Carros";
+            string uri = "api/Carros";
             var client = clientFactory.CreateClient(
                 name: "ConcessionariaService"
             );
@@ -61,20 +71,9 @@ namespace ConcessionariaMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> AddC(Carro carro){
 
-            string uri = $"api/Carros";
-            var client = clientFactory.CreateClient(
-                name: "ConcessionariaService"
-            );
+         await _httpClient.PostAsJsonAsync<Carro>("https://localhost:5001/api/Carros", carro);
 
-            var request = new HttpRequestMessage(
-                method: HttpMethod.Post, requestUri: uri
-            );
-
-            HttpResponseMessage response = await client.PostAsJsonAsync<Carro>("Carros", carro);
-
-            var existe = 0;
-
-            return View();
+         return View();
 
         }
 
