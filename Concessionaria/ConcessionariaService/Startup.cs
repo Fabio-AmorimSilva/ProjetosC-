@@ -85,7 +85,7 @@ namespace ConcessionariaService
             app.UseCors(configurePolicy: options =>{
                 options.WithMethods("GET", "POST", "PUT", "DELETE");
                 options.WithOrigins(
-                    "http://localhost:5002" //Para o cliente MVC
+                    "https://localhost:5002" //Para o cliente MVC
                 );
             });
 
