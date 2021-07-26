@@ -1,0 +1,12 @@
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.csprojAssemblyReference.cache
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.AssemblyInfoInputs.cache
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.AssemblyInfo.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.csproj.CoreCompileInputs.cache
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\bin\Debug\net5.0\ImobiliariaContext.deps.json
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\bin\Debug\net5.0\ImobiliariaContext.dll
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\bin\Debug\net5.0\ref\ImobiliariaContext.dll
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\bin\Debug\net5.0\ImobiliariaContext.pdb
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.dll
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ref\ImobiliariaContext.dll
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.pdb
