@@ -1,3 +1,5 @@
+using System;
+
 namespace ImobiliariaEntities
 {
     public class Agencia
