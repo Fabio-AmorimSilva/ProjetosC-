@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "ImobiliariaContext/1.0.0": {
         "dependencies": {
+          "ImobiliariaEntities": "1.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.0"
         },
         "runtime": {
@@ -309,7 +310,12 @@
       "System.Collections.Immutable/5.0.0": {},
       "System.ComponentModel.Annotations/5.0.0": {},
       "System.Diagnostics.DiagnosticSource/5.0.0": {},
-      "System.Memory/4.5.3": {}
+      "System.Memory/4.5.3": {},
+      "ImobiliariaEntities/1.0.0": {
+        "runtime": {
+          "ImobiliariaEntities.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -499,6 +505,11 @@
       "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "path": "system.memory/4.5.3",
       "hashPath": "system.memory.4.5.3.nupkg.sha512"
+    },
+    "ImobiliariaEntities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -355,6 +355,16 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "ImobiliariaEntities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/ImobiliariaEntities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ImobiliariaEntities.dll": {}
+        }
       }
     }
   },
@@ -929,11 +939,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ImobiliariaEntities/1.0.0": {
+      "type": "project",
+      "path": "../ImobiliariaEntities/ImobiliariaEntities.csproj",
+      "msbuildProject": "../ImobiliariaEntities/ImobiliariaEntities.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Microsoft.EntityFrameWorkCore.Sqlite >= 5.0.0"
+      "ImobiliariaEntities >= 1.0.0",
+      "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.0"
     ]
   },
   "packageFolders": {
@@ -970,7 +986,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaEntities\\ImobiliariaEntities.csproj": {
+              "projectPath": "C:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaEntities\\ImobiliariaEntities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -983,7 +1003,7 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "Microsoft.EntityFrameWorkCore.Sqlite": {
+          "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[5.0.0, )"
           }

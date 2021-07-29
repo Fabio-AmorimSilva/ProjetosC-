@@ -10,3 +10,6 @@ C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\Projetos
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.dll
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ref\ImobiliariaContext.dll
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.pdb
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\bin\Debug\net5.0\ImobiliariaEntities.dll
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\bin\Debug\net5.0\ImobiliariaEntities.pdb
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaContext\obj\Debug\net5.0\ImobiliariaContext.csproj.CopyComplete
