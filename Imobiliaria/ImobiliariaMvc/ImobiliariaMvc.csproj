@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ImobiliariaEntities\ImobiliariaEntities.csproj" />
+     <ProjectReference Include="..\ImobiliariaContext\ImobiliariaContext.csproj" />
+  </ItemGroup>
+
 </Project>
