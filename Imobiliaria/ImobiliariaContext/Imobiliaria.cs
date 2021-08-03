@@ -67,7 +67,7 @@ namespace ImobiliariaContext
 
             //Dono Model
             modelBuilder.Entity<Dono>()
-            .Property(di => di.cpf)
+            .Property(di => di.id)
             .IsRequired();
 
             modelBuilder.Entity<Dono>()
