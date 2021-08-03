@@ -5,7 +5,7 @@ namespace ImobiliariaEntities
     public class Imovel
     {
         
-        public int id;
+        public int id{get; set;}
 
         public int idDono;
 

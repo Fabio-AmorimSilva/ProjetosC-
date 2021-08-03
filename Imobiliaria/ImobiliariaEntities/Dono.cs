@@ -5,7 +5,7 @@ namespace ImobiliariaEntities
     public class Dono
     {
 
-        public int cpf;
+        public int id{get; set;}
 
         public string nome;
 

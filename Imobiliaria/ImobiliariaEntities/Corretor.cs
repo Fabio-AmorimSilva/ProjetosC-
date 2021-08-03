@@ -5,7 +5,7 @@ namespace ImobiliariaEntities
     public class Corretor
     {
         
-        public int id;
+        public int id{get; set;}
 
         public int idAgencia;
 
