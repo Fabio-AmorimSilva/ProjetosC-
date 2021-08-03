@@ -1,9 +1,30 @@
+@model ImobiliariaMvc.Models.AgenciaViewModel;
+
 @{
 
     ViewData["Title"] = "Lista de Agencias";
 
 }
 
-<h1>Teste View Agencias</h1>
+<h1>Lista de Agências</h1>
 
-<p>Teste Realizado com sucesso.</p>
+<table class="table table-stripped table-bordered">
+    <thead>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Cidade</th>
+        <th>Id Corretores</th>
+        <th>Id Imoveis</th>
+    </thead>
+    <tbody>
+        @foreach (var agencia in Model.Agencias)
+        {
+            <tr>
+                <td>@agencia.id</td>
+                <td>@agencia.nome</td>
+                <td>@agencia.idCorretores</td>
+                <td>@agencia.idImoveis</td>              
+            </tr>
+        }
+    </tbody>
+</table>
