@@ -1,0 +1,32 @@
+@model ImobiliariaMvc.Models.CorretorViewModel;
+
+@{
+
+    ViewData["Title"] = "Lista de Corretores";
+
+}
+
+<h1>Lista de Corretores</h1>
+
+<table class="table table-stripped table-bordered">
+    <legend>Lista de Corretores</legend>
+    <thead>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Agências</th>
+        <th>Vendas</th>
+    </thead>
+    <tbody>
+        @foreach (var corretor in Model.Corretores)
+        {
+            <tr>
+                <td>@corretor.id</td>
+                <td>@corretor.nome</td>
+                <td>@corretor.idade</td>
+                <td>@corretor.idAgencia</td>
+                <td>@corretor.vendas</td>              
+            </tr>
+        }
+    </tbody>
+</table>

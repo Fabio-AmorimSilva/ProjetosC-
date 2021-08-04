@@ -1,0 +1,32 @@
+@model ImobiliariaMvc.Models.ImovelViewModel;
+
+@{
+
+    ViewData["Title"] = "Lista de Imovéis";
+
+}
+
+<h1>Lista de Imovéis</h1>
+
+<table class="table table-stripped table-bordered">
+    <legend>Lista de Imovéis</legend>
+    <thead>
+        <th>ID</th>
+        <th>Agência</th>
+        <th>Dono</th>
+        <th>Endereço</th>
+        <th>Preço</th>
+    </thead>
+    <tbody>
+        @foreach (var imovel in Model.Imoveis)
+        {
+            <tr>
+                <td>@imovel.id</td>
+                <td>@imovel.idAgencia</td>
+                <td>@imovel.idDono</td>
+                <td>@imovel.endereco</td>
+                <td>@imovel.preco</td>              
+            </tr>
+        }
+    </tbody>
+</table>

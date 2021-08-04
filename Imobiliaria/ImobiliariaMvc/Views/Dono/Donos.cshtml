@@ -1,8 +1,30 @@
+@model ImobiliariaMvc.Models.DonoViewModel;
+
 @{
+
     ViewData["Title"] = "Lista de Donos";
 
 }
 
-<h1>Teste View Donos</h1>
+<h1>Lista de Agências</h1>
 
-<p>Teste realizado com sucesso.</p>
+<table class="table table-stripped table-bordered">
+    <legend>Lista de Donos</legend>
+    <thead>
+        <th>Cpf</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Imovel</th>
+    </thead>
+    <tbody>
+        @foreach (var dono in Model.Donos)
+        {
+            <tr>
+                <td>@dono.id</td>
+                <td>@dono.nome</td>
+                <td>@dono.idade</td>
+                <td>@dono.imovel/td>              
+            </tr>
+        }
+    </tbody>
+</table>
