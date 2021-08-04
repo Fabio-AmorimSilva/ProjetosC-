@@ -20,6 +20,7 @@ namespace ImobiliariaMvc.Controllers
 
         }
 
+        [HttpGet]
         public IActionResult Agencias(){
 
             var model = new AgenciaViewModel{
