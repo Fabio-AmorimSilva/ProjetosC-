@@ -7,12 +7,12 @@ namespace ImobiliariaEntities
         
         public int id{get; set;}
 
-        public int idDono;
+        public int idDono{get; set;}
 
-        public int idAgencia;
+        public int idAgencia{get; set;}
 
-        public string endereco;
+        public string endereco{get; set;}
 
-        public double preco;
+        public double preco{get; set;}
     }
 }

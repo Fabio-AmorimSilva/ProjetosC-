@@ -7,11 +7,11 @@ namespace ImobiliariaEntities
 
         public int id{get; set;}
 
-        public string nome;
+        public string nome{get; set;}
 
-        public int idade;
+        public int idade{get; set;}
 
-        public string imovel;
+        public string imovel{get; set;}
 
     }
 }
