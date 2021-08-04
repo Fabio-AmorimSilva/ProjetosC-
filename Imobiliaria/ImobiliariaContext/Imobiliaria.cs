@@ -84,6 +84,8 @@ namespace ImobiliariaContext
             .IsRequired()
             .HasMaxLength(40);
 
+            
+            //Imovel Model
             modelBuilder.Entity<Imovel>()
             .Property(i => i.id)
             .IsRequired();
