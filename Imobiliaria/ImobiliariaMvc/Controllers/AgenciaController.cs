@@ -1,5 +1,6 @@
 using System.Linq;
 using ImobiliariaContext;
+using ImobiliariaEntities;
 using ImobiliariaMvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -30,6 +31,68 @@ namespace ImobiliariaMvc.Controllers
            
 
             return View(model);
+
+        }
+
+        public IActionResult AddAgencia(){
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAgencia(Agencia agencia){
+
+            var agenciaAux = db.Agencias.SingleOrDefault(a => a.id == agencia.id);
+            if(agenciaAux == null){
+                db.Agencias.Add(agencia);
+                db.SaveChanges();
+
+            }
+
+            return View();
+
+        }
+
+        public IActionResult AlteraAgencia(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult AlteraAgencia(Agencia agencia){
+
+            var agenciaAux = db.Agencias.SingleOrDefault(a => a.id == agencia.id);
+            if(agenciaAux != null){
+                agenciaAux.nome = agencia.nome;
+                agenciaAux.cidade = agencia.cidade;
+                agenciaAux.idCorretores = agencia.idCorretores;
+                agenciaAux.idImoveis = agencia.idImoveis;
+                db.SaveChanges();
+
+            }
+
+            return View();
+
+        }
+
+        public IActionResult DeletaAgencia(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult DeletaAgencia(Agencia agencia){
+
+            var agenciaAux = db.Agencias.SingleOrDefault(a => a.id == agencia.id);
+            if(agenciaAux != null){
+                db.Agencias.Remove(agenciaAux);
+                db.SaveChanges();
+
+            }
+
+            return View();
 
         }
     }
