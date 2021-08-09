@@ -1,0 +1,22 @@
+@model ImobiliariaMvc.Models.AgenciaViewModel;
+
+@{
+
+    ViewData["Title"] = "Adicionando Agência";
+
+}
+
+<form class="form" method="POST">
+    <legend>Adicionando Agência</legend>
+    <label>ID: </label>
+        <input class="form-control" asp-for="Agencia.id" required/>
+    <label>Nome: </label>
+        <input class="form-control" asp-for="Agencia.nome" required/>
+    <label>Cidade: </label>
+        <input class="form-control" asp-for="Agencia.cidade" required/>
+    <label>ID Corretores: </label>
+        <input class="form-control" asp-for="Agencia.idCorretores" required/>
+    <label>ID Imovéis: </label>
+        <input class="form-control" asp-for="Agencia.idImoveis" required/>
+    <input class="btn btn-dark" type="submit"/>
+</form>
