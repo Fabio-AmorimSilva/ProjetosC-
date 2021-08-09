@@ -6,5 +6,8 @@ namespace ImobiliariaMvc.Models
     public class AgenciaViewModel
     {
         public IEnumerable<Agencia> Agencias{get; set;}
+
+        public Agencia Agencia{get; set;}
+        
     }
 }
