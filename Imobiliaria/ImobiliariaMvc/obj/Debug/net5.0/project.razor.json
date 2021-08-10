@@ -15619,6 +15619,11 @@
   "RootNamespace": "ImobiliariaMvc",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Corretor\\Corretores.cshtml",
+      "TargetPath": "Views\\Corretor\\Corretores.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -15634,8 +15639,33 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Agencia\\AddAgencia.cshtml",
+      "TargetPath": "Views\\Agencia\\AddAgencia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Imovel\\Imoveis.cshtml",
+      "TargetPath": "Views\\Imovel\\Imoveis.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Dono\\Donos.cshtml",
+      "TargetPath": "Views\\Dono\\Donos.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Agencia\\Agencias.cshtml",
+      "TargetPath": "Views\\Agencia\\Agencias.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Agencia\\AlteraAgencia.cshtml",
+      "TargetPath": "Views\\Agencia\\AlteraAgencia.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15654,8 +15684,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Agencia\\Agencia.cshtml",
-      "TargetPath": "Views\\Agencia\\Agencia.cshtml",
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Agencia\\DeletaAgencia.cshtml",
+      "TargetPath": "Views\\Agencia\\DeletaAgencia.cshtml",
       "FileKind": "mvc"
     }
   ],
