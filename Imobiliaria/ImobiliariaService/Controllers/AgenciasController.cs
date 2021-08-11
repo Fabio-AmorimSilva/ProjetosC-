@@ -42,6 +42,49 @@ namespace ImobiliariaService.Controllers
             return View();
 
         }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult AlteraAgencia(int id, Agencia agencia){
+
+            if(id != agencia.id){
+                return NotFound();
+
+            }
+
+            if(agencia == null){
+                return BadRequest();
+
+            }
+
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState);
+
+            }
+
+            repo.AlteraAgencia(id, agencia);
+            return View();
+
+            
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult DeletaAgencia(int id){
+
+            var state = repo.DeletaAgencia(id);
+            if(state == true){
+                return View();
+
+            }
+
+            return NotFound();
+
+        }
         
     }
 }
