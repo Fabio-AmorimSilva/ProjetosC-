@@ -42,6 +42,7 @@ namespace ImobiliariaService.Agencias
                 agenciaAux.cidade = agencia.cidade;
                 agenciaAux.idCorretores = agencia.idCorretores;
                 agenciaAux.idImoveis = agencia.idImoveis;
+                db.SaveChanges();
                 return agenciaAux;
 
             }
@@ -55,6 +56,7 @@ namespace ImobiliariaService.Agencias
             var agenciaAux = db.Agencias.Find(id);
             if(agenciaAux != null){
                 db.Agencias.Remove(agenciaAux);
+                db.SaveChanges();
                 return true;
 
             }
