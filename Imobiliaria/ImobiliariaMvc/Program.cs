@@ -21,6 +21,9 @@ namespace ImobiliariaMvc
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseUrls(
+                        "https://localhost:5000",
+                        "https://localhost:5002");
                 });
     }
 }
