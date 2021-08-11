@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ImobiliariaContext;
 using Microsoft.AspNetCore.Builder;
@@ -35,6 +36,14 @@ namespace ImobiliariaMvc
                 => options.UseSqlite($"Data Source={dataBasePath}"));
 
             services.AddCors();
+
+            services.AddHttpClient(name: "ImobiliariaService",
+                configureClient: options => {
+                    options.BaseAddress = new Uri("https://locahost:5001/");
+                    options.DefaultRequestHeaders.Accept.Add(
+                        new MediaTypeWithQualityHeaderValue("application/json", 1.0
+                        ));
+                });
 
         }
 
