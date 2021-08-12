@@ -32,8 +32,7 @@ namespace ImobiliariaMvc.Controllers
 
         public async Task<IActionResult> Agencias(){
 
-            string uri;
-            uri = "api/Agencias";
+            string uri = "api/Agencias";
 
             var client = clientFactory.CreateClient(
               name: "ImobiliariaService"  
