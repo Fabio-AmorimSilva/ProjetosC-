@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,7 +39,28 @@ namespace ImobiliariaService
 
             services.AddScoped<Agencias.IAgencias, Agencias.Agencias>();
 
-            services.AddControllers();
+            services.AddCors();
+
+            services.AddControllers(options =>
+            {
+                Console.WriteLine("Formatadores Padrões de saída.");
+                foreach(IOutputFormatter formatter in options.OutputFormatters){
+                    var mediaFormatter = formatter as OutputFormatter;
+                    if(mediaFormatter == null){
+                        Console.WriteLine($"{formatter.GetType().Name}");
+                        
+                    }else{ //Outputformatter class tem SupportedMediaTypes
+                        Console.WriteLine("{0}, Media Types: {1}",
+                        arg0: mediaFormatter.GetType().Name,
+                        arg1: string.Join(", ", mediaFormatter.SupportedMediaTypes));
+
+                    }
+
+                }
+            })
+            .AddXmlDataContractSerializerFormatters()
+            .AddXmlSerializerFormatters().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ImobiliariaService", Version = "v1" });
