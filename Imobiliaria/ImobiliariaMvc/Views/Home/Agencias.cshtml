@@ -1,4 +1,4 @@
-@model ImobiliariaMvc.Models.AgenciaViewModel;
+@model IEnumerable<ImobiliariaEntities.Agencia>
 
 @{
 
@@ -8,7 +8,7 @@
 
 <h1>Lista de Agências</h1>
 
-<table class="table table-stripped table-bordered">
+<table class="table table-stripped table-bordered table-hover">
     <thead>
         <th>ID</th>
         <th>Nome</th>
@@ -17,7 +17,7 @@
         <th>Id Imoveis</th>
     </thead>
     <tbody>
-        @foreach (var agencia in Model.Agencias)
+        @foreach (var agencia in Model)
         {
             <tr>
                 <td>@agencia.id</td>
