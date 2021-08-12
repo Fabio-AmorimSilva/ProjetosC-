@@ -88,3 +88,4 @@ C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\Projetos
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Agencia\AddAgencia.cshtml.g.cs
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Agencia\AlteraAgencia.cshtml.g.cs
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Agencia\DeletaAgencia.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Home\Agencias.cshtml.g.cs

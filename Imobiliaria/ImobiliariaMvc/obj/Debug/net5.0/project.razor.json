@@ -15634,6 +15634,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Home\\Agencias.cshtml",
+      "TargetPath": "Views\\Home\\Agencias.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
