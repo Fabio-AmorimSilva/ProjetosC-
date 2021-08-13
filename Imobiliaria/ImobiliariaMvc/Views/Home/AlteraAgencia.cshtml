@@ -1,0 +1,23 @@
+@model ImobiliariaMvc.Models.AgenciaViewModel;
+
+@{
+
+    ViewData["Title"] = "Altera dados de Agências";
+
+}
+
+
+<form class="form-control" method="POST">
+    <legend>Alterar Dados Agências</legend>
+    <label>ID: </label>
+        <input class="form-control" asp-for="Agencia.id" required/>
+    <label>Nome: </label>
+        <input class="form-control" asp-for="Agencia.nome" required/>
+    <label>Cidade: </label>
+        <input class="form-control" asp-for="Agencia.cidade" required/>
+    <label>ID Corretores: </label>
+        <input class="form-control" asp-for="Agencia.idCorretores" required/>
+    <label>ID Imovéis: </label>
+        <input class="form-control" asp-for="Agencia.idImoveis" required/>
+    <input class="btn btn-dark" type="submit"/>
+</form>
