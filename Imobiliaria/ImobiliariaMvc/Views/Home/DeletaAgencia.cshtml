@@ -1,0 +1,14 @@
+@model ImobiliariaMvc.Models.AgenciaViewModel;
+
+@{
+
+    ViewData["Title"] = "Deleta Agência";
+
+}
+
+<form class="form" method="POST">
+    <legend>Deletar Agência</legend>
+    <label>ID:</label>
+        <input class="form-control" asp-for="Agencia.id" placeholder="id..." required/>
+    <input class="btn btn-dark" type="submit" required/>
+</form>
