@@ -50,6 +50,75 @@ namespace ImobiliariaMvc.Controllers
 
         }
 
+        public IActionResult AddAgencia(){
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddAgencia(Agencia agencia){
+
+            string uri = $"api/Agencias/{agencia.id}";
+
+            var client = clientFactory.CreateClient(
+                name: "ImobiliariaService"
+            );
+
+            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+
+            await client.PostAsJsonAsync<Agencia>("Agencias", agencia);
+            
+
+            return View();
+
+        }
+
+        public IActionResult AlteraAgencia(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AlteraAgencia(Agencia agencia){
+
+            string uri = $"api/Agencias/{agencia.id}";
+
+            var client = clientFactory.CreateClient(
+                name: "ImobiliariaService"
+            );
+
+            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+
+            await client.PutAsJsonAsync<Agencia>($"{agencia.id}", agencia);
+
+            return View();
+
+        }
+
+        public IActionResult DeletaAgencia(){
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult DeletaAltera(int id){
+
+            var client = clientFactory.CreateClient(
+                name: "ImobiliariaService"
+            );
+
+            client.BaseAddress = new Uri("https://localhost:5001/api/");
+
+            client.DeleteAsync($"Agencias/{id}");
+
+            return View();
+
+        }
+
+        
+
         public IActionResult Index()
         {
             return View();
