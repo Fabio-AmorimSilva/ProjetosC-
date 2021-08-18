@@ -6,6 +6,8 @@ namespace ImobiliariaMvc.Models
     public class ImovelViewModel
     {
         public IEnumerable<Imovel> Imoveis{get; set;}
+
+        public Imovel Imovel{get; set;}
         
     }
 }
