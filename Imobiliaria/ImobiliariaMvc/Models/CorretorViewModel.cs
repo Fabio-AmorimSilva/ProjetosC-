@@ -8,5 +8,7 @@ namespace ImobiliariaMvc.Models
         
         public IEnumerable<Corretor> Corretores{get; set;}
 
+        public Corretor Corretor{get; set;}
+
     }
 }
