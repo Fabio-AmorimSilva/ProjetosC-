@@ -38,6 +38,9 @@ namespace ImobiliariaService
                 options => options.UseSqlite($"Data Source={dataBasePath}"));
 
             services.AddScoped<Agencias.IAgencias, Agencias.Agencias>();
+            services.AddScoped<Corretores.ICorretores, Corretores.Corretores>();
+            services.AddScoped<Donos.IDonos, Donos.Donos>();
+            services.AddScoped<Imoveis.IImoveis, Imoveis.Imoveis>();
 
             services.AddCors();
 
