@@ -8,7 +8,7 @@ namespace ImobiliariaService.Corretores
 {
     public class Corretores : ICorretores
     {
-        Imobiliaria db;
+        private Imobiliaria db;
 
         public Corretores(Imobiliaria db){
             this.db = db;
