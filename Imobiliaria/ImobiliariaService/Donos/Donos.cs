@@ -9,7 +9,7 @@ namespace ImobiliariaService.Donos
     public class Donos : IDonos
     {
 
-        Imobiliaria db;
+        private Imobiliaria db;
 
         public Donos(Imobiliaria db){
             this.db = db;
