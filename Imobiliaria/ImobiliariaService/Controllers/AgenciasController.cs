@@ -28,7 +28,7 @@ namespace ImobiliariaService.Controllers
         public IActionResult InsereAgencia([FromBody] Agencia agencia){
 
             if(agencia == null){
-                return BadRequest();
+                return BadRequest(400);
 
             }
 
@@ -39,23 +39,23 @@ namespace ImobiliariaService.Controllers
 
             repo.InsereAgencia(agencia);
 
-            return View();
+            return StatusCode(200);
 
         }
 
         [HttpPut("{id}")]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(200, Type = typeof(Agencia))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult AlteraAgencia(int id, Agencia agencia){
 
             if(id != agencia.id){
-                return NotFound();
+                return NotFound(404);
 
             }
 
             if(agencia == null){
-                return BadRequest();
+                return BadRequest(400);
 
             }
 
@@ -65,24 +65,23 @@ namespace ImobiliariaService.Controllers
             }
 
             repo.AlteraAgencia(id, agencia);
-            return View();
+            return StatusCode(200);
 
             
         }
 
         [HttpDelete("{id}")]
         [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult DeletaAgencia(int id){
 
-            var state = repo.DeletaAgencia(id);
-            if(state == true){
-                return View();
+            var status = repo.DeletaAgencia(id);
+            if(status == false){
+                return NotFound(404);
 
             }
 
-            return NotFound();
+            return StatusCode(200);
 
         }
         
