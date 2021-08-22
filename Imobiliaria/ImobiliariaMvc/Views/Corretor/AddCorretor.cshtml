@@ -1,0 +1,22 @@
+@model ImobiliariaMvc.Models.CorretorViewModel;
+
+@{
+    ViewData["Title"] = "Adiciona Corretor";
+
+}
+
+<form class="form" method="POST">
+    <legend>Dados do Corretor</legend>
+    <label>ID: </label>
+        <input class="form-control" asp-for="Corretor.id" placeholder="ID..." required/>
+    <label>ID Agência: </label>
+        <input class="form-control" asp-for="Corretor.idAgencia" placeholder="ID Agência..." required/>
+    <label>Nome: </label>
+        <input class="form-control" asp-for="Corretor.nome" placeholder="Nome..." required/>
+    <label>Idade: </label>
+        <input class="form-control" asp-for="Corretor.idade" placeholder="Idade..." required/>
+    <label>Vendas: </label>
+        <input class="form-control" asp-for="Corretor.vendas" placeholder="Vendas..." required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar"/>
+</form>
+
