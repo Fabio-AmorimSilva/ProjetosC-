@@ -92,3 +92,6 @@ C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\Projetos
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Home\AddAgencia.cshtml.g.cs
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Home\AlteraAgencia.cshtml.g.cs
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Home\DeletaAgencia.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Corretor\AddCorretor.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Corretor\AlteraCorretor.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Corretor\DeletaCorretor.cshtml.g.cs
