@@ -1,4 +1,4 @@
-@model ImobiliariaMvc.Models.CorretorViewModel;
+@model IEnumerable<ImobiliariaEntities.Corretor>;
 
 @{
 
@@ -6,7 +6,23 @@
 
 }
 
-<h1>Lista de Corretores</h1>
+<a class="btn btn-dark"
+    asp-controller="Corretor"
+    asp-action="AddCorretor">
+    Adicionar Corretor
+</a>
+
+<a class="btn btn-dark"
+    asp-controller="Corretor"
+    asp-action="AlteraCorretor">
+    Altera Corretor
+</a>
+
+<a class="btn btn-dark"
+    asp-controller="Corretor"
+    asp-action="DeletaCorretor">
+    Deleta Corretor
+</a>
 
 <table class="table table-stripped table-bordered">
     <legend>Lista de Corretores</legend>
@@ -18,7 +34,7 @@
         <th>Vendas</th>
     </thead>
     <tbody>
-        @foreach (var corretor in Model.Corretores)
+        @foreach (var corretor in Model)
         {
             <tr>
                 <td>@corretor.id</td>
