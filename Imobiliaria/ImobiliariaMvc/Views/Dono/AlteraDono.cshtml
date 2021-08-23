@@ -1,0 +1,20 @@
+@model ImobiliariaMvc.Models.DonoViewModel;
+
+@{
+
+    ViewData["Title"] = "Altera Dono";
+
+}
+
+<form class="form" method="POST">
+    <legend>Altera Dono</legend>
+    <label>ID: </label>
+        <input class="form-control" asp-for="Dono.id" placeholder="ID..." required/>
+    <label>Nome: </label>
+        <input class="form-control" asp-for="Dono.nome" placeholder="Nome..." required/>
+    <label>Idade: </label>
+        <input class="form-control" asp-for="Dono.idade" placeholder="Idade..." required/>
+    <label>Imóvel: </label>
+        <input class="form-control" asp-for="Dono.imovel" placeholder="Imóvel..." required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>
