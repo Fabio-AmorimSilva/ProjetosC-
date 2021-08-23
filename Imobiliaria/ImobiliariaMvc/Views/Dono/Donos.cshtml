@@ -1,4 +1,4 @@
-@model ImobiliariaMvc.Models.DonoViewModel;
+@model IEnumerable<ImobiliariaEntities.Dono>;
 
 @{
 
@@ -6,7 +6,17 @@
 
 }
 
-<h1>Lista de Agências</h1>
+<a class="btn btn-dark"
+    asp-controller="Dono"
+    asp-action="AddDono">
+    Adiciona Dono
+</a>
+
+<a class="btn btn-dark"
+   asp-controller="Dono"
+   asp-action="AlteraDono">
+   Altera Dono
+</a>
 
 <table class="table table-stripped table-bordered">
     <legend>Lista de Donos</legend>
@@ -17,13 +27,13 @@
         <th>Imovel</th>
     </thead>
     <tbody>
-        @foreach (var dono in Model.Donos)
+        @foreach (var dono in Model)
         {
             <tr>
                 <td>@dono.id</td>
                 <td>@dono.nome</td>
                 <td>@dono.idade</td>
-                <td>@dono.imovel/td>              
+                <td>@dono.imovel</td>              
             </tr>
         }
     </tbody>
