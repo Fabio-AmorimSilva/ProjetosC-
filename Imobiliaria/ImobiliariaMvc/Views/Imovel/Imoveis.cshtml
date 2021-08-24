@@ -1,4 +1,4 @@
-@model ImobiliariaMvc.Models.ImovelViewModel;
+@model IEnumerable<ImobiliariaEntities.Imovel>;
 
 @{
 
@@ -6,9 +6,19 @@
 
 }
 
-<h1>Lista de Imovéis</h1>
+<a class="btn btn-dark"
+    asp-controller="Imovel"
+    asp-action="AddImovel">
+    Adiciona Imovél
+</a>
 
-<table class="table table-stripped table-bordered">
+<a class="btn btn-dark"
+    asp-controller="Imovel"
+    asp-action="AlteraImovel">
+    Altera Imovel
+</a>
+
+<table class="table table-stripped table-bordered table-hover">
     <legend>Lista de Imovéis</legend>
     <thead>
         <th>ID</th>
@@ -18,7 +28,7 @@
         <th>Preço</th>
     </thead>
     <tbody>
-        @foreach (var imovel in Model.Imoveis)
+        @foreach (var imovel in Model)
         {
             <tr>
                 <td>@imovel.id</td>
