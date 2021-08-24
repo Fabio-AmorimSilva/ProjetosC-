@@ -98,3 +98,6 @@ C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\Projetos
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Dono\AddDono.cshtml.g.cs
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Dono\AlteraDono.cshtml.g.cs
 C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Dono\DeletaDono.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Imovel\AddImovel.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Imovel\AlteraImovel.cshtml.g.cs
+C:\Users\Fabio-AmorimSilva\Documents\Linguagens de Programação\C#.NET\ProjetosC#\Imobiliaria\ImobiliariaMvc\obj\Debug\net5.0\Razor\Views\Imovel\DeletaImovel.cshtml.g.cs
