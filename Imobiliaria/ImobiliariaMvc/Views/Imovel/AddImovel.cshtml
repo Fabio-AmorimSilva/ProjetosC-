@@ -1,0 +1,23 @@
+@model ImobiliariaMvc.Models.ImovelViewModel;
+
+@{
+
+    ViewData["Title"] = "Adiciona Imovél";
+
+
+}
+
+<form class="form" method="POST">
+    <legend>Dados do Imovél</legend>
+    <label>ID: </label>
+        <input class="form-control" asp-for="Imovel.id" placeholder="ID..." required/>
+    <label>ID Agência: </label>
+        <input class="form-control" asp-for="Imovel.idAgencia" placeholder="ID Agência..." required/>
+    <label>ID Dono: </label>
+        <input class="form-control" asp-for="Imovel.idDono" placeholder="ID Dono..." required/>
+    <label>Endereço: </label>
+        <input class="form-control" asp-for="Imovel.endereco" placeholder="Endereço..." required/>
+    <label>Preço: </label>
+        <input class="form-control" asp-for="Imovel.preco" placeholder="Preço..." required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>
