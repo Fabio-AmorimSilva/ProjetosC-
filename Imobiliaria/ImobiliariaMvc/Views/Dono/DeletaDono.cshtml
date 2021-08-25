@@ -1,0 +1,13 @@
+@model ImobiliariaMvc.Models.DonoViewModel;
+
+@{
+
+    ViewData["Title"] = "Deleta Dono";
+
+}
+
+<form class="form" method="POST"> 
+    <label>ID: </label>
+        <input class="form-control" asp-for="Dono.id" placeholder="ID..." required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>
