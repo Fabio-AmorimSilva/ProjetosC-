@@ -180,7 +180,7 @@ namespace ImobiliariaMvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeletaAltera(int id){
+        public async Task<IActionResult> DeletaAgencia(Agencia agencia){
 
             var client = clientFactory.CreateClient(
                 name: "ImobiliariaService"
@@ -188,7 +188,7 @@ namespace ImobiliariaMvc.Controllers
 
             client.BaseAddress = new Uri("https://localhost:5001/api/");
 
-            client.DeleteAsync($"Agencias/{id}");
+            await client.DeleteAsync($"Agencias/{agencia.id}" );
 
             return View();
 
