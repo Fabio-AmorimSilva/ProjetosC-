@@ -97,5 +97,21 @@ namespace ImobiliariaMvc.Controllers
             return View();
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletaDono(Dono dono){
+
+            var client = clientFactory.CreateClient(
+                name: "ImobiliariaService"
+
+            );
+
+            client.BaseAddress = new Uri("https://localhost:5001/api/");
+
+            await client.DeleteAsync($"Donos/{dono.id}");
+
+            return View();
+
+        }
     }
 }
