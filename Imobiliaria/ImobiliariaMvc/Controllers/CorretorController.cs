@@ -91,6 +91,27 @@ namespace ImobiliariaMvc.Controllers
             return View();
         }
 
+        public IActionResult DeletaCorretor(){
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletaCorretor(Corretor corretor){
+
+            var client = clientFactory.CreateClient(
+                name: "ImobiliariaService"
+
+            );
+
+            client.BaseAddress = new Uri("https://localhost:5001/api/");
+
+            await client.DeleteAsync($"Corretores/{corretor.id}");
+
+            return View();
+            
+        }
+
         
     }
 }
