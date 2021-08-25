@@ -94,5 +94,25 @@ namespace ImobiliariaMvc.Controllers
             return View();
 
         }
+
+        public IActionResult DeletaImovel(){
+            return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletaImovel(Imovel imovel){
+
+            var client = clientFactory.CreateClient(
+                name: "Imobiliaria"
+            );
+
+            client.BaseAddress = new Uri("https://localhost:5001/api/");
+
+            await client.DeleteAsync($"Imoveis/{imovel.id}");
+
+            return View();
+
+        }
     }
 }
