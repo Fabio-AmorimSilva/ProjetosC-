@@ -15729,6 +15729,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Agencia\\DeletaAgencia.cshtml",
+      "TargetPath": "Views\\Agencia\\DeletaAgencia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Fabio-AmorimSilva\\Documents\\Linguagens de Programação\\C#.NET\\ProjetosC#\\Imobiliaria\\ImobiliariaMvc\\Views\\Imovel\\DeletaImovel.cshtml",
       "TargetPath": "Views\\Imovel\\DeletaImovel.cshtml",
       "FileKind": "mvc"
