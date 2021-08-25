@@ -1,0 +1,13 @@
+@model ImobiliariaMvc.Models.CorretorViewModel;
+
+@{
+
+    ViewData["Title"] = "Deleta Corretor";
+
+}
+
+<form class="form" method="POST">
+    <label>ID: </label>
+        <input class="form-control" asp-for="Corretor.id" placeholder="ID..." required/>
+        <input class="btn btn-dark" type="submit" placeholder="Enviar" />
+</form>
