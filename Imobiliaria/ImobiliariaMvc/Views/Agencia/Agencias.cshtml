@@ -32,6 +32,7 @@
         <th>Cidade</th>
         <th>Id Corretores</th>
         <th>Id Imoveis</th>
+        <th>Opções</th>
     </thead>
     <tbody>
         @foreach (var agencia in Model)
@@ -40,7 +41,14 @@
                 <td>@agencia.id</td>
                 <td>@agencia.nome</td>
                 <td>@agencia.idCorretores</td>
-                <td>@agencia.idImoveis</td>              
+                <td>@agencia.idImoveis</td>
+                <td>
+                    <a 
+                    asp-controller="Agencia" 
+                    asp-action="AlteraAgencia">
+                    Alterar Agência
+                </a>
+                </td>              
             </tr>
         }
     </tbody>
