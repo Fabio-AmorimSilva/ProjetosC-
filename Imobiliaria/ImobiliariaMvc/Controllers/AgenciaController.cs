@@ -150,9 +150,12 @@ namespace ImobiliariaMvc.Controllers
 
         }
 
-        public IActionResult AlteraAgencia(){
+        [HttpGet]
+        public IActionResult AlteraAgencia(int id, Agencia agencia){
 
-            return View();
+            var agenciaAux = db.Agencias.Find(agencia.id);
+
+            return View(agenciaAux);
 
         }
 
