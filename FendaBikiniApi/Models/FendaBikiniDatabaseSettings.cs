@@ -14,11 +14,12 @@ namespace FendaBikiniApi.Models
     }
 
     
-        public interface IFendaBikiniDatabaseSettings { 
+        public interface IFendaBikiniDatabaseSettings 
+        { 
             string FendaBikiniCollectionName { get; set; }
             string ConnectionString { get; set; }
             string DatabaseName { get; set; }
-    }
+        }
 
 }
 
