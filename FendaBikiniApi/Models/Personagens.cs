@@ -19,5 +19,8 @@ namespace FendaBikiniApi.Models
         [BsonElement("age")]
         public int age { get; set;}
 
+        [BsonElement("profissao")]
+        public string profissao { get; set; }
+
     }
 }
