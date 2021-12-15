@@ -29,6 +29,8 @@ Imobiliaria
  - Utilização do sqlite como banco de dados.
  - Integração entre WEB API como serviços e ASP.NET MVC para o web site.
  
+ - Todos os projetos foram feitos na IDE Visual Studio Code.
+ - Todos os projetos podem ser executados via linha de comando do dotnet cli.
  
  
  
