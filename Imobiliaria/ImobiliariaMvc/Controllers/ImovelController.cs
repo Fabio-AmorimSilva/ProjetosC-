@@ -15,24 +15,28 @@ namespace ImobiliariaMvc.Controllers
     public class ImovelController : Controller
     {
 
-        private Imobiliaria db;
+        private Imobiliaria ImobiliariaDb;
         private readonly ILogger<ImovelController> _logger;
         private readonly IHttpClientFactory clientFactory;
 
-        public ImovelController(ILogger<ImovelController> logger, Imobiliaria injectedContext, IHttpClientFactory httpClient){
+        public ImovelController(
+            ILogger<ImovelController> logger, 
+            Imobiliaria injectedContext, 
+            IHttpClientFactory httpClient)
+        {
 
             _logger = logger;
-            db = injectedContext;
+            ImobiliariaDb = injectedContext;
             clientFactory = httpClient;
             
         }
 
         [HttpGet]
-        public async Task<IActionResult> Imoveis(){
+        public async Task<IActionResult> RetornaImoveis(){
 
             string uri = "api/Imoveis";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
             );
 
@@ -41,7 +45,7 @@ namespace ImobiliariaMvc.Controllers
 
             );
 
-            HttpResponseMessage response = await client.SendAsync(request);
+            HttpResponseMessage response = await httpClient.SendAsync(request);
 
             var model = await response.Content.ReadFromJsonAsync<IEnumerable<Imovel>>();
 
@@ -59,14 +63,14 @@ namespace ImobiliariaMvc.Controllers
 
             string uri = $"api/Imoveis/{imovel.id}";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
 
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+            httpClient.BaseAddress = new Uri("https://localhost:5001/" + uri);
 
-            await client.PostAsJsonAsync<Imovel>("Imoveis", imovel);
+            await httpClient.PostAsJsonAsync<Imovel>("Imoveis", imovel);
 
             return View();
             
@@ -82,14 +86,14 @@ namespace ImobiliariaMvc.Controllers
 
             string uri = $"api/Imoveis/{id}";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
 
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+            httpClient.BaseAddress = new Uri("https://localhost:5001/" + uri);
 
-            await client.PutAsJsonAsync<Imovel>($"{imovel.id}", imovel);
+            await httpClient.PutAsJsonAsync<Imovel>($"{imovel.id}", imovel);
 
             return View();
 
@@ -103,13 +107,13 @@ namespace ImobiliariaMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletaImovel(Imovel imovel){
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "Imobiliaria"
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/api/");
+            httpClient.BaseAddress = new Uri("https://localhost:5001/api/");
 
-            await client.DeleteAsync($"Imoveis/{imovel.id}");
+            await httpClient.DeleteAsync($"Imoveis/{imovel.id}");
 
             return View();
 
