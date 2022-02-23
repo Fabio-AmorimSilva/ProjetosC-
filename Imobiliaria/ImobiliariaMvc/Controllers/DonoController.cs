@@ -15,24 +15,27 @@ namespace ImobiliariaMvc.Controllers
     public class DonoController : Controller
     {
 
-        private Imobiliaria db;
+        private Imobiliaria ImobiliariaDb;
         private readonly ILogger<DonoController> _logger;
         private readonly IHttpClientFactory clientFactory;
 
-        public DonoController(ILogger<DonoController> logger, Imobiliaria injectedContext, IHttpClientFactory httpClient){
+        public DonoController(ILogger<DonoController> logger, 
+        Imobiliaria injectedContext, 
+        IHttpClientFactory httpClient)
+        {
 
             _logger = logger;
-            db = injectedContext;
+            ImobiliariaDb = injectedContext;
             clientFactory = httpClient;
 
         }
 
         [HttpGet]
-        public async Task<IActionResult> Donos(){
+        public async Task<IActionResult> RetornaDonos(){
 
             string uri = "api/Donos";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
             );
 
@@ -40,7 +43,7 @@ namespace ImobiliariaMvc.Controllers
                 method: HttpMethod.Get, requestUri: uri
             );
 
-            HttpResponseMessage response = await client.SendAsync(request);
+            HttpResponseMessage response = await httpClient.SendAsync(request);
 
             var model = await response.Content.ReadFromJsonAsync<IEnumerable<Dono>>();
 
@@ -58,14 +61,14 @@ namespace ImobiliariaMvc.Controllers
 
             string uri = $"api/Donos/{dono.id}";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
 
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+            httpClient.BaseAddress = new Uri("https://localhost:5001/" + uri);
 
-            await client.PostAsJsonAsync<Dono>("Donos", dono);
+            await httpClient.PostAsJsonAsync<Dono>("Donos", dono);
 
             return View();
             
@@ -81,13 +84,13 @@ namespace ImobiliariaMvc.Controllers
 
             string uri = $"api/Donos/{id}";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+            httpClient.BaseAddress = new Uri("https://localhost:5001/" + uri);
 
-            await client.PutAsJsonAsync<Dono>($"{dono.id}", dono);
+            await httpClient.PutAsJsonAsync<Dono>($"{dono.id}", dono);
 
             return View();
 
@@ -101,14 +104,14 @@ namespace ImobiliariaMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletaDono(Dono dono){
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
 
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/api/");
+            httpClient.BaseAddress = new Uri("https://localhost:5001/api/");
 
-            await client.DeleteAsync($"Donos/{dono.id}");
+            await httpClient.DeleteAsync($"Donos/{dono.id}");
 
             return View();
 
