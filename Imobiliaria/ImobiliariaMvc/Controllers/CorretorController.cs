@@ -15,23 +15,27 @@ namespace ImobiliariaMvc.Controllers
     public class CorretorController : Controller
     {
         
-        private Imobiliaria db;
+        private Imobiliaria ImobiliariaDb;
         private readonly ILogger<CorretorController> _logger;
         private readonly IHttpClientFactory clientFactory;
 
-        public CorretorController(ILogger<CorretorController> logger, Imobiliaria injectedContext, IHttpClientFactory httpClient){
+        public CorretorController(
+            ILogger<CorretorController> logger, 
+            Imobiliaria injectedContext, 
+            IHttpClientFactory httpClient)
+        {
 
             _logger = logger;
-            db = injectedContext;
+            ImobiliariaDb; = injectedContext;
             clientFactory = httpClient;
 
         }
 
-        public async Task<IActionResult> Corretores(){
+        public async Task<IActionResult> RetornaCorretores(){
 
             string uri = "api/Corretores";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService" 
             );
 
@@ -39,7 +43,7 @@ namespace ImobiliariaMvc.Controllers
                 method: HttpMethod.Get, requestUri: uri
             );
 
-            HttpResponseMessage response = await client.SendAsync(request);
+            HttpResponseMessage response = await httpClient.SendAsync(request);
 
             var model = await response.Content.ReadFromJsonAsync<IEnumerable<Corretor>>();
 
@@ -57,14 +61,14 @@ namespace ImobiliariaMvc.Controllers
 
             string uri = $"api/Corretores/{corretor.id}";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
 
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+            httpClient.BaseAddress = new Uri("https://localhost:5001/" + uri);
 
-            await client.PostAsJsonAsync<Corretor>("Corretores", corretor);
+            await httpClient.PostAsJsonAsync<Corretor>("Corretores", corretor);
 
             return View();
 
@@ -80,13 +84,13 @@ namespace ImobiliariaMvc.Controllers
 
             string uri = $"api/Corretores/{id}";
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/" + uri);
+            httpClient.BaseAddress = new Uri("https://localhost:5001/" + uri);
 
-            await client.PutAsJsonAsync<Corretor>($"{corretor.id}", corretor);
+            await httpClient.PutAsJsonAsync<Corretor>($"{corretor.id}", corretor);
 
             return View();
         }
@@ -99,14 +103,14 @@ namespace ImobiliariaMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletaCorretor(Corretor corretor){
 
-            var client = clientFactory.CreateClient(
+            var httpClient = clientFactory.CreateClient(
                 name: "ImobiliariaService"
 
             );
 
-            client.BaseAddress = new Uri("https://localhost:5001/api/");
+            httpClient.BaseAddress = new Uri("https://localhost:5001/api/");
 
-            await client.DeleteAsync($"Corretores/{corretor.id}");
+            await httpClient.DeleteAsync($"Corretores/{corretor.id}");
 
             return View();
             
