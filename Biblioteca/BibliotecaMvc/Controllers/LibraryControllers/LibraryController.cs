@@ -13,13 +13,16 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
 {
     public class LibraryController : Controller
     {
-        private Biblioteca db;
+        private Biblioteca Bibliotecadb;
         private readonly ILogger<LibraryController> _logger;
 
-        public LibraryController(ILogger<LibraryController> logger, Biblioteca injectedContext){
+        public LibraryController(
+            ILogger<LibraryController> logger, 
+            Biblioteca injectedContext)
+            {
 
             _logger = logger;
-            db = injectedContext;
+            Bibliotecadb = injectedContext;
 
         }
 
@@ -28,7 +31,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
          public async Task<IActionResult> Books(){
 
           var model = new BooksViewModel{
-              Books = await db.Books.ToListAsync()
+              Books = await Bibliotecadb.Books.ToListAsync()
                             
           };
 
@@ -39,7 +42,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         public async Task<IActionResult> Authors(){
 
             var model = new AuthorsViewModel{
-                Authors = await db.Authors.ToListAsync()
+                Authors = await Bibliotecadb.Authors.ToListAsync()
             };
 
             return View(model);
@@ -55,8 +58,8 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         public IActionResult AddB(Books book){
 
             if(ModelState.IsValid){
-                db.Books.Add(book);
-                db.SaveChanges();
+                Bibliotecadb.Books.Add(book);
+                Bibliotecadb.SaveChanges();
                 return RedirectToPage("/Books");
             }
 
@@ -78,7 +81,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
                 return NotFound("The id is not a valid number");
             }
 
-            var model = db.Books.SingleOrDefault(b => b.Id == id);
+            var model = Bibliotecadb.Books.SingleOrDefault(b => b.Id == id);
             if(model == null){
                 return NotFound("Book not found in database.");
 
@@ -97,7 +100,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult UpdateBook(Books book){
 
-            var bookId = db.Books.SingleOrDefault(b => b.Id == book.Id);
+            var bookId = Bibliotecadb.Books.SingleOrDefault(b => b.Id == book.Id);
             if(bookId != null){
 
                 bookId.ISBN = book.ISBN;
@@ -106,7 +109,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
                 bookId.Genre = book.Genre;
                 bookId.Year = book.Year;
 
-                db.SaveChanges();
+                Bibliotecadb.SaveChanges();
                 return RedirectToPage("/Books");
 
             }
@@ -124,10 +127,10 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult DeleteBook(Books book){
 
-            var bookId = db.Books.SingleOrDefault(b => b.Id == book.Id);
+            var bookId = Bibliotecadb.Books.SingleOrDefault(b => b.Id == book.Id);
             if(bookId != null){
-                db.Books.Remove(bookId);
-                db.SaveChanges();
+                Bibliotecadb.Books.Remove(bookId);
+                Bibliotecadb.SaveChanges();
                 return RedirectToPage("/Books");
 
             }
@@ -146,8 +149,8 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         public IActionResult AddA(Author author){
 
             if(ModelState.IsValid){
-                db.Authors.Add(author);
-                db.SaveChanges();
+                Bibliotecadb.Authors.Add(author);
+                Bibliotecadb.SaveChanges();
                 return RedirectToPage("/Authors");
 
             }
@@ -168,7 +171,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
                 return NotFound("The id is not a valid number");
             }
 
-            var model = db.Authors.SingleOrDefault(a => a.Id == id);
+            var model = Bibliotecadb.Authors.SingleOrDefault(a => a.Id == id);
             if(model == null){
                 return NotFound("Author not found in database.");
 
@@ -189,13 +192,13 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult UpdateAuthor(Author author){
 
-            var oldAuthor = db.Authors.SingleOrDefault(old => old.Id == author.Id);
+            var oldAuthor = Bibliotecadb.Authors.SingleOrDefault(old => old.Id == author.Id);
             if(oldAuthor != null){
                 oldAuthor.Name = author.Name;
                 oldAuthor.Books = author.Books;
                 oldAuthor.Country = author.Country;
 
-                db.SaveChanges();
+                Bibliotecadb.SaveChanges();
                 return RedirectToPage("/Authors");
 
             }
@@ -212,7 +215,7 @@ namespace BibliotecaMvc.Controllers.LibraryControllers
         [HttpPost]
         public IActionResult DeleteAuthor(Author author){
 
-            var authorId = db.Authors.SingleOrDefault(a => a.Id == author.Id);
+            var authorId = Bibliotecadb.Authors.SingleOrDefault(a => a.Id == author.Id);
             if(authorId != null){
                 db.Authors.Remove(authorId);
                 db.SaveChanges();
