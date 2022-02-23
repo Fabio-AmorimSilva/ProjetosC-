@@ -15,10 +15,11 @@ namespace ImobiliariaMvc.Controllers
 {
     public class HomeController : Controller
     {
+        private Imobiliaria ImobiliariaDb;
         private readonly ILogger<HomeController> _logger;
         private readonly IHttpClientFactory clientFactory;
 
-        private Imobiliaria db;
+        
 
         public HomeController(
             ILogger<HomeController> logger, 
@@ -26,7 +27,7 @@ namespace ImobiliariaMvc.Controllers
             IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
-            db = injectedContext;
+            ImobiliariaDb = injectedContext;
             clientFactory = httpClientFactory;
         }        
 
