@@ -12,7 +12,7 @@ public class Book : BaseEntity
     public Guid AuthorId { get; set; }
     public Author? Author { get; set; }
     public Guid LibraryId { get; set; }
-    public Library? Library { get; set; }
+    public LibraryUnit? Library { get; set; }
     public BookGenre Genre { get; set; }
 
     public Book( 
