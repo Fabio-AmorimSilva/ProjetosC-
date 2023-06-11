@@ -2,13 +2,13 @@
 
 namespace Library.Domain.Entities;
 
-public class Library : BaseEntity
+public class LibraryUnit : BaseEntity
 {
     public string Name { get; set; }
     public string City { get; set; }
     public List<Book> Books { get; set; } = new();
 
-    public Library(string name, string city)
+    public LibraryUnit(string name, string city)
     {
         Id = Guid.NewGuid();
         CreatedAt = DateTime.Now;
