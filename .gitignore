@@ -8,3 +8,5 @@
 /Library/Library.WebApi/bin/Debug/net7.0
 /Library/Library.Infrastructure/obj
 /Library/Library.Domain/obj
+/Library/Library.Infrastructure/bin/Debug/net7.0
+/Library/Library.Application/bin/Debug/net7.0
