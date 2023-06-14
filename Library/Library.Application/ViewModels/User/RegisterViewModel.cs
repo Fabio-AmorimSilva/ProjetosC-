@@ -1,9 +1,11 @@
-﻿namespace Library.Application.ViewModels.User;
+﻿using Library.Domain.Entities.Enums;
+
+namespace Library.Application.ViewModels.User;
 
 public struct RegisterViewModel
 {
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string Role { get; set; }
+    public string Name { get; init; }
+    public string Email { get; init; }
+    public string Password { get; init; }
+    public Role Role { get; init; }
 }
