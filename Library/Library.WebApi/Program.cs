@@ -1,5 +1,7 @@
+using Library.Application.Options;
 using Library.Application.Services;
 using Library.Infrastructure;
+using Library.WebApi.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,7 @@ builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
+builder.Services.AuthenticationConfig(builder.Configuration);
 ConfigureServices(builder);
 
 builder.Services.AddControllers();
@@ -41,4 +44,5 @@ app.Run();
 void ConfigureServices(WebApplicationBuilder builder) 
 {
     builder.Services.AddTransient<TokenService>();
+    builder.Services.Configure<Settings>(builder.Configuration);
 }
