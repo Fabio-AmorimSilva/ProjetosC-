@@ -2,7 +2,7 @@
 
 namespace Library.Application.ViewModels.Authors;
 
-public struct AuthorViewModel
+public struct AuthorResponseViewModel
 {
     public string Name { get; init; }
     public string Country { get; init; }
