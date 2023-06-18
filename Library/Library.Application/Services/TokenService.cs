@@ -29,7 +29,7 @@ public class TokenService
             Expires = DateTime.UtcNow.AddHours(8),
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha256)
+                SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
