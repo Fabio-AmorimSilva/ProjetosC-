@@ -19,7 +19,7 @@ public class BookController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
+    [HttpGet("v1/books")]
     public async Task<IActionResult> Get()
     {
         var books = await _context
@@ -27,13 +27,14 @@ public class BookController : ControllerBase
             .Include(b => b.Author)
             .Include(b => b.Library)
             .ToListAsync(cancellationToken: default);
+
         if(books is null)
             return NotFound(new ResultViewModel<List<Book>>("No books found"));
 
         return Ok(new ResultViewModel<List<Book>>(books));
     }
 
-    [HttpGet("{id:guid}")]
+    [HttpGet("v1/books/{id:guid}")]
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
         var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == id, cancellationToken: default);
@@ -43,17 +44,9 @@ public class BookController : ControllerBase
         return Ok(new ResultViewModel<Book>(book));
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] BookViewModel book)
+    [HttpPost("v1/books")]
+    public async Task<IActionResult> Post([FromBody] BookRequestViewModel book)
     {
-        var bookFromDatabase = _context
-            .Books
-            .Include(b => b.Author)
-            .FirstOrDefaultAsync(b => b.Title == book.Title && b.Author!.Name == book.Author!.Name, cancellationToken: default);
-
-        if(bookFromDatabase is not null)
-            return BadRequest(new ResultViewModel<Book>("Book already exists. Please enter another book"));
-
         var newBook = new Book(
             title: book.Title,
             year: book.Year,
@@ -68,8 +61,8 @@ public class BookController : ControllerBase
         return Created($"{newBook.Id}", newBook);
     }
 
-    [HttpPut("id:guid")]
-    public async Task<IActionResult> Put([FromBody] BookViewModel book, [FromRoute] Guid id)
+    [HttpPut("v1/books/{id:guid}")]
+    public async Task<IActionResult> Put([FromBody] BookRequestViewModel book, [FromRoute] Guid id)
     {
         var bookFromDatabase = await _context
             .Books
@@ -91,7 +84,7 @@ public class BookController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("id:guid")]
+    [HttpDelete("v1/books/{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
         var bookFromDatabase = await _context

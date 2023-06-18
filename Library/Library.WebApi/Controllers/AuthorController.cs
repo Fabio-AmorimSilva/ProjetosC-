@@ -19,7 +19,7 @@ public class AuthorController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
+    [HttpGet("v1/author")]
     public async Task<IActionResult> Get() 
     { 
         var authors = await _context
@@ -33,7 +33,7 @@ public class AuthorController : ControllerBase
         return Ok(new ResultViewModel<List<Author>>(authors)); 
     }
 
-    [HttpGet("{id:guid}")]
+    [HttpGet("v1/author/{id:guid}")]
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
         var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == id, cancellationToken: default);
@@ -44,8 +44,8 @@ public class AuthorController : ControllerBase
     }
 
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] AuthorViewModel author)
+    [HttpPost("v1/author")]
+    public async Task<IActionResult> Post([FromBody] AuthorRequestViewModel author)
     {
         var authorFromDatabase = await _context
             .Authors
@@ -62,11 +62,11 @@ public class AuthorController : ControllerBase
         await _context.Authors.AddAsync(newAuthor);
         await _context.SaveChangesAsync();
 
-        return Created($"{newAuthor.Name}", newAuthor);
+        return Created($"{newAuthor.Name}", author);
     }
 
-    [HttpPut("{id:guid}")]
-    public async Task<IActionResult> Put([FromBody] AuthorViewModel author, [FromRoute] Guid id)
+    [HttpPut("v1/author/{id:guid}")]
+    public async Task<IActionResult> Put([FromBody] AuthorRequestViewModel author, [FromRoute] Guid id)
     {
         var authorFromDatabase = await _context
             .Authors
@@ -85,7 +85,7 @@ public class AuthorController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id:guid}")]
+    [HttpDelete("v1/author/{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
         var authorFromDatabase = await _context

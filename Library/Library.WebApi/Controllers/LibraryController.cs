@@ -19,31 +19,32 @@ public class LibraryController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
+    [HttpGet("v1/library")]
     public async Task<IActionResult> Get()
     {
         var libraries = await _context
             .Libraries
             .Include(l => l.Books)
             .ToListAsync(cancellationToken: default);
+
         if(libraries is null)
             return NotFound(new ResultViewModel<LibraryUnit>("There are no libraries"));
 
         return Ok(new ResultViewModel<List<LibraryUnit>>(libraries));
     }
 
-    [HttpGet("{id:guid}")]
+    [HttpGet("v1/library/{id:guid}")]
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
         var libraryUnit = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
         if (libraryUnit is null)
-            return NotFound(new ResultViewModel<LibraryUnit>("Library not found"));
+            return NotFound(new ResultViewModel<LibraryUnit>("Library unit not found"));
 
         return Ok(new ResultViewModel<LibraryUnit>(libraryUnit));
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] LibraryUnitViewModel libraryUnit)
+    [HttpPost("v1/library")]
+    public async Task<IActionResult> Post([FromBody] LibraryUnitRequestViewModel libraryUnit)
     { 
         var libraryUnitFromDatabase = await _context
             .Libraries
@@ -62,8 +63,8 @@ public class LibraryController : ControllerBase
         return Created($"{newLibraryUnit.Name}", newLibraryUnit);
     }
 
-    [HttpPut("{id:guid}")]
-    public async Task<IActionResult> Put([FromBody] LibraryUnitViewModel libraryUnit, [FromRoute] Guid id)
+    [HttpPut("v1/library/{id:guid}")]
+    public async Task<IActionResult> Put([FromBody] LibraryUnitRequestViewModel libraryUnit, [FromRoute] Guid id)
     {
         var libraryUnitFromDatabase = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
         if (libraryUnitFromDatabase is null)
@@ -78,7 +79,7 @@ public class LibraryController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id:guid}")]
+    [HttpDelete("v1/library/{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
         var libraryFromDatabase = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
