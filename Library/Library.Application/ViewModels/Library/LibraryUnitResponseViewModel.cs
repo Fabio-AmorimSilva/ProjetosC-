@@ -2,7 +2,7 @@
 
 namespace Library.Application.ViewModels.Library;
 
-public struct LibraryUnitViewModel
+public struct LibraryUnitResponseViewModel
 {
     public string Name { get; init; }
     public string City { get; init; }
