@@ -33,6 +33,16 @@ public class BookController : ControllerBase
         return Ok(new ResultViewModel<List<Book>>(books));
     }
 
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    {
+        var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == id, cancellationToken: default);
+        if (book is null)
+            return NotFound(new ResultViewModel<Book>("Book not found"));
+
+        return Ok(new ResultViewModel<Book>(book));
+    }
+
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] BookViewModel book)
     {

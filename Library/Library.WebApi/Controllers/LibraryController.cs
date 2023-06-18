@@ -32,6 +32,15 @@ public class LibraryController : ControllerBase
         return Ok(new ResultViewModel<List<LibraryUnit>>(libraries));
     }
 
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    {
+        var libraryUnit = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
+        if (libraryUnit is null)
+            return NotFound(new ResultViewModel<LibraryUnit>("Library not found"));
+
+        return Ok(new ResultViewModel<LibraryUnit>(libraryUnit));
+    }
 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] LibraryUnitViewModel libraryUnit)

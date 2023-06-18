@@ -33,6 +33,17 @@ public class AuthorController : ControllerBase
         return Ok(new ResultViewModel<List<Author>>(authors)); 
     }
 
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    {
+        var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == id, cancellationToken: default);
+        if (author is null)
+            return NotFound(new ResultViewModel<Author>("Author not found"));
+
+        return Ok(new ResultViewModel<Author>(author));
+    }
+
+
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] AuthorViewModel author)
     {
