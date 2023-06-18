@@ -3,7 +3,7 @@ using Library.Domain.Entities;
 
 namespace Library.Application.ViewModels.Books;
 
-public struct BookViewModel
+public struct BookResponseViewModel
 {
     public string Title { get; init; }
     public DateTime Year { get; init; }
