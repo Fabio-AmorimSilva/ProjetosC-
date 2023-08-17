@@ -1,12 +1,4 @@
-﻿using Library.Application.ViewModels.Library;
-using Library.Application.ViewModels.Result;
-using Library.Domain.Entities;
-using Library.Infrastructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
-namespace Library.WebApi.Controllers;
+﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
@@ -15,10 +7,8 @@ public class LibraryController : ControllerBase
     private readonly LibraryContext _context;
 
     public LibraryController(LibraryContext context)
-    {
-        _context = context;
-    }
-
+        =>  _context = context;
+    
     [HttpGet("v1/library")]
     public async Task<IActionResult> Get()
     {

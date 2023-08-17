@@ -1,10 +1,4 @@
 ﻿using Library.Application.ViewModels.Books;
-using Library.Application.ViewModels.Result;
-using Library.Domain.Entities;
-using Library.Infrastructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Library.WebApi.Controllers;
 
@@ -15,12 +9,10 @@ public class BookController : ControllerBase
     private readonly LibraryContext _context;
 
     public BookController(LibraryContext context)
-    {
-        _context = context;
-    }
-
+        =>  _context = context;
+    
     [HttpGet("v1/books")]
-    public async Task<IActionResult> Get()
+    public async Task<ActionResult<ResultViewModel<IEnumerable<Book>>>> Get()
     {
         var books = await _context
             .Books
@@ -29,9 +21,9 @@ public class BookController : ControllerBase
             .ToListAsync(cancellationToken: default);
 
         if(books is null)
-            return NotFound(new ResultViewModel<List<Book>>("No books found"));
+            return NotFound(new ResultViewModel<IEnumerable<Book>>("No books found"));
 
-        return Ok(new ResultViewModel<List<Book>>(books));
+        return Ok(new ResultViewModel<IEnumerable<Book>>(books));
     }
 
     [HttpGet("v1/books/{id:guid}")]
@@ -45,7 +37,7 @@ public class BookController : ControllerBase
     }
 
     [HttpPost("v1/books")]
-    public async Task<IActionResult> Post([FromBody] BookRequestViewModel book)
+    public async Task<ActionResult<Guid>> Post([FromBody] BookRequestViewModel book)
     {
         var newBook = new Book(
             title: book.Title,
@@ -62,7 +54,7 @@ public class BookController : ControllerBase
     }
 
     [HttpPut("v1/books/{id:guid}")]
-    public async Task<IActionResult> Put([FromBody] BookRequestViewModel book, [FromRoute] Guid id)
+    public async Task<ActionResult> Put([FromBody] BookRequestViewModel book, [FromRoute] Guid id)
     {
         var bookFromDatabase = await _context
             .Books
