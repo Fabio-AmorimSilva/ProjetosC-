@@ -1,8 +1,4 @@
-﻿using Library.Domain.Entities.Core;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Library.Infrastructure.Mappings;
+﻿namespace Library.Infrastructure.Mappings;
 
 public class BaseEntityMapping<T> : IEntityTypeConfiguration<T> where T : BaseEntity
 {
