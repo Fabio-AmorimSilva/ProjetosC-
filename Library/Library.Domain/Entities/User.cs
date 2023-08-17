@@ -1,7 +1,4 @@
-﻿using Library.Domain.Entities.Core;
-using Library.Domain.Entities.Enums;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class User : BaseEntity
 {
@@ -17,9 +14,6 @@ public class User : BaseEntity
         Role role)
     {
         Id = Guid.NewGuid();
-        CreatedAt = DateTime.Now;
-        UpdatedAt = null;
-
         Name = name;
         Email = email;
         Password = password;

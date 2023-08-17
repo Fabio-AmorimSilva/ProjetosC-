@@ -1,7 +1,4 @@
-﻿using Library.Domain.Entities.Core;
-using Library.Domain.Entities.Enums;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class Book : BaseEntity
 {
@@ -23,10 +20,7 @@ public class Book : BaseEntity
         Guid libraryId,
         BookGenre genre) 
     {
-        Id = Guid.NewGuid();    
-        CreatedAt = DateTime.Now;
-        UpdatedAt = null;
-
+        Id = Guid.NewGuid();
         Title = title;
         Year = year;
         Pages = pages;

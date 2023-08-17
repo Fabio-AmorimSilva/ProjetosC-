@@ -1,6 +1,4 @@
-﻿using Library.Domain.Entities.Core;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class LibraryUnit : BaseEntity
 {
@@ -11,9 +9,6 @@ public class LibraryUnit : BaseEntity
     public LibraryUnit(string name, string city)
     {
         Id = Guid.NewGuid();
-        CreatedAt = DateTime.Now;
-        UpdatedAt = null;
-
         Name = name;
         City = city;
     }

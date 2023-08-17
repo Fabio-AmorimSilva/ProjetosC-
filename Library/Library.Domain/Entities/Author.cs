@@ -1,6 +1,4 @@
-﻿using Library.Domain.Entities.Core;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class Author : BaseEntity
 {
@@ -15,9 +13,6 @@ public class Author : BaseEntity
         DateTime birth)
     {
         Id = Guid.NewGuid();
-        CreatedAt = DateTime.Now;
-        UpdatedAt = null;
-
         Name = name;
         Country = country;
         Birth = birth;
