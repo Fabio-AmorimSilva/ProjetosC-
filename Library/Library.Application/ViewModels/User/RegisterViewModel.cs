@@ -1,6 +1,4 @@
-﻿using Library.Domain.Entities.Enums;
-
-namespace Library.Application.ViewModels.User;
+﻿namespace Library.Application.ViewModels.User;
 
 public struct RegisterViewModel
 {

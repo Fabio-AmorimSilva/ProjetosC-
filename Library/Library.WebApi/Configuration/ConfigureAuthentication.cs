@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-
-namespace Library.WebApi.Configuration;
+﻿namespace Library.WebApi.Configuration;
 
 public static class ConfigureAuthentication
 {
     public static IServiceCollection AuthenticationConfig(this IServiceCollection services, IConfiguration configuration)
     {
-        var settings = configuration.GetValue<string>("JwtKey");
-        var key = Encoding.ASCII.GetBytes(settings);
+        var settings = configuration.GetSection("Settings");
+        services.Configure<Settings>(settings);
+
+        var appsSettings = settings.Get<Settings>();
+        var key = Encoding.ASCII.GetBytes(appsSettings.JwtKey);
 
         services.AddAuthentication(options =>
         {
@@ -24,7 +23,9 @@ public static class ConfigureAuthentication
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(key),
                 ValidateIssuer = true,
-                ValidateAudience = true
+                ValidateAudience = true,
+                ValidAudience = appsSettings.ValidOn,
+                ValidIssuer = appsSettings.Emissary
             };
         });
 

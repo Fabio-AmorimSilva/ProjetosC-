@@ -1,6 +1,4 @@
-﻿using Library.Domain.Entities;
-
-namespace Library.Application.ViewModels.Library;
+﻿namespace Library.Application.ViewModels.Library;
 
 public struct LibraryUnitResponseViewModel
 {

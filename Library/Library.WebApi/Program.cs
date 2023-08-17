@@ -1,11 +1,3 @@
-using Library.Application.Options;
-using Library.Application.Services;
-using Library.Infrastructure;
-using Library.WebApi.Configuration;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using System.Text.Json.Serialization;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +6,7 @@ ConfigureDbContext(builder);
 ConfigureServices(builder);
 ConfigureJwt(builder);
 ConfigureJsonOptions(builder);
+ConfigureOptions(builder);
 
 //External Configs
 builder.Services.AuthenticationConfig(builder.Configuration);
@@ -90,6 +83,12 @@ void ConfigureJwt(WebApplicationBuilder builder)
 
 void ConfigureDbContext(WebApplicationBuilder builder)
 {
+    builder.Services.AddDbContext<BaseContext>(options =>
+    {
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        options.UseSqlServer(connectionString);
+    });
+        
     builder.Services.AddDbContext<LibraryContext>(options =>
     {
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -105,4 +104,9 @@ void ConfigureJsonOptions(WebApplicationBuilder builder)
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
+}
+
+void ConfigureOptions(WebApplicationBuilder builder)
+{
+    builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
 }

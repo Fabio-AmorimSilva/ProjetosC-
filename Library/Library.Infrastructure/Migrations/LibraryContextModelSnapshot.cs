@@ -95,7 +95,7 @@ namespace Library.Infrastructure.Migrations
 
                     b.HasIndex("LibraryId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("Library.Domain.Entities.LibraryUnit", b =>
@@ -123,7 +123,7 @@ namespace Library.Infrastructure.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Libraries");
+                    b.ToTable("Libraries", (string)null);
                 });
 
             modelBuilder.Entity("Library.Domain.Entities.User", b =>
@@ -159,7 +159,7 @@ namespace Library.Infrastructure.Migrations
 
                     b.HasIndex("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Library.Domain.Entities.Book", b =>
