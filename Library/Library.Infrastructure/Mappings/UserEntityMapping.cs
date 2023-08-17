@@ -1,13 +1,13 @@
-﻿using Library.Domain.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Library.Infrastructure.Mappings;
+﻿namespace Library.Infrastructure.Mappings;
 
 public class UserEntityMapping : BaseEntityMapping<User>
 {
     public override void Configure(EntityTypeBuilder<User> builder)
     {
         base.Configure(builder);
+
+        builder
+            .ToTable("Users");
 
         builder
             .Property(u => u.Name)
