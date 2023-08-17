@@ -1,22 +1,11 @@
-﻿using Library.Application.Extensions;
-using Library.Application.Options;
-using Library.Domain.Entities;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
-namespace Library.Application.Services;
+﻿namespace Library.Application.Services;
 
 public class TokenService
 {
     private readonly Settings _settings;
 
     public TokenService(IOptions<Settings> settings)
-    {
-        _settings = settings.Value;
-    }
+        =>  _settings = settings.Value;
 
     public string GenerateToken(User user)
     {
@@ -26,7 +15,9 @@ public class TokenService
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddHours(8),
+            Expires = DateTime.UtcNow.AddMinutes(_settings.ExpireMinutes),
+            Issuer = _settings.Emissary,
+            Audience = _settings.ValidOn,
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature)

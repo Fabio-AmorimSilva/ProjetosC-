@@ -1,7 +1,4 @@
-﻿using Library.Domain.Entities;
-using System.Security.Claims;
-
-namespace Library.Application.Extensions;
+﻿namespace Library.Application.Extensions;
 
 public static class RoleClaimsExtensions
 {
