@@ -1,8 +1,4 @@
-﻿using Library.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Library.Infrastructure.Mappings;
+﻿namespace Library.Infrastructure.Mappings;
 
 public class AuthorEntityMapping : BaseEntityMapping<Author>
 {

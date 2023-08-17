@@ -1,6 +1,4 @@
-﻿using Library.Domain.Entities.Enums;
-
-namespace Library.Application.ViewModels.Books;
+﻿namespace Library.Application.ViewModels.Books;
 
 public struct BookRequestViewModel
 {

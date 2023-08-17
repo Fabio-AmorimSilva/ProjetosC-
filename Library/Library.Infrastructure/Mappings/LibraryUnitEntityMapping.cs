@@ -1,14 +1,13 @@
-﻿using Library.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Library.Infrastructure.Mappings;
+﻿namespace Library.Infrastructure.Mappings;
 
 public class LibraryUnitEntityMapping : BaseEntityMapping<LibraryUnit>
 {
     public override void Configure(EntityTypeBuilder<LibraryUnit> builder)
     {
         base.Configure(builder);
+
+        builder
+            .ToTable("Libraries");
 
         builder
             .Property(lu => lu.Name)

@@ -1,6 +1,4 @@
-﻿using Library.Domain.Entities;
-
-namespace Library.Application.ViewModels.Authors;
+﻿namespace Library.Application.ViewModels.Authors;
 
 public struct AuthorResponseViewModel
 {
