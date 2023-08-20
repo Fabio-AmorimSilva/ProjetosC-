@@ -8,6 +8,8 @@ global using Library.Application.Options;
 global using Library.Application.ViewModels.Result;
 global using Library.Domain.Entities;
 global using Library.Domain.Entities.Enums;
+global using Library.Infrastructure;
 global using MediatR;
+global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Tokens;
