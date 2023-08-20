@@ -2,16 +2,18 @@
 
 public class Book : BaseEntity
 {
-    public string Title { get; set; }
-    public DateTime Year { get; set; }
-    public int Pages { get; set; }
-    public int Quantity { get; set; }
-    public Guid AuthorId { get; set; }
-    public Author? Author { get; set; }
-    public Guid LibraryId { get; set; }
-    public LibraryUnit? Library { get; set; }
-    public BookGenre Genre { get; set; }
+    public string Title { get; private set; }
+    public DateTime Year { get; private set; }
+    public int Pages { get; private set; }
+    public int Quantity { get; private set; }
+    public Guid AuthorId { get; private set; }
+    public Author? Author { get; private set; }
+    public Guid LibraryId { get; private set; }
+    public LibraryUnit? Library { get; private set; }
+    public BookGenre Genre { get; private set; }
 
+    public Book(){}
+    
     public Book( 
         string title, 
         DateTime year, 
