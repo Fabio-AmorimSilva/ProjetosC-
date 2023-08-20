@@ -1,16 +1,20 @@
-﻿using Library.Application.ViewModels.Books;
-
-namespace Library.WebApi.Controllers;
+﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
 public class BookController : ControllerBase
 {
+    private readonly IMediator _mediator;
     private readonly LibraryContext _context;
 
-    public BookController(LibraryContext context)
-        =>  _context = context;
-    
+    public BookController(
+        LibraryContext context,
+        IMediator mediator)
+    {
+        _context = context;
+        _mediator = mediator;
+    }
+
     [HttpGet("v1/books")]
     public async Task<ActionResult<ResultViewModel<IEnumerable<Book>>>> Get()
     {
@@ -37,58 +41,24 @@ public class BookController : ControllerBase
     }
 
     [HttpPost("v1/books")]
-    public async Task<ActionResult<Guid>> Post([FromBody] BookRequestViewModel book)
+    public async Task<ActionResult<Guid>> Post([FromBody] CreateBookCommand command)
     {
-        var newBook = new Book(
-            title: book.Title,
-            year: book.Year,
-            pages : book.Pages,
-            authorId: book.AuthorId,
-            libraryId: book.LibraryId,
-            genre: book.Genre);
-
-        await _context.Books.AddAsync(newBook);
-        await _context.SaveChangesAsync();
-
-        return Created($"{newBook.Id}", newBook);
+        var result = await _mediator.Send(command);
+        return Created($"{result}", result.Data);
     }
 
     [HttpPut("v1/books/{id:guid}")]
-    public async Task<ActionResult> Put([FromBody] BookRequestViewModel book, [FromRoute] Guid id)
+    public async Task<ActionResult> Put(Guid id, [FromBody] UpdateBookCommand command)
     {
-        var bookFromDatabase = await _context
-            .Books
-            .FirstOrDefaultAsync(b => b.Id == id, cancellationToken: default);
-
-        if (bookFromDatabase is null)
-            return NotFound(new ResultViewModel<Book>("Book not found."));
-
-        bookFromDatabase.Title = book.Title;
-        bookFromDatabase.Year = book.Year;
-        bookFromDatabase.Pages = book.Pages;
-        bookFromDatabase.AuthorId = book.AuthorId;
-        bookFromDatabase.LibraryId = book.LibraryId;
-        bookFromDatabase.Genre = book.Genre;
-
-        _context.Books.Update(bookFromDatabase);
-        await _context.SaveChangesAsync();
-
+        await _mediator.Send(command);
         return NoContent();
     }
 
     [HttpDelete("v1/books/{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
-        var bookFromDatabase = await _context
-            .Books
-            .FirstOrDefaultAsync(b => b.Id == id, cancellationToken: default);
-
-        if (bookFromDatabase is null)
-            return NotFound(new ResultViewModel<Book>("Book not found"));
-
-        _context.Books.Remove(bookFromDatabase);
-        await _context.SaveChangesAsync();
-
+        var command = new DeleteBookCommand(id);
+        await _mediator.Send(command);
         return NoContent();
     }
 }
