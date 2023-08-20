@@ -30,4 +30,23 @@ public class Book : BaseEntity
         LibraryId = libraryId;
         Genre = genre;
     }
+
+    public void UpdateBook(string title,
+        DateTime year,
+        int pages,
+        Guid authorId,
+        Guid libraryId,
+        BookGenre genre
+    )
+    {
+        Title = title;
+        Year = year;
+        Pages = pages;
+        AuthorId = authorId;
+        LibraryId = libraryId;
+        Genre = genre;
+    }
+
+    public void UpdateQuantity(int quantity)
+        => Quantity = quantity;
 }
