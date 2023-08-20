@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Commands.DeleteBook;
+﻿namespace Library.Application.Commands;
 
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, ResultViewModel<Unit>>
 {

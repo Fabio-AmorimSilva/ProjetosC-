@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Commands.UpdateBook;
+﻿namespace Library.Application.Commands;
 
 public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, ResultViewModel<Unit>>
 {
