@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Commands.CreateBook;
+﻿namespace Library.Application.Commands;
 
 public struct CreateBookCommand : IRequest<ResultViewModel<Guid>>
 {
