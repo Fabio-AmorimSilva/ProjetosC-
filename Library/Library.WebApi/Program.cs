@@ -1,12 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 ConfigureDbContext(builder);
 ConfigureServices(builder);
 ConfigureJwt(builder);
 ConfigureJsonOptions(builder);
 ConfigureOptions(builder);
+ConfigureMediaTrAndHandlers(builder);
 
 //External Configs
 builder.Services.AuthenticationConfig(builder.Configuration);
@@ -109,4 +109,13 @@ void ConfigureJsonOptions(WebApplicationBuilder builder)
 void ConfigureOptions(WebApplicationBuilder builder)
 {
     builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
+}
+
+void ConfigureMediaTrAndHandlers(WebApplicationBuilder builder)
+{
+    builder.Services.AddTransient<CreateBookCommandHandler>();
+    builder.Services.AddTransient<UpdateBookCommandHandler>();
+    builder.Services.AddTransient<DeleteBookCommandHandler>();
+    var assembly = AppDomain.CurrentDomain.Load("Library.Application");
+    builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
 }
