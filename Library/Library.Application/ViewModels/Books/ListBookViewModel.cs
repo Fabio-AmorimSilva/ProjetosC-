@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.ViewModels.Books;
 
-public struct BookResponseViewModel
+public struct ListBookViewModel
 {
     public string Title { get; init; }
     public DateTime Year { get; init; }

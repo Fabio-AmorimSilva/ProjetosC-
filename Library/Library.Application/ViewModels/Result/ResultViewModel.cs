@@ -19,4 +19,8 @@ public class ResultViewModel<T>
 
     public ResultViewModel(string error)
         => Errors.Add(error);
+
+    protected ResultViewModel()
+    {
+    }
 }
