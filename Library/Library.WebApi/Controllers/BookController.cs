@@ -1,4 +1,6 @@
-﻿namespace Library.WebApi.Controllers;
+﻿using Library.Application.Queries;
+
+namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
@@ -18,16 +20,8 @@ public class BookController : ControllerBase
     [HttpGet("v1/books")]
     public async Task<ActionResult<ResultViewModel<IEnumerable<Book>>>> Get()
     {
-        var books = await _context
-            .Books
-            .Include(b => b.Author)
-            .Include(b => b.Library)
-            .ToListAsync(cancellationToken: default);
-
-        if(books is null)
-            return NotFound(new ResultViewModel<IEnumerable<Book>>("No books found"));
-
-        return Ok(new ResultViewModel<IEnumerable<Book>>(books));
+        var result = await _mediator.Send(new ListBooksQuery(), cancellationToken: default);
+        return Ok(result);
     }
 
     [HttpGet("v1/books/{id:guid}")]
