@@ -1,4 +1,4 @@
-﻿using Library.Application.ViewModels.Books;
+﻿using Library.Application.ViewModels;
 
 namespace Library.Application.Queries;
 
@@ -13,16 +13,29 @@ public class ListBooksQueryHandler : IRequestHandler<ListBooksQuery, ResultViewM
     {
         var books = await _context.Books
             .Include(b => b.Author)
+            .ThenInclude(a => a.Books)
             .Include(b => b.Library)
             .Select(b => new ListBookViewModel
             {
-                Title = b.Title,
-                Author = b.Author,
-                Genre = b.Genre,
-                Library = b.Library,
-                Pages = b.Pages,
-                Quantity = b.Quantity,
-                Year = b.Year
+                Book = new BookViewModel
+                {
+                    Title = b.Title,
+                    Genre = b.Genre,
+                    Pages = b.Pages,
+                    Quantity = b.Quantity,
+                    Year = b.Year
+                },
+                Author = new AuthorViewModel
+                {
+                    Name = b.Author!.Name,
+                    Birth = b.Author.Birth,
+                    Country = b.Author.Country
+                },
+                Library = new LibraryUnitViewModel
+                {
+                    Name = b.Library!.Name,
+                    City = b.Library.City
+                },
             })
             .ToListAsync(cancellationToken);
         
