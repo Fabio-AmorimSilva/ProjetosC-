@@ -21,4 +21,10 @@ public class LibraryUnit : BaseEntity
         Books.Add(book);
         return true;
     }
+
+    public void UpdateLibrary(string name, string city)
+    {
+        Name = name;
+        City = city;
+    }
 }
