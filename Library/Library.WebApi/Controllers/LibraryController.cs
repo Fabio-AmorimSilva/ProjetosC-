@@ -2,83 +2,47 @@
 
 [ApiController]
 [Authorize]
+[Route("v1/library")]
 public class LibraryController : ControllerBase
 {
-    private readonly LibraryContext _context;
-
-    public LibraryController(LibraryContext context)
-        =>  _context = context;
+    private readonly IMediator _mediator;
     
-    [HttpGet("v1/library")]
+    public LibraryController(IMediator mediator)
+        =>  _mediator = mediator;
+    
+    [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var libraries = await _context
-            .Libraries
-            .Include(l => l.Books)
-            .ToListAsync(cancellationToken: default);
-
-        if(libraries is null)
-            return NotFound(new ResultViewModel<LibraryUnit>("There are no libraries"));
-
-        return Ok(new ResultViewModel<List<LibraryUnit>>(libraries));
+        var result = await _mediator.Send(new ListLibrariesQuery());
+        return Ok(result);
     }
 
-    [HttpGet("v1/library/{id:guid}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
-        var libraryUnit = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
-        if (libraryUnit is null)
-            return NotFound(new ResultViewModel<LibraryUnit>("Library unit not found"));
-
-        return Ok(new ResultViewModel<LibraryUnit>(libraryUnit));
+        var result = await _mediator.Send(new GetLibraryQuery(id));
+        return Ok(result);
     }
 
-    [HttpPost("v1/library")]
-    public async Task<IActionResult> Post([FromBody] LibraryUnitRequestViewModel libraryUnit)
-    { 
-        var libraryUnitFromDatabase = await _context
-            .Libraries
-            .FirstOrDefaultAsync(l => l.Name == libraryUnit.Name && l.City == libraryUnit.City, cancellationToken: default);
-
-        if (libraryUnitFromDatabase is not null)
-            return NotFound(new ResultViewModel<LibraryUnit>("Library unit already exists. Please enter a new one"));
-
-        var newLibraryUnit = new LibraryUnit(
-            libraryUnit.Name, 
-            libraryUnit.City);
-
-        await _context.Libraries.AddAsync(newLibraryUnit);
-        await _context.SaveChangesAsync();
-
-        return Created($"{newLibraryUnit.Name}", newLibraryUnit);
-    }
-
-    [HttpPut("v1/library/{id:guid}")]
-    public async Task<IActionResult> Put([FromBody] LibraryUnitRequestViewModel libraryUnit, [FromRoute] Guid id)
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] CreateLibraryCommand command)
     {
-        var libraryUnitFromDatabase = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
-        if (libraryUnitFromDatabase is null)
-            return NotFound(new ResultViewModel<LibraryUnit>("Library unit not found"));
+        var result = await _mediator.Send(command);
+        return Created($"{result.Data}", result);
+    }
 
-        libraryUnitFromDatabase.Name = libraryUnit.Name;
-        libraryUnitFromDatabase.City = libraryUnit.City;
-
-        _context.Libraries.Update(libraryUnitFromDatabase);
-        await _context.SaveChangesAsync();
-
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Put(Guid id, [FromBody] UpdateLibraryCommand command)
+    {
+        await _mediator.Send(command);
         return NoContent();
     }
 
-    [HttpDelete("v1/library/{id:guid}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
-        var libraryFromDatabase = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == id, cancellationToken: default);
-        if (libraryFromDatabase is null)
-            return NotFound(new ResultViewModel<LibraryUnit>("Library unit not found"));
-
-        _context.Libraries.Remove(libraryFromDatabase);
-        await _context.SaveChangesAsync();
-
+        var command = new DeleteLibraryCommand(id);
+        await _mediator.Send(command);
         return NoContent();
     }
 }
