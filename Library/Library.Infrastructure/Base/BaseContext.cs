@@ -5,8 +5,8 @@ public class BaseContext : DbContext
     public BaseContext(DbContextOptions<BaseContext> options): base(options) { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){ }
-    
-    public void SetCreateInfo()
+
+    private void SetCreateInfo()
     {
         if (ChangeTracker.Entries().Any(e => e.State == EntityState.Added))
         {
@@ -18,8 +18,8 @@ public class BaseContext : DbContext
                 entity.Entity.CreatedAt = DateTime.Now;
         }
     }
-    
-    public void SetUpdateInfo()
+
+    private void SetUpdateInfo()
     {
         if (ChangeTracker.Entries().Any(e => e.State == EntityState.Modified))
         {
