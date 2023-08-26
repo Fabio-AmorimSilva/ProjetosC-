@@ -1,6 +1,4 @@
-﻿using Library.Application.ViewModels;
-
-namespace Library.Application.Queries;
+﻿namespace Library.Application.Queries;
 
 public class ListBooksQueryHandler : IRequestHandler<ListBooksQuery, ResultViewModel<IEnumerable<ListBookViewModel>>>
 {
@@ -15,6 +13,7 @@ public class ListBooksQueryHandler : IRequestHandler<ListBooksQuery, ResultViewM
             .Include(b => b.Author)
             .ThenInclude(a => a.Books)
             .Include(b => b.Library)
+            .AsNoTrackingWithIdentityResolution()
             .Select(b => new ListBookViewModel
             {
                 Book = new BookViewModel
