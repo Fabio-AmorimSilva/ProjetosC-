@@ -10,7 +10,8 @@ public class Author : BaseEntity
     public Author( 
         string name, 
         string country, 
-        DateTime birth)
+        DateTime birth
+    )
     {
         Id = Guid.NewGuid();
         Name = name;
@@ -25,5 +26,16 @@ public class Author : BaseEntity
 
         Books.Add(book);
         return true;
+    }
+
+    public void UpdateAuthor(
+        string name, 
+        string country, 
+        DateTime birth
+    )
+    {
+        Name = name;
+        Country = country;
+        Birth = birth;
     }
 }
