@@ -1,53 +1,25 @@
 ﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
+[Route("v1/accounts")]
 public class AccountsController : ControllerBase
 {
-    private readonly LibraryContext _context;
-    private readonly TokenService _tokenService;
-
-    public AccountsController(
-        LibraryContext context,
-        TokenService service)
+    private readonly IMediator _mediator;
+    
+    public AccountsController(IMediator mediator)
+        =>  _mediator = mediator;
+    
+    [HttpPost("signup")]
+    public async Task<ActionResult> Signup([FromBody] SignupCommand command)
     {
-        _context = context;
-        _tokenService = service;
+        var result = await _mediator.Send(command);
+        return Created($"{result}", result);
     }
 
-    [HttpPost("v1/accounts/signup")]
-    public async Task<ActionResult> Signup([FromBody] RegisterViewModel register)
+    [HttpPost("login")]
+    public async Task<ActionResult<ResultViewModel<string>>> Login([FromBody] LoginCommand command)
     {
-        var userExists = await _context
-            .Users
-            .AnyAsync(u => u.Email == register.Email, cancellationToken:default);
-
-        if(userExists)
-            return BadRequest(new ResultViewModel<User>("Email already in use."));
-        
-        var user = new User(
-            name: register.Name,
-            email: register.Email,
-            password: register.Password,
-            role: register.Role);
-
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
-
-        return Created($"{user.Name}", user);
-    }
-
-    [HttpPost("v1/accounts/login")]
-    public async Task<ActionResult> Login([FromBody] LoginViewModel login)
-    {
-        var user = await _context
-            .Users
-            .FirstOrDefaultAsync(u => u.Email == login.Username && u.Password == login.Password, cancellationToken: default);
-
-        if(user is null)
-            return NotFound(new ResultViewModel<User>("User name or password are incorrect"));
-
-        var token = _tokenService.GenerateToken(user);
-
-        return Ok(new { Token = token });
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 }
