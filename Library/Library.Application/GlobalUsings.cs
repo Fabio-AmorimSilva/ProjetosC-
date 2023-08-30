@@ -5,6 +5,7 @@ global using System.Security.Claims;
 global using System.Text;
 global using Library.Application.Extensions;
 global using Library.Application.Options;
+global using Library.Application.Services;
 global using Library.Application.ViewModels;
 global using Library.Application.ViewModels.Books;
 global using Library.Application.ViewModels.Result;

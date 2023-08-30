@@ -1,16 +1,14 @@
 ﻿// Global using directives
 
 global using System.Text;
+global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using Library.Application.Commands;
 global using Library.Application.Commands.CreateBook;
 global using Library.Application.Options;
 global using Library.Application.Queries;
 global using Library.Application.Services;
-global using Library.Application.ViewModels.Authors;
-global using Library.Application.ViewModels.Login;
 global using Library.Application.ViewModels.Result;
-global using Library.Application.ViewModels.User;
 global using Library.Domain.Entities;
 global using Library.Infrastructure;
 global using Library.WebApi.Configuration;
