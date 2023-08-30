@@ -102,6 +102,8 @@ void ConfigureJsonOptions(WebApplicationBuilder builder)
     .AddControllers()
     .AddJsonOptions(options =>
     {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        options.JsonSerializerOptions.PropertyNamingPolicy=JsonNamingPolicy.CamelCase;
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });
 }
@@ -113,9 +115,6 @@ void ConfigureOptions(WebApplicationBuilder builder)
 
 void ConfigureMediaTrAndHandlers(WebApplicationBuilder builder)
 {
-    builder.Services.AddTransient<CreateBookCommandHandler>();
-    builder.Services.AddTransient<UpdateBookCommandHandler>();
-    builder.Services.AddTransient<DeleteBookCommandHandler>();
     var assembly = AppDomain.CurrentDomain.Load("Library.Application");
     builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
 }
