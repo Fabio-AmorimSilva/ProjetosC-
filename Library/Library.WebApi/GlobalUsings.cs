@@ -3,8 +3,8 @@
 global using System.Text;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
+global using FluentValidation;
 global using Library.Application.Commands;
-global using Library.Application.Commands.CreateBook;
 global using Library.Application.Options;
 global using Library.Application.Queries;
 global using Library.Application.Services;
