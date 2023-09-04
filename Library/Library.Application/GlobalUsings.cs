@@ -3,6 +3,7 @@
 global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
 global using System.Text;
+global using System.Text.Json;
 global using FluentValidation;
 global using Library.Application.Extensions;
 global using Library.Application.Options;
