@@ -7,6 +7,7 @@ ConfigureJwt(builder);
 ConfigureJsonOptions(builder);
 ConfigureOptions(builder);
 ConfigureMediaTrAndHandlers(builder);
+ConfigureExceptionFilter(builder);
 
 //External Configs
 builder.Services.AuthenticationConfig(builder.Configuration);
@@ -119,4 +120,12 @@ void ConfigureMediaTrAndHandlers(WebApplicationBuilder builder)
     builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
     builder.Services.AddValidatorsFromAssemblyContaining<CreateAuthorCommandValidator>();
     builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+}
+
+void ConfigureExceptionFilter(WebApplicationBuilder builder)
+{
+    builder.Services.AddMvc(options =>
+    {
+        options.Filters.Add(new ExceptionFilter());
+    });
 }
