@@ -2,6 +2,7 @@
 
 [ApiController]
 [Authorize]
+[ApiVersion("2.0")]
 [Route("v1/author")]
 public class AuthorController : ControllerBase
 {

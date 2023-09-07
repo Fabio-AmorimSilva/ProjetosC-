@@ -1,6 +1,7 @@
 ﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
+[ApiVersion("2.0")]
 [Route("v1/accounts")]
 public class AccountsController : ControllerBase
 {
