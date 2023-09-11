@@ -47,6 +47,24 @@ public class Book : BaseEntity
         Genre = genre;
     }
 
+    public bool UpdateAuthor(Author author)
+    {
+        if (author is null)
+            return false;
+
+        AuthorId = author.Id;
+        return true;
+    }
+    
+    public bool UpdateLibrary(LibraryUnit library)
+    {
+        if (library is null)
+            return false;
+
+        LibraryId = library.Id;
+        return true;
+    }
+
     public void UpdateQuantity(int quantity)
         => Quantity = quantity;
 }
