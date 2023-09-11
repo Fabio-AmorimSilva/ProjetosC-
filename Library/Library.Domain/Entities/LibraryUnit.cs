@@ -21,6 +21,15 @@ public class LibraryUnit : BaseEntity
         Books.Add(book);
         return true;
     }
+    
+    public bool RemoveBook(Book book)
+    {
+        if(book is null)
+            return false;
+
+        Books.Remove(book);
+        return true;
+    }
 
     public void UpdateLibrary(string name, string city)
     {
