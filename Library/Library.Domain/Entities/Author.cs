@@ -27,6 +27,15 @@ public class Author : BaseEntity
         Books.Add(book);
         return true;
     }
+    
+    public bool RemoveBook(Book book)
+    {
+        if (book is null)
+            return false;
+
+        Books.Remove(book);
+        return true;
+    }
 
     public void UpdateAuthor(
         string name, 
