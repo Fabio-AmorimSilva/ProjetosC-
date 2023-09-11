@@ -19,4 +19,31 @@ public class User : BaseEntity
         Password = password;
         Role = role;
     }
+
+    public bool UpdateUser(string name, string email)
+    {
+        if (string.IsNullOrEmpty(name))
+            return false;
+        
+        if (string.IsNullOrEmpty(email))
+            return false;
+
+        Name = name;
+        Email = email;
+        
+        return true;
+    }
+
+    public void UpdateRole(Role role)
+        => Role = role;
+
+    public bool UpdatePassword(string password)
+    {
+        if (string.IsNullOrEmpty(password))
+            return false;
+
+        Password = password;
+
+        return true;
+    }
 }
