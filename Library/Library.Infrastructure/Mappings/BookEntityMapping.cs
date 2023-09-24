@@ -1,14 +1,15 @@
 ﻿namespace Library.Infrastructure.Mappings;
 
-public class BookEntityMapping : BaseEntityMapping<Book>
+public class BookEntityMapping
 {
-    public override void Configure(EntityTypeBuilder<Book> builder)
+    public void Configure(EntityTypeBuilder<Book> builder)
     {
-        base.Configure(builder);
-
         builder
             .ToTable("Books");
-
+        
+        builder
+            .ConfigureEntityConventions();
+        
         builder
             .Property(b => b.Title)
             .HasMaxLength(80)

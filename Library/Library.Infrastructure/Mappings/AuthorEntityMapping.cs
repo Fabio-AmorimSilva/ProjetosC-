@@ -1,11 +1,12 @@
 ﻿namespace Library.Infrastructure.Mappings;
 
-public class AuthorEntityMapping : BaseEntityMapping<Author>
+public class AuthorEntityMapping
 {
-    public override void Configure(EntityTypeBuilder<Author> builder)
+    public void Configure(EntityTypeBuilder<Author> builder)
     {
-        base.Configure(builder);
-
+        builder
+            .ConfigureEntityConventions();
+        
         builder
             .Property(a => a.Name)
             .HasMaxLength(80)

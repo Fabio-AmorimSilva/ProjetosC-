@@ -1,14 +1,15 @@
 ﻿namespace Library.Infrastructure.Mappings;
 
-public class UserEntityMapping : BaseEntityMapping<User>
+public class UserEntityMapping 
 {
-    public override void Configure(EntityTypeBuilder<User> builder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
-        base.Configure(builder);
-
         builder
             .ToTable("Users");
 
+        builder
+            .ConfigureEntityConventions();
+        
         builder
             .Property(u => u.Name)
             .HasMaxLength(80)

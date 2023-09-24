@@ -1,14 +1,15 @@
 ﻿namespace Library.Infrastructure.Mappings;
 
-public class LibraryUnitEntityMapping : BaseEntityMapping<LibraryUnit>
+public class LibraryUnitEntityMapping
 {
-    public override void Configure(EntityTypeBuilder<LibraryUnit> builder)
+    public void Configure(EntityTypeBuilder<LibraryUnit> builder)
     {
-        base.Configure(builder);
-
         builder
             .ToTable("Libraries");
 
+        builder
+            .ConfigureEntityConventions();
+        
         builder
             .Property(lu => lu.Name)
             .HasMaxLength(80)
