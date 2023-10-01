@@ -1,13 +1,13 @@
-﻿namespace Library.Infrastructure.Extensions;
+﻿namespace Microsoft.EntityFrameworkCore;
 
-public static class ConfigureEntityConventionsExtensions
+public static class EntityTypeBuilderExtensions
 {
     public static void ConfigureEntityConventions(this EntityTypeBuilder builder)
     {
         builder.As<EntityTypeBuilder>().TryConfigureEntityBase();
     }
-    
-    public static void TryConfigureEntityBase(this EntityTypeBuilder builder)
+
+    private static void TryConfigureEntityBase(this EntityTypeBuilder builder)
     {
         if (builder.Metadata.ClrType.IsAssignableTo<BaseEntity>())
             return;
