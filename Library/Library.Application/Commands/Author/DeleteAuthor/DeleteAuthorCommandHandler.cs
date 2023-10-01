@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.Entities.ErrorHandling;
+
+namespace Library.Application.Commands;
 
 public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, ResultViewModel<Unit>>
 {
