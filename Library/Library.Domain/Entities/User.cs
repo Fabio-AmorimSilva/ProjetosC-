@@ -20,30 +20,30 @@ public class User : BaseEntity
         Role = role;
     }
 
-    public bool UpdateUser(string name, string email)
+    public Result UpdateUser(string name, string email)
     {
         if (string.IsNullOrEmpty(name))
-            return false;
+            return Result.FailureResult("Name cannot be empty");
         
         if (string.IsNullOrEmpty(email))
-            return false;
+            return Result.FailureResult("Email cannot be empty");
 
         Name = name;
         Email = email;
         
-        return true;
+        return Result.SuccessResult();
     }
 
     public void UpdateRole(Role role)
         => Role = role;
 
-    public bool UpdatePassword(string password)
+    public Result UpdatePassword(string password)
     {
         if (string.IsNullOrEmpty(password))
-            return false;
+            return Result.FailureResult("Password cannot be empty");
 
         Password = password;
 
-        return true;
+        return Result.SuccessResult();
     }
 }
