@@ -38,6 +38,20 @@ public class BookController : ControllerBase
         await _mediator.Send(command);
         return NoContent();
     }
+    
+    [HttpPut("{id:guid}/author/{authorId:guid}")]
+    public async Task<ActionResult> UpdateBookAuthor(Guid authorId, [FromBody] UpdateBookAuthorCommand command)
+    {
+        await _mediator.Send(command);
+        return NoContent();
+    }
+    
+    [HttpPut("{id:guid}/library/{libraryId:guid}")]
+    public async Task<ActionResult> UpdateBookLibrary(Guid libraryId, [FromBody] UpdateBookLibraryCommand command)
+    {
+        await _mediator.Send(command);
+        return NoContent();
+    }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
