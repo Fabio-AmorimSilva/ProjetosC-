@@ -6,7 +6,7 @@ public class Author : BaseEntity
     public string Country { get; set; }
     public DateTime Birth { get; set; }
     public List<Book> Books { get; set; } = new();
-
+    
     public Author( 
         string name, 
         string country, 
@@ -18,25 +18,7 @@ public class Author : BaseEntity
         Country = country;
         Birth = birth;
     }
-   
-    public bool AddBook(Book book)
-    {
-        if (book is null)
-            return false;
-
-        Books.Add(book);
-        return true;
-    }
     
-    public bool RemoveBook(Book book)
-    {
-        if (book is null)
-            return false;
-
-        Books.Remove(book);
-        return true;
-    }
-
     public void UpdateAuthor(
         string name, 
         string country, 
