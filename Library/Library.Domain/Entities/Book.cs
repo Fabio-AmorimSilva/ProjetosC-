@@ -47,24 +47,33 @@ public class Book : BaseEntity
         Genre = genre;
     }
 
-    public bool UpdateAuthor(Author author)
+    public Result UpdateAuthor(Author? author)
     {
         if (author is null)
-            return false;
+            return Result.FailureResult("Author not found");
 
         AuthorId = author.Id;
-        return true;
+        
+        return Result.SuccessResult();
     }
     
-    public bool UpdateLibrary(LibraryUnit library)
+    public Result UpdateLibrary(LibraryUnit? library)
     {
         if (library is null)
-            return false;
+            return Result.FailureResult("Library not found");
 
         LibraryId = library.Id;
-        return true;
+        
+        return Result.SuccessResult();
     }
 
-    public void UpdateQuantity(int quantity)
-        => Quantity = quantity;
+    public Result UpdateQuantity(int quantity)
+    {
+        if (quantity < 0)
+            return Result.FailureResult("Quantity must be greater than 0");
+        
+        Quantity = quantity;
+
+        return Result.SuccessResult();
+    }
 }
