@@ -19,8 +19,10 @@ public class SignupCommandHandler : IRequestHandler<SignupCommand, ResultViewMod
         var user = new User(
             name: request.Name,
             email: request.Email,
-            password: request.Password,
-            role: request.Role);
+            role: request.Role
+        );
+        
+        user.SetPassword(password: BCrypt.Net.BCrypt.HashPassword(request.Password));
 
         await _context.Users.AddAsync(user, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);

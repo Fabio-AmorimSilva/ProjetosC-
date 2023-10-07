@@ -22,6 +22,11 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
         if (user is null)
             return "User not found";
 
+        var verifyPassword = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
+
+        if (!verifyPassword)
+            return "Wrong password or username";
+
         var token = _tokenService.GenerateToken(user);
 
         return token;

@@ -21,8 +21,11 @@ public class UpdateBookLibraryCommandHandler : IRequestHandler<UpdateBookLibrary
         if (book is null)
             return new ResultViewModel<Unit>("Book not found");
         
-        book.UpdateLibrary(request.LibraryId);
+        var result = book.UpdateLibrary(request.LibraryId);
 
+        if (!result.Success)
+            return new ResultViewModel<Unit>(result.Message);
+        
         return new ResultViewModel<Unit>();
     }
 }

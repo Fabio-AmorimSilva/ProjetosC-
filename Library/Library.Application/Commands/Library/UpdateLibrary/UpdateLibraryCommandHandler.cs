@@ -13,8 +13,14 @@ public class UpdateLibraryCommandHandler : IRequestHandler<UpdateLibraryCommand,
         if (library is null)
             return new ResultViewModel<Unit>("Book not found");
 
-        library.UpdateLibrary(request.Name, request.City);
+        var result = library.UpdateLibrary(
+            name: request.Name,
+            city: request.City
+        );
 
+        if (!result.Success)
+            return new ResultViewModel<Unit>(result.Message);
+        
         await _context.SaveChangesAsync(cancellationToken);
         return new ResultViewModel<Unit>();
     }

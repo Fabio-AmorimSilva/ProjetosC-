@@ -21,8 +21,11 @@ public class UpdateBookAuthorCommandHandler : IRequestHandler<UpdateBookAuthorCo
         if (book is null)
             return new ResultViewModel<Unit>("Book not found");
         
-        book.UpdateAuthor(request.AuthorId);
+        var result = book.UpdateAuthor(request.AuthorId);
 
+        if (!result.Success)
+            return new ResultViewModel<Unit>(result.Message);
+            
         return new ResultViewModel<Unit>();
     }
 }
