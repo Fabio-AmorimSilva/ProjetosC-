@@ -9,17 +9,22 @@ public class User : BaseEntity
 
     public User(
         string name, 
-        string email, 
-        string password, 
-        Role role)
+        string email,  
+        Role role
+    )
     {
+        Guard.HasSizeLessThan(name, 80, nameof(name));
+        Guard.HasSizeLessThan(email, 80, nameof(email));
+        
         Id = Guid.NewGuid();
         Name = name;
         Email = email;
-        Password = password;
         Role = role;
     }
 
+    public void SetPassword(string password)
+        => Password = password;
+    
     public Result UpdateUser(string name, string email)
     {
         if (string.IsNullOrEmpty(name))
