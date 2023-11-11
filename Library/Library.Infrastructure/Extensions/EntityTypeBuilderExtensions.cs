@@ -3,10 +3,8 @@
 public static class EntityTypeBuilderExtensions
 {
     public static void ConfigureEntityConventions(this EntityTypeBuilder builder)
-    {
-        builder.As<EntityTypeBuilder>().TryConfigureEntityBase();
-    }
-
+     => builder.As<EntityTypeBuilder>().TryConfigureEntityBase();
+    
     private static void TryConfigureEntityBase(this EntityTypeBuilder builder)
     {
         if (builder.Metadata.ClrType.IsAssignableTo<BaseEntity>())
