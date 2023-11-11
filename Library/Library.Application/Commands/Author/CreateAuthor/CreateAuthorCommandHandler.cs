@@ -15,6 +15,13 @@ public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, R
             birth: request.Birth
         );
 
+        var authorNameAlreadyExists = await _context.Authors
+            .WithSpecification(new AuthorNameAlreadyExistsSpec(author.Id, author.Name))
+            .AnyAsync(cancellationToken);
+
+        if (authorNameAlreadyExists)
+            return new ResultViewModel<Unit>("Author name already exists");
+
         await _context.Authors.AddAsync(author, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
