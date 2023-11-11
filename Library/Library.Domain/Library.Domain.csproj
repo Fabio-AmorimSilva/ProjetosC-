@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ardalis.Specification" Version="7.0.0" />
     <PackageReference Include="CommunityToolkit.Diagnostics" Version="8.2.1" />
   </ItemGroup>
+
 
 </Project>
