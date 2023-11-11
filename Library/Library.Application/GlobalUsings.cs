@@ -3,7 +3,6 @@
 global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
 global using System.Text;
-global using System.Text.Json;
 global using FluentValidation;
 global using Library.Application.Extensions;
 global using Library.Application.Options;
@@ -18,3 +17,5 @@ global using MediatR;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Tokens;
+global using Ardalis.Specification.EntityFrameworkCore;
+global using Library.Domain.Specifications.Authors;
