@@ -2,13 +2,13 @@
 
 public static class RoleClaimsExtensions
 {
-    public static List<Claim> GetClaims(this User user)
+    public static IEnumerable<Claim> GetClaims(this User user)
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Sid, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.Email),
-            new Claim(ClaimTypes.Role, user.Role.ToString()),
+            new (ClaimTypes.Sid, user.Id.ToString()),
+            new (ClaimTypes.Name, user.Email),
+            new (ClaimTypes.Role, user.Role.ToString()),
         };
 
         return claims;
