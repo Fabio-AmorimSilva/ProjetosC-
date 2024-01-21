@@ -13,7 +13,7 @@ public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorComman
             .WithMessage("");
         
         RuleFor(command => command.Name)
-            .MaximumLength(Author.AuthorNameMaxLength)
+            .MaximumLength(Author.NameMaxLength)
             .WithMessage("");
         
         RuleFor(command => command.Country)
@@ -21,7 +21,7 @@ public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorComman
             .WithMessage("");
         
         RuleFor(command => command.Country)
-            .MaximumLength(Author.CountryNameMaxLength)
+            .MaximumLength(Author.CountryMaxLength)
             .WithMessage("");
 
         RuleFor(command => command.Birth)

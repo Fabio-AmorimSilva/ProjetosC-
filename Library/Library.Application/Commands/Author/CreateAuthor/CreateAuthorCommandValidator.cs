@@ -9,7 +9,7 @@ public class CreateAuthorCommandValidator : AbstractValidator<CreateAuthorComman
             .WithMessage("Name field is required");
         
         RuleFor(command => command.Name)
-            .MaximumLength(Author.AuthorNameMaxLength)
+            .MaximumLength(Author.NameMaxLength)
             .WithMessage("Name must be less than 80 characters");
         
         RuleFor(command => command.Country)
@@ -17,7 +17,7 @@ public class CreateAuthorCommandValidator : AbstractValidator<CreateAuthorComman
             .WithMessage("Country is required");
         
         RuleFor(command => command.Country)
-            .MaximumLength(Author.CountryNameMaxLength)
+            .MaximumLength(Author.CountryMaxLength)
             .WithMessage("Country must be less than 80 characters");
 
         RuleFor(command => command.Birth)
