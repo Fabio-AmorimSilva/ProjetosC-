@@ -12,6 +12,7 @@ public class AuthorController : ControllerBase
         =>  _mediator = mediator;
     
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ResultViewModel<IEnumerable<Author>>>> Get()
     {
         var result = await _mediator.Send(new ListAuthorsQuery());
@@ -19,6 +20,8 @@ public class AuthorController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ResultViewModel<Author>>> GetById(Guid id)
     {
         var result = await _mediator.Send(new GetAuthorQuery(id));
@@ -26,6 +29,8 @@ public class AuthorController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<ActionResult<Guid>> Post([FromBody] CreateAuthorCommand command)
     {
         var result = await _mediator.Send(command);
@@ -33,6 +38,7 @@ public class AuthorController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<ActionResult> Put(Guid id, [FromBody] UpdateAuthorCommand command)
     {
         await _mediator.Send(command);
@@ -40,6 +46,7 @@ public class AuthorController : ControllerBase
     }
 
     [HttpDelete("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<ActionResult> Delete(Guid id)
     {
         var command = new DeleteAuthorCommand(id);
