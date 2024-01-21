@@ -9,7 +9,7 @@ public class SignupCommandValidator : AbstractValidator<SignupCommand>
             .WithMessage("Name cannot be empty");
         
         RuleFor(command => command.Name)
-            .MaximumLength(80)
+            .MaximumLength(User.NameMaxLength)
             .WithMessage("Name has to be less than 80 characters");
         
         RuleFor(command => command.Password)
@@ -17,7 +17,7 @@ public class SignupCommandValidator : AbstractValidator<SignupCommand>
             .WithMessage("Password cannot be empty");
         
         RuleFor(command => command.Password)
-            .MaximumLength(256)
+            .MaximumLength(User.PasswordMaxLength)
             .WithMessage("Password has to be less than 256 characters");
         
         RuleFor(command => command.Email)
