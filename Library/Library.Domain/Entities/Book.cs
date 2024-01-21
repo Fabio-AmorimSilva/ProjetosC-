@@ -2,6 +2,9 @@
 
 public class Book : BaseEntity
 {
+    public const int TitleMaxLength = 80;
+    public const int PagesMinLength = 0;
+    
     public string Title { get; private set; }
     public DateTime Year { get; private set; }
     public int Pages { get; private set; }
@@ -23,8 +26,8 @@ public class Book : BaseEntity
         BookGenre genre
     ) 
     {
-        Guard.HasSizeLessThan(title, 80, nameof(Title));
-        Guard.IsGreaterThan(pages, 0, nameof(pages));
+        Guard.HasSizeLessThan(title, TitleMaxLength, nameof(Title));
+        Guard.IsGreaterThan(pages, PagesMinLength, nameof(pages));
         Guard.IsDefault(authorId, nameof(authorId));
         Guard.IsDefault(libraryId, nameof(libraryId));
         
@@ -49,10 +52,10 @@ public class Book : BaseEntity
         if(string.IsNullOrEmpty(title))
             return Result.FailureResult("Cannot be empty");
         
-        if(title.Length > 80)
+        if(title.Length > TitleMaxLength)
             return Result.FailureResult("Name must have less than 80 characters");
         
-        if(pages <= 0)
+        if(pages <= PagesMinLength)
             return Result.FailureResult("Pages must be greater than 0");
         
         if(authorId == default)

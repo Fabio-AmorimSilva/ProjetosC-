@@ -2,6 +2,10 @@
 
 public class User : BaseEntity
 {
+    public const int NameMaxLength = 80;
+    public const int EmailMaxLength = 80;
+    public const int PasswordMaxLength = 256;
+    
     public string Name { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
@@ -13,8 +17,8 @@ public class User : BaseEntity
         Role role
     )
     {
-        Guard.HasSizeLessThan(name, 80, nameof(name));
-        Guard.HasSizeLessThan(email, 80, nameof(email));
+        Guard.HasSizeLessThan(name, NameMaxLength, nameof(name));
+        Guard.HasSizeLessThan(email, EmailMaxLength, nameof(email));
         
         Id = Guid.NewGuid();
         Name = name;
