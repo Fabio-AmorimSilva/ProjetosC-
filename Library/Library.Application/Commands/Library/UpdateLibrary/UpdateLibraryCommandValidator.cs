@@ -9,11 +9,11 @@ public class UpdateLibraryCommandValidator : AbstractValidator<UpdateLibraryComm
             .WithMessage("Id should not be empty");
         
         RuleFor(command => command.Name)
-            .MaximumLength(80)
+            .MaximumLength(LibraryUnit.LibraryNameMaxLength)
             .WithMessage("Name should have less than 80 characters");
         
         RuleFor(command => command.City)
-            .MaximumLength(80)
-            .WithMessage("Id should not be empty");
+            .MaximumLength(LibraryUnit.CityNameMaxLength)
+            .WithMessage("Name should have less than 80 characters");
     }
 }

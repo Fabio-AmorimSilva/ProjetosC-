@@ -9,11 +9,11 @@ public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
             .WithMessage("Id should not be empty");
         
         RuleFor(command => command.Title)
-            .MaximumLength(80)
+            .MaximumLength(Book.TitleMaxLength)
             .WithMessage("Book title be less than 80 characters");
 
         RuleFor(command => command.Pages)
-            .Must(p => p > 0)
+            .Must(p => p > Book.PagesMinLength)
             .WithMessage("Pages should not be 0");
     }
 }

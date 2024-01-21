@@ -9,7 +9,7 @@ public class CreateLibraryCommandValidator : AbstractValidator<CreateLibraryComm
             .WithMessage("Name should not be empty");
         
         RuleFor(command => command.Name)
-            .MaximumLength(80)
+            .MaximumLength(LibraryUnit.LibraryNameMaxLength)
             .WithMessage("Name have less than 80 characters");
         
         RuleFor(command => command.City)
@@ -17,7 +17,7 @@ public class CreateLibraryCommandValidator : AbstractValidator<CreateLibraryComm
             .WithMessage("City should not be empty");
         
         RuleFor(command => command.City)
-            .MaximumLength(80)
+            .MaximumLength(LibraryUnit.CityNameMaxLength)
             .WithMessage("City have less than 80 characters");
     }
 }
