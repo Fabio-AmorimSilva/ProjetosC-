@@ -2,8 +2,8 @@
 
 public class Author : BaseEntity
 {
-    public const int AuthorNameMaxLength = 80;
-    public const int CountryNameMaxLength = 80;
+    public const int NameMaxLength = 80;
+    public const int CountryMaxLength = 80;
     
     public string Name { get; set; }
     public string Country { get; set; }
@@ -16,8 +16,8 @@ public class Author : BaseEntity
         DateTime birth
     )
     {
-        Guard.HasSizeLessThan(name, AuthorNameMaxLength, nameof(name));
-        Guard.HasSizeLessThan(country, CountryNameMaxLength, nameof(country));
+        Guard.HasSizeLessThan(name, NameMaxLength, nameof(name));
+        Guard.HasSizeLessThan(country, CountryMaxLength, nameof(country));
         
         Id = Guid.NewGuid();
         Name = name;
@@ -34,13 +34,13 @@ public class Author : BaseEntity
         if(string.IsNullOrEmpty(name))
             return Result.FailureResult("Cannot be empty");
         
-        if(name.Length > AuthorNameMaxLength)
+        if(name.Length > NameMaxLength)
             return Result.FailureResult("Name must have less than 80 characters");
         
         if(string.IsNullOrEmpty(country))
             return Result.FailureResult("Cannot be empty");
         
-        if(name.Length > CountryNameMaxLength)
+        if(name.Length > CountryMaxLength)
             return Result.FailureResult("Country must have less than 80 characters");
         
         Name = name;

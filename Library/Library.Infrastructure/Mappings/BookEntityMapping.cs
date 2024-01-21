@@ -12,7 +12,7 @@ public class BookEntityMapping
         
         builder
             .Property(b => b.Title)
-            .HasMaxLength(80)
+            .HasMaxLength(Book.TitleMaxLength)
             .IsRequired();
 
         builder
