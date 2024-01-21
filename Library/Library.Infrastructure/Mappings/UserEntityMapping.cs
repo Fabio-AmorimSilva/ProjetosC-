@@ -12,17 +12,17 @@ public class UserEntityMapping
         
         builder
             .Property(u => u.Name)
-            .HasMaxLength(80)
+            .HasMaxLength(User.NameMaxLength)
             .IsRequired();
 
         builder
             .Property(u => u.Email)
-            .HasMaxLength(80)
+            .HasMaxLength(User.EmailMaxLength)
             .IsRequired();
 
         builder
             .Property(u => u.Password)
-            .HasMaxLength(256)
+            .HasMaxLength(User.PasswordMaxLength)
             .IsRequired();
 
         builder

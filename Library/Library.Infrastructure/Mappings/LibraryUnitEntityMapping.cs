@@ -12,12 +12,12 @@ public class LibraryUnitEntityMapping
         
         builder
             .Property(lu => lu.Name)
-            .HasMaxLength(80)
+            .HasMaxLength(LibraryUnit.NameMaxLength)
             .IsRequired();
 
         builder
             .Property(lu => lu.City)
-            .HasMaxLength(80)
+            .HasMaxLength(LibraryUnit.CityMaxLength)
             .IsRequired();
 
         builder

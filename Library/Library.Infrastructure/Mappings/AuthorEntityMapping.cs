@@ -9,12 +9,12 @@ public class AuthorEntityMapping
         
         builder
             .Property(a => a.Name)
-            .HasMaxLength(80)
+            .HasMaxLength(Author.NameMaxLength)
             .IsRequired();
 
         builder
             .Property(a => a.Country)
-            .HasMaxLength(80)
+            .HasMaxLength(Author.CountryMaxLength)
             .IsRequired();
 
         builder
