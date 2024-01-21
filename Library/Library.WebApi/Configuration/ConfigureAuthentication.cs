@@ -2,7 +2,7 @@
 
 public static class ConfigureAuthentication
 {
-    public static IServiceCollection AuthenticationConfig(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddJwtConfig(this IServiceCollection services, IConfiguration configuration)
     {
         var settings = configuration.GetSection("Settings");
         services.Configure<Settings>(settings);
