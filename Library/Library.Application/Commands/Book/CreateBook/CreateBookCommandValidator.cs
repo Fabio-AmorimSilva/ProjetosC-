@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
 {
@@ -6,30 +8,30 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
     {
         RuleFor(command => command.Title)
             .NotEmpty()
-            .WithMessage("Book title should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateBookCommand.Title)));
         
         RuleFor(command => command.Title)
             .MaximumLength(Book.TitleMaxLength)
-            .WithMessage("Book title be less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(CreateBookCommand.Title), Book.TitleMaxLength));
 
         RuleFor(command => command.Pages)
             .Must(p => p > Book.PagesMinLength)
-            .WithMessage("Pages should not be 0");
+            .WithMessage(Messages.HasToBeGreaterThan(nameof(CreateBookCommand.Pages), Book.PagesMinLength));
         
         RuleFor(command => command.Year)
             .NotEmpty()
-            .WithMessage("Year should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateBookCommand.Year)));
         
         RuleFor(command => command.AuthorId)
             .NotEmpty()
-            .WithMessage("Author should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateBookCommand.AuthorId)));
         
         RuleFor(command => command.LibraryId)
             .NotEmpty()
-            .WithMessage("Library should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateBookCommand.LibraryId)));
         
         RuleFor(command => command.Genre)
             .NotEmpty()
-            .WithMessage("Genre should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateBookCommand.Genre)));
     }
 }

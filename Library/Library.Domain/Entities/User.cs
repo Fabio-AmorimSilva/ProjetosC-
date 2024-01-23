@@ -1,4 +1,6 @@
-﻿namespace Library.Domain.Entities;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Domain.Entities;
 
 public class User : BaseEntity
 {
@@ -32,10 +34,13 @@ public class User : BaseEntity
     public Result UpdateUser(string name, string email)
     {
         if (string.IsNullOrEmpty(name))
-            return Result.FailureResult("Name cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(name)));
+
+        if (name.Length > NameMaxLength)
+            return Result.FailureResult(Messages.HasMaxLength(nameof(name), NameMaxLength));
         
         if (string.IsNullOrEmpty(email))
-            return Result.FailureResult("Email cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(email)));
 
         Name = name;
         Email = email;
@@ -49,8 +54,11 @@ public class User : BaseEntity
     public Result UpdatePassword(string password)
     {
         if (string.IsNullOrEmpty(password))
-            return Result.FailureResult("Password cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(password)));
 
+        if (password.Length > PasswordMaxLength)
+            return Result.FailureResult(Messages.HasMaxLength(nameof(password), PasswordMaxLength));
+        
         Password = password;
 
         return Result.SuccessResult();

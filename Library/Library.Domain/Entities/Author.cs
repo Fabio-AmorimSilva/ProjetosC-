@@ -1,4 +1,6 @@
-﻿namespace Library.Domain.Entities;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Domain.Entities;
 
 public class Author : BaseEntity
 {
@@ -32,16 +34,16 @@ public class Author : BaseEntity
     )
     {
         if(string.IsNullOrEmpty(name))
-            return Result.FailureResult("Cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(name)));
         
         if(name.Length > NameMaxLength)
-            return Result.FailureResult("Name must have less than 80 characters");
-        
-        if(string.IsNullOrEmpty(country))
-            return Result.FailureResult("Cannot be empty");
+            return Result.FailureResult(Messages.HasMaxLength(nameof(name), NameMaxLength));
+
+        if (string.IsNullOrEmpty(country))
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(country)));
         
         if(name.Length > CountryMaxLength)
-            return Result.FailureResult("Country must have less than 80 characters");
+            return Result.FailureResult(Messages.HasMaxLength(nameof(country),CountryMaxLength));
         
         Name = name;
         Country = country;

@@ -1,4 +1,6 @@
-﻿namespace Library.Domain.Entities;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Domain.Entities;
 
 public class Book : BaseEntity
 {
@@ -50,19 +52,19 @@ public class Book : BaseEntity
     )
     {
         if(string.IsNullOrEmpty(title))
-            return Result.FailureResult("Cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(title)));
         
         if(title.Length > TitleMaxLength)
-            return Result.FailureResult("Name must have less than 80 characters");
+            return Result.FailureResult(Messages.HasMaxLength(nameof(title), TitleMaxLength));
         
         if(pages <= PagesMinLength)
-            return Result.FailureResult("Pages must be greater than 0");
+            return Result.FailureResult(Messages.HasToBeGreaterThan(nameof(pages), PagesMinLength));
         
         if(authorId == default)
-            return Result.FailureResult("Author cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(authorId)));
         
         if(libraryId == default)
-            return Result.FailureResult("Library cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(libraryId)));
         
         Title = title;
         Year = year;
@@ -77,7 +79,7 @@ public class Book : BaseEntity
     public Result UpdateAuthor(Guid authorId)
     {
         if (authorId == default)
-            return Result.FailureResult("Id cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(authorId)));
         
         AuthorId = authorId;
         
@@ -87,7 +89,7 @@ public class Book : BaseEntity
     public Result UpdateLibrary(Guid libraryId)
     {
         if(libraryId == default)
-            return Result.FailureResult("Id cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(libraryId)));
         
         LibraryId = libraryId;
         
@@ -97,7 +99,7 @@ public class Book : BaseEntity
     public Result UpdateQuantity(int quantity)
     {
         if (quantity < 0)
-            return Result.FailureResult("Quantity must be greater than 0");
+            return Result.FailureResult(Messages.HasToBeGreaterThan(nameof(quantity), PagesMinLength));
         
         Quantity = quantity;
 

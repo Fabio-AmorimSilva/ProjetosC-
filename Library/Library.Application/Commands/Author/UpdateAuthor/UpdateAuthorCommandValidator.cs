@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorCommand>
 {
@@ -6,26 +8,26 @@ public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorComman
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage("");
+            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateAuthorCommand.Id)));
         
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage("");
+            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateAuthorCommand.Name)));
         
         RuleFor(command => command.Name)
             .MaximumLength(Author.NameMaxLength)
-            .WithMessage("");
+            .WithMessage(Messages.HasMaxLength(nameof(UpdateAuthorCommand.Country), Author.NameMaxLength));
         
         RuleFor(command => command.Country)
             .NotEmpty()
-            .WithMessage("");
+            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateAuthorCommand.Country)));
         
         RuleFor(command => command.Country)
             .MaximumLength(Author.CountryMaxLength)
-            .WithMessage("");
+            .WithMessage(Messages.HasMaxLength(nameof(UpdateAuthorCommand.Country), Author.CountryMaxLength));
 
         RuleFor(command => command.Birth)
             .NotEmpty()
-            .WithMessage("");
+            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateAuthorCommand.Birth)));
     }
 }

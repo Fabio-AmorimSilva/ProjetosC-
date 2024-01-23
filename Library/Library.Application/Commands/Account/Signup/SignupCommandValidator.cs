@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class SignupCommandValidator : AbstractValidator<SignupCommand>
 {
@@ -6,26 +8,26 @@ public class SignupCommandValidator : AbstractValidator<SignupCommand>
     {
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage("Name cannot be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Name)));
         
         RuleFor(command => command.Name)
             .MaximumLength(User.NameMaxLength)
-            .WithMessage("Name has to be less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(SignupCommand.Name), User.NameMaxLength));
         
         RuleFor(command => command.Password)
             .NotEmpty()
-            .WithMessage("Password cannot be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Password)));
         
         RuleFor(command => command.Password)
             .MaximumLength(User.PasswordMaxLength)
-            .WithMessage("Password has to be less than 256 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(SignupCommand.Password), User.PasswordMaxLength));
         
         RuleFor(command => command.Email)
             .NotEmpty()
-            .WithMessage("Email cannot be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Name)));
         
         RuleFor(command => command.Role)
             .NotEmpty()
-            .WithMessage("Role cannot be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Role)));
     }
 }

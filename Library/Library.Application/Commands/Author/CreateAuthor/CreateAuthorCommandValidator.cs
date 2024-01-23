@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class CreateAuthorCommandValidator : AbstractValidator<CreateAuthorCommand>
 {
@@ -6,22 +8,22 @@ public class CreateAuthorCommandValidator : AbstractValidator<CreateAuthorComman
     {
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage("Name field is required");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateAuthorCommand.Name)));
         
         RuleFor(command => command.Name)
             .MaximumLength(Author.NameMaxLength)
-            .WithMessage("Name must be less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(CreateAuthorCommand.Name), Author.NameMaxLength));
         
         RuleFor(command => command.Country)
             .NotEmpty()
-            .WithMessage("Country is required");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateAuthorCommand.Country)));
         
         RuleFor(command => command.Country)
             .MaximumLength(Author.CountryMaxLength)
-            .WithMessage("Country must be less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(CreateAuthorCommand.Country), Author.CountryMaxLength));
 
         RuleFor(command => command.Birth)
             .NotEmpty()
-            .WithMessage("Birth Date is required");
+            .WithMessage(Messages.CannotBeEmpty(nameof(CreateAuthorCommand.Birth)));
     }
 }

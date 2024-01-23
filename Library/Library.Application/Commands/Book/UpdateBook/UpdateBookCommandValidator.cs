@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
 {
@@ -6,14 +8,14 @@ public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage("Id should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateBookCommand.Title)));
         
         RuleFor(command => command.Title)
             .MaximumLength(Book.TitleMaxLength)
-            .WithMessage("Book title be less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(CreateBookCommand.Title), Book.TitleMaxLength));
 
         RuleFor(command => command.Pages)
             .Must(p => p > Book.PagesMinLength)
-            .WithMessage("Pages should not be 0");
+            .WithMessage(Messages.HasToBeGreaterThan(nameof(CreateBookCommand.Pages), Book.PagesMinLength));
     }
 }

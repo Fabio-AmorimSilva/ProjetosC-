@@ -1,4 +1,6 @@
-﻿namespace Library.Domain.Entities;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Domain.Entities;
 
 public class LibraryUnit : BaseEntity
 {
@@ -25,16 +27,16 @@ public class LibraryUnit : BaseEntity
     public Result UpdateLibrary(string name, string city)
     {
         if(string.IsNullOrEmpty(name))
-            return Result.FailureResult("Name cannot be null");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(name)));
         
         if(name.Length > NameMaxLength)
-            return Result.FailureResult("Name cannot have more than 80 characters");
+            return Result.FailureResult(Messages.HasMaxLength(nameof(name), NameMaxLength));
         
         if(string.IsNullOrEmpty(city))
-            return Result.FailureResult("City cannot be empty");
+            return Result.FailureResult(Messages.CannotBeEmpty(nameof(city)));
         
         if(city.Length > CityMaxLength)
-            return Result.FailureResult("City cannot have more than 80 characters");
+            return Result.FailureResult(Messages.HasMaxLength(nameof(city), CityMaxLength));
         
         Name = name;
         City = city;

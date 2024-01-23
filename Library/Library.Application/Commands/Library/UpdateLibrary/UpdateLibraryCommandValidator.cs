@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class UpdateLibraryCommandValidator : AbstractValidator<UpdateLibraryCommand>
 {
@@ -6,14 +8,14 @@ public class UpdateLibraryCommandValidator : AbstractValidator<UpdateLibraryComm
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage("Id should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateLibraryCommand.Id)));
         
         RuleFor(command => command.Name)
             .MaximumLength(LibraryUnit.NameMaxLength)
-            .WithMessage("Name should have less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(UpdateLibraryCommand.Name), LibraryUnit.NameMaxLength));
         
         RuleFor(command => command.City)
             .MaximumLength(LibraryUnit.CityMaxLength)
-            .WithMessage("Name should have less than 80 characters");
+            .WithMessage(Messages.HasMaxLength(nameof(UpdateLibraryCommand.City), LibraryUnit.CityMaxLength));
     }
 }

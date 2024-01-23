@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
 {
@@ -6,6 +8,6 @@ public class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage("Id should not be empty");
+            .WithMessage(Messages.CannotBeEmpty(nameof(DeleteBookCommand.Id)));
     }
 }
