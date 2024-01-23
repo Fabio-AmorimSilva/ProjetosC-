@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class DeleteLibraryCommandHandler : IRequestHandler<DeleteLibraryCommand, ResultViewModel<Unit>>
 {
@@ -13,7 +15,7 @@ public class DeleteLibraryCommandHandler : IRequestHandler<DeleteLibraryCommand,
             .FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
 
         if (library is null)
-            return new ResultViewModel<Unit>("Library not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<LibraryUnit>());
 
         _context.Libraries.Remove(library);
         await _context.SaveChangesAsync(cancellationToken);

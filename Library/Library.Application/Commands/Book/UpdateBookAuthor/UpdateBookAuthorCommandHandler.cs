@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class UpdateBookAuthorCommandHandler : IRequestHandler<UpdateBookAuthorCommand, ResultViewModel<Unit>>
 {
@@ -13,13 +15,13 @@ public class UpdateBookAuthorCommandHandler : IRequestHandler<UpdateBookAuthorCo
             .AnyAsync(a => a.Id == request.AuthorId, cancellationToken);
 
         if (authorExists is false)
-            return new ResultViewModel<Unit>("Author not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<Author>());
 
         var book = await _context.Books
             .FirstOrDefaultAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>("Book not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<Book>());
         
         var result = book.UpdateAuthor(request.AuthorId);
 

@@ -15,7 +15,8 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, Resul
             pages: request.Pages,
             request.AuthorId,
             request.LibraryId,
-            genre: request.Genre);
+            genre: request.Genre
+        );
 
         await _context.Books.AddAsync(book, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);

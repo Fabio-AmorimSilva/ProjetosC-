@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class UpdateLibraryCommandHandler : IRequestHandler<UpdateLibraryCommand, ResultViewModel<Unit>>
 {
@@ -11,7 +13,7 @@ public class UpdateLibraryCommandHandler : IRequestHandler<UpdateLibraryCommand,
     {
         var library = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
         if (library is null)
-            return new ResultViewModel<Unit>("Book not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<LibraryUnit>());
 
         var result = library.UpdateLibrary(
             name: request.Name,

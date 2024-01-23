@@ -13,4 +13,7 @@ public static class Messages
 
     public static string HasToBeGreaterThan(string field, int length)
         => $"{field} length has to be greater than {length}.";
+
+    public static string NotFound<T>()
+        => $"{typeof(T)} not found";
 }

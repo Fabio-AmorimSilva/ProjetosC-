@@ -1,4 +1,4 @@
-﻿using Library.Domain.Entities.ErrorHandling;
+﻿using Library.Domain.ErrorMessages;
 
 namespace Library.Application.Commands;
 
@@ -13,7 +13,7 @@ public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, R
     {
         var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
         if (author is null)
-            return new ResultViewModel<Unit>("Author not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<Author>());
 
         _context.Authors.Remove(author);
         await _context.SaveChangesAsync(cancellationToken);

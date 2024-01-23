@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, ResultViewModel<Unit>>
 {
@@ -14,7 +16,7 @@ public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, Resul
             .AnyAsync(b => b.Id == request.Id, cancellationToken);
 
         if (!bookExists)
-            return new ResultViewModel<Unit>("Book not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<Book>());
 
         _context.Books.Remove(new Book{ Id = request.Id });
         await _context.SaveChangesAsync(cancellationToken);

@@ -1,4 +1,5 @@
 ﻿using Library.Domain.Entities.ErrorHandling;
+using Library.Domain.ErrorMessages;
 
 namespace Library.Application.Commands;
 
@@ -13,7 +14,7 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, R
     {
         var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
         if (author is null)
-            return new ResultViewModel<Unit>("Author not found");
+            return new ResultViewModel<Unit>(Messages.NotFound<Author>());
         
         var result = author.UpdateAuthor(
             name: request.Name,
