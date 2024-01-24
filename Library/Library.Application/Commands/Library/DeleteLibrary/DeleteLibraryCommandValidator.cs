@@ -8,6 +8,6 @@ public class DeleteLibraryCommandValidator : AbstractValidator<DeleteLibraryComm
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(DeleteLibraryCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(DeleteLibraryCommand.Id)));
     }
 }

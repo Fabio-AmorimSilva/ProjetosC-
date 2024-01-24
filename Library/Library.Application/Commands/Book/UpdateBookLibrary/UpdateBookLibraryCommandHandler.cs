@@ -15,13 +15,13 @@ public class UpdateBookLibraryCommandHandler : IRequestHandler<UpdateBookLibrary
             .AnyAsync(lu => lu.Id == request.LibraryId, cancellationToken);
 
         if (libraryExists is false)
-            return new ResultViewModel<Unit>(Messages.NotFound<LibraryUnit>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<LibraryUnit>());
 
         var book = await _context.Books
             .FirstOrDefaultAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>(Messages.NotFound<Book>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Book>());
         
         var result = book.UpdateLibrary(request.LibraryId);
 

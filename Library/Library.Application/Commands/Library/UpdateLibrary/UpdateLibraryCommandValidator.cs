@@ -8,14 +8,14 @@ public class UpdateLibraryCommandValidator : AbstractValidator<UpdateLibraryComm
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(UpdateLibraryCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateLibraryCommand.Id)));
         
         RuleFor(command => command.Name)
             .MaximumLength(LibraryUnit.NameMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(UpdateLibraryCommand.Name), LibraryUnit.NameMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(UpdateLibraryCommand.Name), LibraryUnit.NameMaxLength));
         
         RuleFor(command => command.City)
             .MaximumLength(LibraryUnit.CityMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(UpdateLibraryCommand.City), LibraryUnit.CityMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(UpdateLibraryCommand.City), LibraryUnit.CityMaxLength));
     }
 }

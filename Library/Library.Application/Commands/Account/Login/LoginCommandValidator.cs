@@ -8,10 +8,10 @@ public class LoginCommandValidator : AbstractValidator<LoginCommand>
     {
         RuleFor(command => command.Username)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(LoginCommand.Username)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(LoginCommand.Username)));
         
         RuleFor(command => command.Password)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(LoginCommand.Password)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(LoginCommand.Password)));
     }
 }

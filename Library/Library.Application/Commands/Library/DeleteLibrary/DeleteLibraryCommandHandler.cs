@@ -15,7 +15,7 @@ public class DeleteLibraryCommandHandler : IRequestHandler<DeleteLibraryCommand,
             .FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
 
         if (library is null)
-            return new ResultViewModel<Unit>(Messages.NotFound<LibraryUnit>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<LibraryUnit>());
 
         _context.Libraries.Remove(library);
         await _context.SaveChangesAsync(cancellationToken);

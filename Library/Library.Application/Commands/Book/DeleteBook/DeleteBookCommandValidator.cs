@@ -8,6 +8,6 @@ public class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
     {
         RuleFor(command => command.Id)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(DeleteBookCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(DeleteBookCommand.Id)));
     }
 }

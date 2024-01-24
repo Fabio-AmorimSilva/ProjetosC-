@@ -15,13 +15,13 @@ public class UpdateBookAuthorCommandHandler : IRequestHandler<UpdateBookAuthorCo
             .AnyAsync(a => a.Id == request.AuthorId, cancellationToken);
 
         if (authorExists is false)
-            return new ResultViewModel<Unit>(Messages.NotFound<Author>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Author>());
 
         var book = await _context.Books
             .FirstOrDefaultAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>(Messages.NotFound<Book>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Book>());
         
         var result = book.UpdateAuthor(request.AuthorId);
 

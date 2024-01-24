@@ -15,7 +15,7 @@ public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Resul
             .FirstOrDefaultAsync(b => b.Id == request.Id, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>(Messages.NotFound<User>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<User>());
         
         var result = book.UpdateBook(
             title: request.Title, 

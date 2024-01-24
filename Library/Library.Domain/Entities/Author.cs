@@ -34,16 +34,16 @@ public class Author : BaseEntity
     )
     {
         if(string.IsNullOrEmpty(name))
-            return Result.FailureResult(Messages.CannotBeEmpty(nameof(name)));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(name)));
         
         if(name.Length > NameMaxLength)
-            return Result.FailureResult(Messages.HasMaxLength(nameof(name), NameMaxLength));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
 
         if (string.IsNullOrEmpty(country))
-            return Result.FailureResult(Messages.CannotBeEmpty(nameof(country)));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(country)));
         
         if(name.Length > CountryMaxLength)
-            return Result.FailureResult(Messages.HasMaxLength(nameof(country),CountryMaxLength));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(country),CountryMaxLength));
         
         Name = name;
         Country = country;

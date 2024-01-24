@@ -3,17 +3,17 @@
 public class Result
 {
     public bool Success { get; }
-    public string Message { get; }
+    public string? Message { get; }
 
-    private Result(bool success, string message)
+    private Result(bool success, string? message = null)
     {
         Success = success;
         Message = message;
     }
 
     public static Result SuccessResult()
-        => new(true, string.Empty);
+        => new(true);
 
-    public static Result FailureResult(string message = "")
+    public static Result FailureResult(string message)
         => new(false, message);
 }

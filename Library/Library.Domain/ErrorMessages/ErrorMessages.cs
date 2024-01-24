@@ -1,6 +1,6 @@
 ﻿namespace Library.Domain.ErrorMessages;
 
-public static class Messages
+public static class ErrorMessages
 {
     public static string CannotBeEmpty(string field)
         => $"{field} cannot be empty.";

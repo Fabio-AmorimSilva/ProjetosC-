@@ -8,18 +8,18 @@ public class CreateLibraryCommandValidator : AbstractValidator<CreateLibraryComm
     {
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(CreateLibraryCommand.Name)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateLibraryCommand.Name)));
         
         RuleFor(command => command.Name)
             .MaximumLength(LibraryUnit.NameMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(CreateLibraryCommand.Name), LibraryUnit.NameMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateLibraryCommand.Name), LibraryUnit.NameMaxLength));
         
         RuleFor(command => command.City)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(CreateLibraryCommand.City)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateLibraryCommand.City)));
         
         RuleFor(command => command.City)
             .MaximumLength(LibraryUnit.CityMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(CreateLibraryCommand.City), LibraryUnit.CityMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateLibraryCommand.City), LibraryUnit.CityMaxLength));
     }
 }

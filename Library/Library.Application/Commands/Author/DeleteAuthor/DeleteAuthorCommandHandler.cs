@@ -13,7 +13,7 @@ public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, R
     {
         var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
         if (author is null)
-            return new ResultViewModel<Unit>(Messages.NotFound<Author>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Author>());
 
         _context.Authors.Remove(author);
         await _context.SaveChangesAsync(cancellationToken);

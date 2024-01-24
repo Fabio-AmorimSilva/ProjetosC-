@@ -27,16 +27,16 @@ public class LibraryUnit : BaseEntity
     public Result UpdateLibrary(string name, string city)
     {
         if(string.IsNullOrEmpty(name))
-            return Result.FailureResult(Messages.CannotBeEmpty(nameof(name)));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(name)));
         
         if(name.Length > NameMaxLength)
-            return Result.FailureResult(Messages.HasMaxLength(nameof(name), NameMaxLength));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
         
         if(string.IsNullOrEmpty(city))
-            return Result.FailureResult(Messages.CannotBeEmpty(nameof(city)));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(city)));
         
         if(city.Length > CityMaxLength)
-            return Result.FailureResult(Messages.HasMaxLength(nameof(city), CityMaxLength));
+            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(city), CityMaxLength));
         
         Name = name;
         City = city;

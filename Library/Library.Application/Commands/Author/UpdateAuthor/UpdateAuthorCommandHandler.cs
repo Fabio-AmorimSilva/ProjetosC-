@@ -14,7 +14,7 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, R
     {
         var author = await _context.Authors.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
         if (author is null)
-            return new ResultViewModel<Unit>(Messages.NotFound<Author>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Author>());
         
         var result = author.UpdateAuthor(
             name: request.Name,

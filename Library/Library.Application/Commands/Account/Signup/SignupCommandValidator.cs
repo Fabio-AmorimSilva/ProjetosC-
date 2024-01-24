@@ -8,26 +8,26 @@ public class SignupCommandValidator : AbstractValidator<SignupCommand>
     {
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Name)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(SignupCommand.Name)));
         
         RuleFor(command => command.Name)
             .MaximumLength(User.NameMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(SignupCommand.Name), User.NameMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(SignupCommand.Name), User.NameMaxLength));
         
         RuleFor(command => command.Password)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Password)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(SignupCommand.Password)));
         
         RuleFor(command => command.Password)
             .MaximumLength(User.PasswordMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(SignupCommand.Password), User.PasswordMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(SignupCommand.Password), User.PasswordMaxLength));
         
         RuleFor(command => command.Email)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Name)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(SignupCommand.Name)));
         
         RuleFor(command => command.Role)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(SignupCommand.Role)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(SignupCommand.Role)));
     }
 }

@@ -8,22 +8,22 @@ public class CreateAuthorCommandValidator : AbstractValidator<CreateAuthorComman
     {
         RuleFor(command => command.Name)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(CreateAuthorCommand.Name)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateAuthorCommand.Name)));
         
         RuleFor(command => command.Name)
             .MaximumLength(Author.NameMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(CreateAuthorCommand.Name), Author.NameMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateAuthorCommand.Name), Author.NameMaxLength));
         
         RuleFor(command => command.Country)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(CreateAuthorCommand.Country)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateAuthorCommand.Country)));
         
         RuleFor(command => command.Country)
             .MaximumLength(Author.CountryMaxLength)
-            .WithMessage(Messages.HasMaxLength(nameof(CreateAuthorCommand.Country), Author.CountryMaxLength));
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateAuthorCommand.Country), Author.CountryMaxLength));
 
         RuleFor(command => command.Birth)
             .NotEmpty()
-            .WithMessage(Messages.CannotBeEmpty(nameof(CreateAuthorCommand.Birth)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateAuthorCommand.Birth)));
     }
 }
