@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
 {
@@ -20,7 +22,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
             .FirstOrDefaultAsync(u => u.Email == request.Username, cancellationToken);
 
         if (user is null)
-            return "User not found";
+            return ErrorMessages.NotFound<User>();
 
         var verifyPassword = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
 

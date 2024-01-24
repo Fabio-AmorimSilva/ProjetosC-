@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class SignupCommandHandler : IRequestHandler<SignupCommand, ResultViewModel<Unit>>
 {
@@ -14,7 +16,7 @@ public class SignupCommandHandler : IRequestHandler<SignupCommand, ResultViewMod
             .AnyAsync(u => u.Email == request.Email, cancellationToken);
 
         if(userExists)
-            return new ResultViewModel<Unit>("Email already in use.");
+            return new ResultViewModel<Unit>(ErrorMessages.AlreadyExists(nameof(LoginCommand.Username)));
         
         var user = new User(
             name: request.Name,

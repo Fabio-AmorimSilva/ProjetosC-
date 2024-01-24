@@ -16,4 +16,7 @@ public static class ErrorMessages
 
     public static string NotFound<T>()
         => $"{typeof(T)} not found";
+
+    public static string AlreadyExists(string field)
+        => $"{field} already exists.";
 }

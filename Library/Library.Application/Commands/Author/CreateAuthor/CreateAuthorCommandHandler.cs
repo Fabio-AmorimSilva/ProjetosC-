@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿using Library.Domain.ErrorMessages;
+
+namespace Library.Application.Commands;
 
 public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, ResultViewModel<Unit>>
 {
@@ -20,7 +22,7 @@ public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, R
             .AnyAsync(cancellationToken);
 
         if (authorNameAlreadyExists)
-            return new ResultViewModel<Unit>("Author name already exists");
+            return new ResultViewModel<Unit>(ErrorMessages.AlreadyExists(nameof(CreateAuthorCommand.Name)));
 
         await _context.Authors.AddAsync(author, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
