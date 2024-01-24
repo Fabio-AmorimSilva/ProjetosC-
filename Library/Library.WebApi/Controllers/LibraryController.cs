@@ -12,6 +12,7 @@ public class LibraryController : ControllerBase
         =>  _mediator = mediator;
     
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get()
     {
         var result = await _mediator.Send(new ListLibrariesQuery());
@@ -19,6 +20,8 @@ public class LibraryController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
         var result = await _mediator.Send(new GetLibraryQuery(id));
@@ -26,6 +29,8 @@ public class LibraryController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<IActionResult> Post([FromBody] CreateLibraryCommand command)
     {
         var result = await _mediator.Send(command);
@@ -33,6 +38,8 @@ public class LibraryController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Put(Guid id, [FromBody] UpdateLibraryCommand command)
     {
         await _mediator.Send(command);
@@ -40,6 +47,8 @@ public class LibraryController : ControllerBase
     }
 
     [HttpDelete("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
         var command = new DeleteLibraryCommand(id);
