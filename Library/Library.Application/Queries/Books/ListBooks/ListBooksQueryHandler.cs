@@ -10,9 +10,6 @@ public class ListBooksQueryHandler : IRequestHandler<ListBooksQuery, ResultViewM
     public async Task<ResultViewModel<IEnumerable<ListBookViewModel>>> Handle(ListBooksQuery request, CancellationToken cancellationToken)
     {
         var books = await _context.Books
-            .Include(b => b.Author)
-            .ThenInclude(a => a.Books)
-            .Include(b => b.Library)
             .AsNoTrackingWithIdentityResolution()
             .Select(b => new ListBookViewModel
             {
