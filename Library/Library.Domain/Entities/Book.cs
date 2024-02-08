@@ -1,4 +1,4 @@
-﻿using Library.Domain.ErrorMessages;
+﻿using Library.Domain.Messages;
 
 namespace Library.Domain.Entities;
 
@@ -33,7 +33,6 @@ public class Book : BaseEntity
         Guard.IsDefault(authorId, nameof(authorId));
         Guard.IsDefault(libraryId, nameof(libraryId));
         
-        Id = Guid.NewGuid();
         Title = title;
         Year = year;
         Pages = pages;
@@ -52,19 +51,19 @@ public class Book : BaseEntity
     )
     {
         if(string.IsNullOrEmpty(title))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(title)));
+            return Result.FailureResult(Messages.ErrorMessages.CannotBeEmpty(nameof(title)));
         
         if(title.Length > TitleMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(title), TitleMaxLength));
+            return Result.FailureResult(Messages.ErrorMessages.HasMaxLength(nameof(title), TitleMaxLength));
         
         if(pages <= PagesMinLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasToBeGreaterThan(nameof(pages), PagesMinLength));
+            return Result.FailureResult(Messages.ErrorMessages.HasToBeGreaterThan(nameof(pages), PagesMinLength));
         
         if(authorId == default)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(authorId)));
+            return Result.FailureResult(Messages.ErrorMessages.CannotBeEmpty(nameof(authorId)));
         
         if(libraryId == default)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(libraryId)));
+            return Result.FailureResult(Messages.ErrorMessages.CannotBeEmpty(nameof(libraryId)));
         
         Title = title;
         Year = year;
@@ -79,7 +78,7 @@ public class Book : BaseEntity
     public Result UpdateAuthor(Guid authorId)
     {
         if (authorId == default)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(authorId)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(authorId)));
         
         AuthorId = authorId;
         
@@ -89,7 +88,7 @@ public class Book : BaseEntity
     public Result UpdateLibrary(Guid libraryId)
     {
         if(libraryId == default)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(libraryId)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(libraryId)));
         
         LibraryId = libraryId;
         
@@ -99,7 +98,7 @@ public class Book : BaseEntity
     public Result UpdateQuantity(int quantity)
     {
         if (quantity < 0)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasToBeGreaterThan(nameof(quantity), PagesMinLength));
+            return Result.FailureResult(ErrorMessages.HasToBeGreaterThan(nameof(quantity), PagesMinLength));
         
         Quantity = quantity;
 

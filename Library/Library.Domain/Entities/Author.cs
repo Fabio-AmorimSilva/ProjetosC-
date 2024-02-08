@@ -1,4 +1,4 @@
-﻿using Library.Domain.ErrorMessages;
+﻿using Library.Domain.Messages;
 
 namespace Library.Domain.Entities;
 
@@ -21,7 +21,6 @@ public class Author : BaseEntity
         Guard.HasSizeLessThan(name, NameMaxLength, nameof(name));
         Guard.HasSizeLessThan(country, CountryMaxLength, nameof(country));
         
-        Id = Guid.NewGuid();
         Name = name;
         Country = country;
         Birth = birth;
@@ -34,16 +33,16 @@ public class Author : BaseEntity
     )
     {
         if(string.IsNullOrEmpty(name))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(name)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(name)));
         
         if(name.Length > NameMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
 
         if (string.IsNullOrEmpty(country))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(country)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(country)));
         
         if(name.Length > CountryMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(country),CountryMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(country),CountryMaxLength));
         
         Name = name;
         Country = country;

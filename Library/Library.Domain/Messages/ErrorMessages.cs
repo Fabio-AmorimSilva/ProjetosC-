@@ -1,4 +1,4 @@
-﻿namespace Library.Domain.ErrorMessages;
+﻿namespace Library.Domain.Messages;
 
 public static class ErrorMessages
 {

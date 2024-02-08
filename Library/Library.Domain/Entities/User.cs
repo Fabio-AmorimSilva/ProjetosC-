@@ -1,4 +1,4 @@
-﻿using Library.Domain.ErrorMessages;
+﻿using Library.Domain.Messages;
 
 namespace Library.Domain.Entities;
 
@@ -22,7 +22,6 @@ public class User : BaseEntity
         Guard.HasSizeLessThan(name, NameMaxLength, nameof(name));
         Guard.HasSizeLessThan(email, EmailMaxLength, nameof(email));
         
-        Id = Guid.NewGuid();
         Name = name;
         Email = email;
         Role = role;
@@ -34,13 +33,13 @@ public class User : BaseEntity
     public Result UpdateUser(string name, string email)
     {
         if (string.IsNullOrEmpty(name))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(name)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(name)));
 
         if (name.Length > NameMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
         
         if (string.IsNullOrEmpty(email))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(email)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(email)));
 
         Name = name;
         Email = email;
@@ -54,10 +53,10 @@ public class User : BaseEntity
     public Result UpdatePassword(string password)
     {
         if (string.IsNullOrEmpty(password))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(password)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(password)));
 
         if (password.Length > PasswordMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(password), PasswordMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(password), PasswordMaxLength));
         
         Password = password;
 

@@ -1,4 +1,4 @@
-﻿using Library.Domain.ErrorMessages;
+﻿using Library.Domain.Messages;
 
 namespace Library.Domain.Entities;
 
@@ -19,7 +19,6 @@ public class LibraryUnit : BaseEntity
         Guard.HasSizeLessThan(name, NameMaxLength, nameof(name));
         Guard.HasSizeLessThan(city, CityMaxLength, nameof(city));
         
-        Id = Guid.NewGuid();
         Name = name;
         City = city;
     }
@@ -27,16 +26,16 @@ public class LibraryUnit : BaseEntity
     public Result UpdateLibrary(string name, string city)
     {
         if(string.IsNullOrEmpty(name))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(name)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(name)));
         
         if(name.Length > NameMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(name), NameMaxLength));
         
         if(string.IsNullOrEmpty(city))
-            return Result.FailureResult(ErrorMessages.ErrorMessages.CannotBeEmpty(nameof(city)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(city)));
         
         if(city.Length > CityMaxLength)
-            return Result.FailureResult(ErrorMessages.ErrorMessages.HasMaxLength(nameof(city), CityMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(city), CityMaxLength));
         
         Name = name;
         City = city;

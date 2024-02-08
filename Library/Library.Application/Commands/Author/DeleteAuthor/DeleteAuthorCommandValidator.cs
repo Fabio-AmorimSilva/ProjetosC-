@@ -1,4 +1,4 @@
-﻿using Library.Domain.ErrorMessages;
+﻿using Library.Domain.Messages;
 
 namespace Library.Application.Commands;
 

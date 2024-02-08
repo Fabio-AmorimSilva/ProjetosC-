@@ -1,5 +1,5 @@
 ﻿using Library.Domain.Entities.ErrorHandling;
-using Library.Domain.ErrorMessages;
+using Library.Domain.Messages;
 
 namespace Library.Application.Commands;
 
