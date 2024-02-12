@@ -6,10 +6,17 @@
 public class AccountsController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly ILogger<AccountsController> _logger;
     
-    public AccountsController(IMediator mediator)
-        =>  _mediator = mediator;
-    
+    public AccountsController(
+        IMediator mediator, 
+        ILogger<AccountsController> logger
+    )
+    {
+        _mediator = mediator;
+        _logger = logger;
+    }
+
     [HttpPost("signup")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -26,6 +33,7 @@ public class AccountsController : ControllerBase
     public async Task<ActionResult<ResultViewModel<string>>> Login([FromBody] LoginCommand command)
     {
         var result = await _mediator.Send(command);
+        _logger.LogInformation("Login is an success!!");
         return Ok(result);
     }
 }
