@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Queries;
+﻿using Library.Domain.Messages;
+
+namespace Library.Application.Queries;
 
 public class GetLibraryQueryHandler : IRequestHandler<GetLibraryQuery, ResultViewModel<LibraryUnitViewModel>>
 {
@@ -14,7 +16,7 @@ public class GetLibraryQueryHandler : IRequestHandler<GetLibraryQuery, ResultVie
             .FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
 
         if (library is null)
-            return new ResultViewModel<LibraryUnitViewModel>("Library not found");
+            return new ResultViewModel<LibraryUnitViewModel>(ErrorMessages.NotFound<LibraryUnit>());
 
         return new ResultViewModel<LibraryUnitViewModel>(new LibraryUnitViewModel
         {

@@ -7,10 +7,17 @@
 public class AuthorController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly ILogger _logger;
     
-    public AuthorController(IMediator mediator)
-        =>  _mediator = mediator;
-    
+    public AuthorController(
+        IMediator mediator, 
+        ILogger<AuthorController> logger
+    )
+    {
+        _mediator = mediator;
+        _logger = logger;
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ResultViewModel<IEnumerable<Author>>>> Get()

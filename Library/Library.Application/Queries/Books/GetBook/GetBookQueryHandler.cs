@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Queries;
+﻿using Library.Domain.Messages;
+
+namespace Library.Application.Queries;
 
 public class GetBookQueryHandler : IRequestHandler<GetBookQuery , ResultViewModel<BookViewModel>>
 {
@@ -11,7 +13,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery , ResultViewMode
     {
         var book = await _context.Books.AsNoTracking().FirstOrDefaultAsync(b => b.Id == request.Id, cancellationToken);
         if (book is null)
-            return new ResultViewModel<BookViewModel>("Book not found");
+            return new ResultViewModel<BookViewModel>(ErrorMessages.NotFound<Book>());
 
         return new ResultViewModel<BookViewModel>(new BookViewModel
         {
