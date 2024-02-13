@@ -8,6 +8,7 @@ public static class ConfigureMediatR
         builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
         builder.Services.AddValidatorsFromAssemblyContaining<CreateAuthorCommandValidator>();
         builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RetryPolicyBehavior<,>));
 
         return builder;
     }
