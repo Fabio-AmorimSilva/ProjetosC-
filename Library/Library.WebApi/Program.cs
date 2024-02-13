@@ -1,7 +1,3 @@
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Serilog;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder

@@ -1,4 +1,6 @@
-﻿namespace Library.WebApi.Controllers;
+﻿using ILogger = Serilog.ILogger;
+
+namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
@@ -10,8 +12,8 @@ public class AuthorController : ControllerBase
     private readonly ILogger _logger;
     
     public AuthorController(
-        IMediator mediator, 
-        ILogger<AuthorController> logger
+        IMediator mediator,
+        ILogger logger
     )
     {
         _mediator = mediator;
