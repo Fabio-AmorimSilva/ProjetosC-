@@ -11,25 +11,11 @@ builder
 
 builder.Services
     .AddJwtConfig(builder.Configuration)
-    .AddVersioning();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
-
-builder.Services.AddHealthChecks()
-    .AddSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty, 
-        name: "Library"
-    );
-
-builder.Services.AddHealthChecksUI(options =>
-    {
-        options.AddHealthCheckEndpoint("Healthcheck API", "/api/healthcheck");
-        options.SetEvaluationTimeInSeconds(5);
-        options.SetMinimumSecondsBetweenFailureNotifications(5);
-    })
-    .AddInMemoryStorage();
+    .AddVersioning()
+    .AddCustomHealthCheck(builder)
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen()
+    .ConfigureOptions<ConfigureSwaggerOptions>();
 
 var app = builder.Build();
 
