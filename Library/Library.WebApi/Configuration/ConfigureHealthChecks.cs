@@ -20,4 +20,22 @@ public static class ConfigureHealthChecks
 
         return services;
     }
+
+    public static void AddCustomHealthCheckUrl(this WebApplication app)
+    {
+        app.MapHealthChecks("/api/healthcheck", new HealthCheckOptions
+        {
+            Predicate = _ => true,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
+
+        app.UseHealthChecksUI(options =>
+        {
+            options.UIPath = "/api/healthcheck-dashboard";
+    
+            options.UseRelativeApiPath = false;
+            options.UseRelativeResourcesPath = false;
+            options.UseRelativeWebhookPath = false;
+        });
+    }
 }

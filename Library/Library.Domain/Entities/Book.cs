@@ -97,7 +97,7 @@ public class Book : BaseEntity
     
     public Result UpdateQuantity(int quantity)
     {
-        if (quantity < 0)
+        if (quantity < PagesMinLength)
             return Result.FailureResult(ErrorMessages.HasToBeGreaterThan(nameof(quantity), PagesMinLength));
         
         Quantity = quantity;

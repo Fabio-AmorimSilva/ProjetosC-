@@ -15,23 +15,14 @@ builder.Services
     .AddCustomHealthCheck(builder)
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
+    .AddCustomHangFire(builder)
     .ConfigureOptions<ConfigureSwaggerOptions>();
 
 var app = builder.Build();
 
-var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
-
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions.Reverse())
-        {
-            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
-                description.GroupName.ToUpperInvariant());
-        }
-    });
+    app.AddSwagger();
     app.UseCors("Development");
 }
 
@@ -43,20 +34,9 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.MapHealthChecks("/api/healthcheck", new HealthCheckOptions
-{
-    Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
+app.UseHangfireDashboard();
 
-app.UseHealthChecksUI(options =>
-{
-    options.UIPath = "/api/healthcheck-dashboard";
-    
-    options.UseRelativeApiPath = false;
-    options.UseRelativeResourcesPath = false;
-    options.UseRelativeWebhookPath = false;
-});
+app.AddCustomHealthCheckUrl();
 
 app.MapControllers();
 

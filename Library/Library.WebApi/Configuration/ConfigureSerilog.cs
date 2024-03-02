@@ -1,6 +1,4 @@
-﻿using Serilog;
-
-namespace Library.WebApi.Configuration;
+﻿namespace Library.WebApi.Configuration;
 
 public static class ConfigureSerilog
 {

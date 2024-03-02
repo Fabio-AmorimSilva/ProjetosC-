@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Versioning;
-
-namespace Library.WebApi.Configuration;
+﻿namespace Library.WebApi.Configuration;
 
 public static class ConfigureVersioning
 {

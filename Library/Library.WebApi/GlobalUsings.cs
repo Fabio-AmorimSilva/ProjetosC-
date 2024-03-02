@@ -31,3 +31,4 @@ global using HealthChecks.UI.Client;
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Serilog;
 global using Library.Application.Commands.Behaviors;
+global using Hangfire;
