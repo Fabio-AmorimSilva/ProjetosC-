@@ -22,7 +22,7 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, R
             birth: author.Birth
         );
 
-        if (!result.Success)
+        if (result is { Success: false, Message: not null }) 
             return new ResultViewModel<Unit>(result.Message);
 
         await _context.SaveChangesAsync(cancellationToken);

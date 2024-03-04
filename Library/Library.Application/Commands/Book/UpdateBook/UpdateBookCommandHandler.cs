@@ -26,7 +26,7 @@ public class UpdateBookCommandHandler : IRequestHandler<UpdateBookCommand, Resul
             genre: request.Genre
         );
 
-        if (!result.Success)
+        if (result is { Success: false, Message: not null })
             return new ResultViewModel<Unit>(result.Message);
         
         await _context.SaveChangesAsync(cancellationToken);
