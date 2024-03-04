@@ -6,7 +6,7 @@ public static class ConfigureHealthChecks
     {
         services.AddHealthChecks()
             .AddSqlServer(
-                builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty, 
+                builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty,
                 name: "Library"
             );
 
@@ -32,7 +32,7 @@ public static class ConfigureHealthChecks
         app.UseHealthChecksUI(options =>
         {
             options.UIPath = "/api/healthcheck-dashboard";
-    
+
             options.UseRelativeApiPath = false;
             options.UseRelativeResourcesPath = false;
             options.UseRelativeWebhookPath = false;
