@@ -2,16 +2,11 @@
 
 namespace Library.Application.Queries;
 
-public class GetAuthorQueryHandler : IRequestHandler<GetAuthorQuery, ResultViewModel<AuthorViewModel>>
+public class GetAuthorQueryHandler(LibraryContext context) : IRequestHandler<GetAuthorQuery, ResultViewModel<AuthorViewModel>>
 {
-    private readonly LibraryContext _context;
-
-    public GetAuthorQueryHandler(LibraryContext context)
-        => _context = context;
-    
     public async Task<ResultViewModel<AuthorViewModel>> Handle(GetAuthorQuery request, CancellationToken cancellationToken)
     {
-        var author = await _context.Authors
+        var author = await context.Authors
             .AsNoTrackingWithIdentityResolution()
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
 

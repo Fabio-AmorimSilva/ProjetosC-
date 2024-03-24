@@ -1,9 +1,6 @@
 ﻿namespace Library.Application.Queries;
 
-public struct GetAuthorQuery : IRequest<ResultViewModel<AuthorViewModel>>
+public struct GetAuthorQuery(Guid id) : IRequest<ResultViewModel<AuthorViewModel>>
 {
-    public Guid Id { get; init; }
-
-    public GetAuthorQuery(Guid id)
-        => Id = id;
+    public Guid Id { get; init; } = id;
 }

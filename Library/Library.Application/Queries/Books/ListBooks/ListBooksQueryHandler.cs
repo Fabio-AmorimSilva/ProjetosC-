@@ -1,15 +1,10 @@
 ﻿namespace Library.Application.Queries;
 
-public class ListBooksQueryHandler : IRequestHandler<ListBooksQuery, ResultViewModel<IEnumerable<ListBookViewModel>>>
+public class ListBooksQueryHandler(LibraryContext context) : IRequestHandler<ListBooksQuery, ResultViewModel<IEnumerable<ListBookViewModel>>>
 {
-    private readonly LibraryContext _context;
-
-    public ListBooksQueryHandler(LibraryContext context)
-        =>  _context = context;
-    
     public async Task<ResultViewModel<IEnumerable<ListBookViewModel>>> Handle(ListBooksQuery request, CancellationToken cancellationToken)
     {
-        var books = await _context.Books
+        var books = await context.Books
             .AsNoTrackingWithIdentityResolution()
             .Select(b => new ListBookViewModel
             {

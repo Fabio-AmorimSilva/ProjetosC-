@@ -1,10 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder
+    .AddMediatR()
     .AddJwtConfiguration()
     .AddJsonConfiguration()
     .AddDbContextConfiguration()
-    .AddMediatR()
     .AddExceptionFilterConfiguration()
     .AddCorsConfiguration()
     .AddSerilogCustomConfiguration();

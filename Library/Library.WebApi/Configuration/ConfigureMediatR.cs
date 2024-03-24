@@ -1,4 +1,6 @@
-﻿namespace Library.WebApi.Configuration;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+
+namespace Library.WebApi.Configuration;
 
 public static class ConfigureMediatR
 {
@@ -6,9 +8,9 @@ public static class ConfigureMediatR
     {
         var assembly = AppDomain.CurrentDomain.Load("Library.Application");
         builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
-        builder.Services.AddValidatorsFromAssemblyContaining<CreateAuthorCommandValidator>();
-        builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-        builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RetryPolicyBehavior<,>));
+        builder.Services.AddValidatorsFromAssembly(assembly);
+        builder.Services.TryAddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        builder.Services.TryAddScoped(typeof(IPipelineBehavior<,>), typeof(RetryPolicyBehavior<,>));
 
         return builder;
     }
