@@ -1,7 +1,4 @@
-﻿using Library.Application.Commands.Account.Login;
-using Library.Application.Commands.Account.Signup;
-
-namespace Library.WebApi.Controllers;
+﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
 [ApiVersion("2.0")]

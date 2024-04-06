@@ -1,10 +1,4 @@
-﻿using Library.Application.Commands.Author.CreateAuthor;
-using Library.Application.Commands.Author.DeleteAuthor;
-using Library.Application.Commands.Author.UpdateAuthor;
-using Library.Application.Queries.Author.GetAuthor;
-using Library.Application.Queries.Author.ListAuthors;
-
-namespace Library.WebApi.Controllers;
+﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
@@ -17,7 +11,7 @@ public class AuthorController(IMediator mediator) : ControllerBase
     public async Task<ActionResult<ResultViewModel<IEnumerable<Author>>>> Get()
     {
         var result = await mediator.Send(new ListAuthorsQuery());
-        return Ok(result); 
+        return Ok(result);
     }
 
     [HttpGet("{id:guid}")]

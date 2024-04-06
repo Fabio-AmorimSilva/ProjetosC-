@@ -1,12 +1,4 @@
-﻿using Library.Application.Commands.Book.CreateBook;
-using Library.Application.Commands.Book.DeleteBook;
-using Library.Application.Commands.Book.UpdateBook;
-using Library.Application.Commands.Book.UpdateBookAuthor;
-using Library.Application.Commands.Book.UpdateBookLibrary;
-using Library.Application.Queries.Books.GetBook;
-using Library.Application.Queries.Books.ListBooks;
-
-namespace Library.WebApi.Controllers;
+﻿namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
