@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
-
-namespace Library.WebApi.Configuration;
+﻿namespace Library.WebApi.Configuration;
 
 public static class ConfigureMediatR
 {

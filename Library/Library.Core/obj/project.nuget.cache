@@ -1,8 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "3o2OV9FpiD3z1dVfzFGTMb8ZLPz6Lpo1phVGCsDecwMt4y9mQS7bVa6YUlPqXuu7KDp2+s5uuSSR4VxD95uPnA==",
+  "dgSpecHash": "PFIIT7v5UOn2DWzsX6fPaRvOMihTZvtg0zRQS1Ewa1F7gkiWJNnHvEulzVPtgJdT6/iAG3K66AZP5yNzmdKFpQ==",
   "success": true,
   "projectFilePath": "C:\\ProjetosC-\\Library\\Library.Core\\Library.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\fabio\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\identitymodel\\5.2.0\\identitymodel.5.2.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\identitymodel.oidcclient\\5.2.1\\identitymodel.oidcclient.5.2.1.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\polly\\8.3.1\\polly.8.3.1.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\polly.core\\8.3.1\\polly.core.8.3.1.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\fabio\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
