@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Account.Login;
 
-public struct LoginCommand(
+public readonly struct LoginCommand(
     string username,
     string password) : IRequest<string>
 {

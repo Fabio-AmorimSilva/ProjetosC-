@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Account.Signup;
 
-public struct SignupCommand(
+public readonly struct SignupCommand(
     string name,
     string email,
     string password,

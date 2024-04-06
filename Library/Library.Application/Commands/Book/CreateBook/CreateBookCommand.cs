@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Book.CreateBook;
 
-public struct CreateBookCommand(
+public readonly struct CreateBookCommand(
     string title,
     DateTime year,
     int pages,
