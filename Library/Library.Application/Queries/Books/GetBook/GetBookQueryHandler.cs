@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Application.Queries;
+﻿namespace Library.Application.Queries.Books.GetBook;
 
 public class GetBookQueryHandler : IRequestHandler<GetBookQuery , ResultViewModel<BookViewModel>>
 {

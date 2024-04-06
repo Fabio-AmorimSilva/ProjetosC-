@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Book.UpdateBookAuthor;
 
 public struct UpdateBookAuthorCommand : IRequest<ResultViewModel<Unit>>
 {

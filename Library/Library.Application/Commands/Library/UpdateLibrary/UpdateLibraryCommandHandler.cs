@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Library.UpdateLibrary;
 
 public class UpdateLibraryCommandHandler : IRequestHandler<UpdateLibraryCommand, ResultViewModel<Unit>>
 {

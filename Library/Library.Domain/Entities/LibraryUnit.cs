@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class LibraryUnit : BaseEntity
 {
@@ -9,7 +7,7 @@ public class LibraryUnit : BaseEntity
     
     public string Name { get; set; }
     public string City { get; set; }
-    public List<Book?> Books { get; set; } = new();
+    public List<Book?> Books { get; set; } = [];
 
     public LibraryUnit(
         string name, 

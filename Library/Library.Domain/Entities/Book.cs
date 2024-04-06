@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class Book : BaseEntity
 {
@@ -51,19 +49,19 @@ public class Book : BaseEntity
     )
     {
         if(string.IsNullOrEmpty(title))
-            return Result.FailureResult(Messages.ErrorMessages.CannotBeEmpty(nameof(title)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(title)));
         
         if(title.Length > TitleMaxLength)
-            return Result.FailureResult(Messages.ErrorMessages.HasMaxLength(nameof(title), TitleMaxLength));
+            return Result.FailureResult(ErrorMessages.HasMaxLength(nameof(title), TitleMaxLength));
         
         if(pages <= PagesMinLength)
-            return Result.FailureResult(Messages.ErrorMessages.HasToBeGreaterThan(nameof(pages), PagesMinLength));
+            return Result.FailureResult(ErrorMessages.HasToBeGreaterThan(nameof(pages), PagesMinLength));
         
         if(authorId == default)
-            return Result.FailureResult(Messages.ErrorMessages.CannotBeEmpty(nameof(authorId)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(authorId)));
         
         if(libraryId == default)
-            return Result.FailureResult(Messages.ErrorMessages.CannotBeEmpty(nameof(libraryId)));
+            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(libraryId)));
         
         Title = title;
         Year = year;

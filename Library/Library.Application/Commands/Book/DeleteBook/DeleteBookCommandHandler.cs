@@ -1,24 +1,17 @@
-﻿using Library.Domain.Messages;
+﻿namespace Library.Application.Commands.Book.DeleteBook;
 
-namespace Library.Application.Commands;
-
-public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, ResultViewModel<Unit>>
+public class DeleteBookCommandHandler(LibraryContext context) : IRequestHandler<DeleteBookCommand, ResultViewModel<Unit>>
 {
-    private readonly LibraryContext _context;
-
-    public DeleteBookCommandHandler(LibraryContext context)
-        =>  _context = context;
-    
     public async Task<ResultViewModel<Unit>> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
-        var bookExists = await _context.Books
+        var bookExists = await context.Books
             .AnyAsync(b => b.Id == request.Id, cancellationToken);
 
         if (!bookExists)
-            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Book>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
 
-        _context.Books.Remove(new Book{ Id = request.Id });
-        await _context.SaveChangesAsync(cancellationToken);
+        context.Books.Remove(new Domain.Entities.Book{ Id = request.Id });
+        await context.SaveChangesAsync(cancellationToken);
 
         return new ResultViewModel<Unit>("Book has been deleted");
     }

@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Queries;
+﻿namespace Library.Application.Queries.Books.GetBook;
 
 public struct GetBookQuery(Guid id) : IRequest<ResultViewModel<BookViewModel>>
 {

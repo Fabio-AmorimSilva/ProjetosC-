@@ -1,4 +1,8 @@
-﻿using ILogger = Serilog.ILogger;
+﻿using Library.Application.Commands.Author.CreateAuthor;
+using Library.Application.Commands.Author.DeleteAuthor;
+using Library.Application.Commands.Author.UpdateAuthor;
+using Library.Application.Queries.Author.GetAuthor;
+using Library.Application.Queries.Author.ListAuthors;
 
 namespace Library.WebApi.Controllers;
 
@@ -6,25 +10,13 @@ namespace Library.WebApi.Controllers;
 [Authorize]
 [ApiVersion("2.0")]
 [Route("v1/author")]
-public class AuthorController : ControllerBase
+public class AuthorController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-    private readonly ILogger _logger;
-    
-    public AuthorController(
-        IMediator mediator,
-        ILogger logger
-    )
-    {
-        _mediator = mediator;
-        _logger = logger;
-    }
-
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ResultViewModel<IEnumerable<Author>>>> Get()
     {
-        var result = await _mediator.Send(new ListAuthorsQuery());
+        var result = await mediator.Send(new ListAuthorsQuery());
         return Ok(result); 
     }
 
@@ -33,7 +25,7 @@ public class AuthorController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ResultViewModel<Author>>> GetById(Guid id)
     {
-        var result = await _mediator.Send(new GetAuthorQuery(id));
+        var result = await mediator.Send(new GetAuthorQuery(id));
         return Ok(result);
     }
 
@@ -42,7 +34,7 @@ public class AuthorController : ControllerBase
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<ActionResult<Guid>> Post([FromBody] CreateAuthorCommand command)
     {
-        var result = await _mediator.Send(command);
+        var result = await mediator.Send(command);
         return Created($"{result.Data}", result);
     }
 
@@ -50,7 +42,7 @@ public class AuthorController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<ActionResult> Put(Guid id, [FromBody] UpdateAuthorCommand command)
     {
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return NoContent();
     }
 
@@ -59,7 +51,7 @@ public class AuthorController : ControllerBase
     public async Task<ActionResult> Delete(Guid id)
     {
         var command = new DeleteAuthorCommand(id);
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return NoContent();
     }
 }

@@ -1,9 +1,6 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Book.DeleteBook;
 
-public class DeleteBookCommand : IRequest<ResultViewModel<Unit>>
+public class DeleteBookCommand(Guid id) : IRequest<ResultViewModel<Unit>>
 {
-    public Guid Id { get; set; }
-
-    public DeleteBookCommand(Guid id)
-        =>  Id = id;
+    public Guid Id { get; set; } = id;
 }

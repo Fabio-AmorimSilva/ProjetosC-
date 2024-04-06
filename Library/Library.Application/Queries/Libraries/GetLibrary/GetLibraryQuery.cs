@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Queries;
+﻿using Library.Application.ViewModels.Library;
+
+namespace Library.Application.Queries.Libraries.GetLibrary;
 
 public struct GetLibraryQuery : IRequest<ResultViewModel<LibraryUnitViewModel>>
 {

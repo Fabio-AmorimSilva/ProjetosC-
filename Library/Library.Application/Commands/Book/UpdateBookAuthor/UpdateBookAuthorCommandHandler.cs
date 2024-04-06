@@ -1,27 +1,20 @@
-﻿using Library.Domain.Messages;
+﻿namespace Library.Application.Commands.Book.UpdateBookAuthor;
 
-namespace Library.Application.Commands;
-
-public class UpdateBookAuthorCommandHandler : IRequestHandler<UpdateBookAuthorCommand, ResultViewModel<Unit>>
+public class UpdateBookAuthorCommandHandler(LibraryContext context) : IRequestHandler<UpdateBookAuthorCommand, ResultViewModel<Unit>>
 {
-    private readonly LibraryContext _context;
-
-    public UpdateBookAuthorCommandHandler(LibraryContext context)
-        => _context = context;
-    
     public async Task<ResultViewModel<Unit>> Handle(UpdateBookAuthorCommand request, CancellationToken cancellationToken)
     {
-        var authorExists = await _context.Authors
+        var authorExists = await context.Authors
             .AnyAsync(a => a.Id == request.AuthorId, cancellationToken);
 
         if (authorExists is false)
-            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Author>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Domain.Entities.Author>());
 
-        var book = await _context.Books
+        var book = await context.Books
             .FirstOrDefaultAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Book>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
         
         var result = book.UpdateAuthor(request.AuthorId);
 

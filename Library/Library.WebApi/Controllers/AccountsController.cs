@@ -1,28 +1,22 @@
-﻿namespace Library.WebApi.Controllers;
+﻿using Library.Application.Commands.Account.Login;
+using Library.Application.Commands.Account.Signup;
+
+namespace Library.WebApi.Controllers;
 
 [ApiController]
 [ApiVersion("2.0")]
 [Route("v1/accounts")]
-public class AccountsController : ControllerBase
+public class AccountsController(
+    IMediator mediator,
+    ILogger<AccountsController> logger
+) : ControllerBase
 {
-    private readonly IMediator _mediator;
-    private readonly ILogger<AccountsController> _logger;
-    
-    public AccountsController(
-        IMediator mediator, 
-        ILogger<AccountsController> logger
-    )
-    {
-        _mediator = mediator;
-        _logger = logger;
-    }
-
     [HttpPost("signup")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<ActionResult> Signup([FromBody] SignupCommand command)
     {
-        var result = await _mediator.Send(command);
+        var result = await mediator.Send(command);
         return Created($"{result}", result);
     }
 
@@ -32,8 +26,8 @@ public class AccountsController : ControllerBase
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult<ResultViewModel<string>>> Login([FromBody] LoginCommand command)
     {
-        var result = await _mediator.Send(command);
-        _logger.LogInformation("Login is an success!!");
+        var result = await mediator.Send(command);
+        logger.LogInformation("Login is an success!!");
         return Ok(result);
     }
 }

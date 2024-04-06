@@ -1,4 +1,7 @@
-﻿namespace Library.Application.ViewModels.Books;
+﻿using Library.Application.ViewModels.Authors;
+using Library.Application.ViewModels.Library;
+
+namespace Library.Application.ViewModels.Books;
 
 public readonly record struct ListBookViewModel
 {

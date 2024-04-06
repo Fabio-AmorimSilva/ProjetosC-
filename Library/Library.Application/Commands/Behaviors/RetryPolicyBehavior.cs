@@ -1,9 +1,4 @@
-﻿using System.Reflection;
-using Library.Application.Utils;
-using Microsoft.Extensions.Logging;
-using Polly;
-
-namespace Library.Application.Commands.Behaviors;
+﻿namespace Library.Application.Commands.Behaviors;
 
 public class RetryPolicyBehavior<TRequest, TResponse>(ILogger<RetryPolicyBehavior<TRequest, TResponse>> logger) : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

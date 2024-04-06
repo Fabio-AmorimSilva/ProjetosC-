@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class Author : BaseEntity
 {
@@ -10,7 +8,7 @@ public class Author : BaseEntity
     public string Name { get; set; }
     public string Country { get; set; }
     public DateTime Birth { get; set; }
-    public List<Book> Books { get; set; } = new();
+    public List<Book> Books { get; set; } = [];
     
     public Author( 
         string name, 

@@ -1,4 +1,4 @@
-﻿namespace Library.Application.ViewModels;
+﻿namespace Library.Application.ViewModels.Library;
 
 public readonly record struct LibraryUnitViewModel
 {

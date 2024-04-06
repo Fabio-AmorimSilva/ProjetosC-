@@ -1,27 +1,20 @@
-﻿using Library.Domain.Messages;
+﻿namespace Library.Application.Commands.Book.UpdateBookLibrary;
 
-namespace Library.Application.Commands;
-
-public class UpdateBookLibraryCommandHandler : IRequestHandler<UpdateBookLibraryCommand, ResultViewModel<Unit>>
+public class UpdateBookLibraryCommandHandler(LibraryContext context) : IRequestHandler<UpdateBookLibraryCommand, ResultViewModel<Unit>>
 {
-    private readonly LibraryContext _context;
-
-    public UpdateBookLibraryCommandHandler(LibraryContext context)
-        => _context = context;
-    
     public async Task<ResultViewModel<Unit>> Handle(UpdateBookLibraryCommand request, CancellationToken cancellationToken)
     {
-        var libraryExists = await _context.Libraries
+        var libraryExists = await context.Libraries
             .AnyAsync(lu => lu.Id == request.LibraryId, cancellationToken);
 
         if (libraryExists is false)
             return new ResultViewModel<Unit>(ErrorMessages.NotFound<LibraryUnit>());
 
-        var book = await _context.Books
+        var book = await context.Books
             .FirstOrDefaultAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Book>());
+            return new ResultViewModel<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
         
         var result = book.UpdateLibrary(request.LibraryId);
 

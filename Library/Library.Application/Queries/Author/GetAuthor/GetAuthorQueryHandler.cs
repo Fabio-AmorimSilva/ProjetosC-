@@ -1,6 +1,6 @@
-﻿using Library.Domain.Messages;
+﻿using Library.Application.ViewModels.Authors;
 
-namespace Library.Application.Queries;
+namespace Library.Application.Queries.Author.GetAuthor;
 
 public class GetAuthorQueryHandler(LibraryContext context) : IRequestHandler<GetAuthorQuery, ResultViewModel<AuthorViewModel>>
 {
@@ -11,7 +11,7 @@ public class GetAuthorQueryHandler(LibraryContext context) : IRequestHandler<Get
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
 
         if (author is null)
-            return new ResultViewModel<AuthorViewModel>(ErrorMessages.NotFound<Author>());
+            return new ResultViewModel<AuthorViewModel>(ErrorMessages.NotFound<Domain.Entities.Author>());
 
         return new ResultViewModel<AuthorViewModel>(new AuthorViewModel
         {

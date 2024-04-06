@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Author.UpdateAuthor;
 
 public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorCommand>
 {
@@ -15,16 +13,16 @@ public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorComman
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateAuthorCommand.Name)));
         
         RuleFor(command => command.Name)
-            .MaximumLength(Author.NameMaxLength)
-            .WithMessage(ErrorMessages.HasMaxLength(nameof(UpdateAuthorCommand.Country), Author.NameMaxLength));
+            .MaximumLength(Domain.Entities.Author.NameMaxLength)
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(UpdateAuthorCommand.Country), Domain.Entities.Author.NameMaxLength));
         
         RuleFor(command => command.Country)
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateAuthorCommand.Country)));
         
         RuleFor(command => command.Country)
-            .MaximumLength(Author.CountryMaxLength)
-            .WithMessage(ErrorMessages.HasMaxLength(nameof(UpdateAuthorCommand.Country), Author.CountryMaxLength));
+            .MaximumLength(Domain.Entities.Author.CountryMaxLength)
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(UpdateAuthorCommand.Country), Domain.Entities.Author.CountryMaxLength));
 
         RuleFor(command => command.Birth)
             .NotEmpty()

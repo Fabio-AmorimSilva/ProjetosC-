@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Queries;
+﻿using Library.Application.ViewModels.Authors;
+
+namespace Library.Application.Queries.Author.GetAuthor;
 
 public struct GetAuthorQuery(Guid id) : IRequest<ResultViewModel<AuthorViewModel>>
 {

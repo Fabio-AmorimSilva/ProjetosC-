@@ -1,6 +1,6 @@
-﻿using Library.Domain.Messages;
+﻿using Library.Application.ViewModels.Library;
 
-namespace Library.Application.Queries;
+namespace Library.Application.Queries.Libraries.GetLibrary;
 
 public class GetLibraryQueryHandler : IRequestHandler<GetLibraryQuery, ResultViewModel<LibraryUnitViewModel>>
 {

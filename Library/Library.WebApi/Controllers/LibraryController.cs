@@ -1,21 +1,22 @@
-﻿namespace Library.WebApi.Controllers;
+﻿using Library.Application.Commands.Library.CreateLibrary;
+using Library.Application.Commands.Library.DeleteLibrary;
+using Library.Application.Commands.Library.UpdateLibrary;
+using Library.Application.Queries.Libraries.GetLibrary;
+using Library.Application.Queries.Libraries.ListLibraries;
+
+namespace Library.WebApi.Controllers;
 
 [ApiController]
 [Authorize]
 [ApiVersion("2.0")]
 [Route("v1/library")]
-public class LibraryController : ControllerBase
+public class LibraryController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
-    
-    public LibraryController(IMediator mediator)
-        =>  _mediator = mediator;
-    
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get()
     {
-        var result = await _mediator.Send(new ListLibrariesQuery());
+        var result = await mediator.Send(new ListLibrariesQuery());
         return Ok(result);
     }
 
@@ -24,7 +25,7 @@ public class LibraryController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById([FromRoute] Guid id)
     {
-        var result = await _mediator.Send(new GetLibraryQuery(id));
+        var result = await mediator.Send(new GetLibraryQuery(id));
         return Ok(result);
     }
 
@@ -33,7 +34,7 @@ public class LibraryController : ControllerBase
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<IActionResult> Post([FromBody] CreateLibraryCommand command)
     {
-        var result = await _mediator.Send(command);
+        var result = await mediator.Send(command);
         return Created($"{result.Data}", result);
     }
 
@@ -42,7 +43,7 @@ public class LibraryController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Put(Guid id, [FromBody] UpdateLibraryCommand command)
     {
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return NoContent();
     }
 
@@ -52,7 +53,7 @@ public class LibraryController : ControllerBase
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
         var command = new DeleteLibraryCommand(id);
-        await _mediator.Send(command);
+        await mediator.Send(command);
         return NoContent();
     }
 }

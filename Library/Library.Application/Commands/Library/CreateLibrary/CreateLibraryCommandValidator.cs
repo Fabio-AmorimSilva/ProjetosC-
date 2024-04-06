@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Library.CreateLibrary;
 
 public class CreateLibraryCommandValidator : AbstractValidator<CreateLibraryCommand>
 {

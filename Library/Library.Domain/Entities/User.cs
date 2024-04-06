@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class User : BaseEntity
 {

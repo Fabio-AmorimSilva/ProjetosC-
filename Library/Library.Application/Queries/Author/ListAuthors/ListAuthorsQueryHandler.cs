@@ -1,4 +1,6 @@
-﻿namespace Library.Application.Queries;
+﻿using Library.Application.ViewModels.Authors;
+
+namespace Library.Application.Queries.Author.ListAuthors;
 
 public class ListAuthorsQueryHandler : IRequestHandler<ListAuthorsQuery, ResultViewModel<IEnumerable<AuthorViewModel>>>
 {

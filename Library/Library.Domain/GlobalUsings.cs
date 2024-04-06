@@ -6,3 +6,4 @@ global using Library.Domain.Entities.Enums;
 global using Library.Domain.Entities.ErrorHandling;
 global using Ardalis.Specification;
 global using Library.Domain.Entities;
+global using Library.Domain.Messages;

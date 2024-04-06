@@ -1,16 +1,9 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Account.Login;
 
-public struct LoginCommand : IRequest<string>
+public struct LoginCommand(
+    string username,
+    string password) : IRequest<string>
 {
-    public string Username { get; init; }
-    public string Password { get; init; }
-
-    public LoginCommand(
-        string username, 
-        string password
-    )
-    {
-        Username = username;
-        Password = password;
-    }
+    public string Username { get; init; } = username;
+    public string Password { get; init; } = password;
 }

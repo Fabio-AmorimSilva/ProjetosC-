@@ -1,31 +1,24 @@
-﻿using Library.Domain.Messages;
+﻿namespace Library.Application.Commands.Author.CreateAuthor;
 
-namespace Library.Application.Commands;
-
-public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, ResultViewModel<Unit>>
+public class CreateAuthorCommandHandler(LibraryContext context) : IRequestHandler<CreateAuthorCommand, ResultViewModel<Unit>>
 {
-    private readonly LibraryContext _context;
-
-    public CreateAuthorCommandHandler(LibraryContext context)
-        => _context = context;
-    
     public async Task<ResultViewModel<Unit>> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
     {
-        var author = new Author(
+        var author = new Domain.Entities.Author(
             name: request.Name,
             country: request.Country,
             birth: request.Birth
         );
 
-        var authorNameAlreadyExists = await _context.Authors
+        var authorNameAlreadyExists = await context.Authors
             .WithSpecification(new AuthorNameAlreadyExistsSpec(author.Id, author.Name))
             .AnyAsync(cancellationToken);
 
         if (authorNameAlreadyExists)
             return new ResultViewModel<Unit>(ErrorMessages.AlreadyExists(nameof(CreateAuthorCommand.Name)));
 
-        await _context.Authors.AddAsync(author, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
+        await context.Authors.AddAsync(author, cancellationToken);
+        await context.SaveChangesAsync(cancellationToken);
 
         return new ResultViewModel<Unit>();
     }

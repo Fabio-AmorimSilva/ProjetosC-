@@ -10,7 +10,7 @@ public class ExceptionFilter : IExceptionFilter
         
         var error = new Error
         {
-            StatusCode = 422,
+            StatusCode = StatusCodes.Status422UnprocessableEntity,
             Message = exception.Message
         };
         context.Result = new JsonResult(error);

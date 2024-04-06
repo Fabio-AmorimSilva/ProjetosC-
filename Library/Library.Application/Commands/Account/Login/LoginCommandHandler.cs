@@ -1,24 +1,14 @@
-﻿using Library.Domain.Messages;
+﻿namespace Library.Application.Commands.Account.Login;
 
-namespace Library.Application.Commands;
-
-public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
+public class LoginCommandHandler(
+    LibraryContext context,
+    TokenService tokenService
+) : IRequestHandler<LoginCommand, string>
 {
-    private readonly LibraryContext _context;
-    private readonly TokenService _tokenService;
-    
-    public LoginCommandHandler(
-        LibraryContext context, 
-        TokenService tokenService
-    )
-    {
-        _context = context;
-        _tokenService = tokenService;
-    }
-
     public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var user = await _context.Users
+        var user = await context.Users
+            .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Email == request.Username, cancellationToken);
 
         if (user is null)
@@ -29,7 +19,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, string>
         if (!verifyPassword)
             return "Wrong password or username";
 
-        var token = _tokenService.GenerateToken(user);
+        var token = tokenService.GenerateToken(user);
 
         return token;
     }

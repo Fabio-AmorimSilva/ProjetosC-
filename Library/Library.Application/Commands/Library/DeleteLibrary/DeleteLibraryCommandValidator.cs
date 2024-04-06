@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Library.DeleteLibrary;
 
 public class DeleteLibraryCommandValidator : AbstractValidator<DeleteLibraryCommand>
 {

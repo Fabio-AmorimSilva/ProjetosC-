@@ -1,6 +1,4 @@
-﻿using Library.Domain.Messages;
-
-namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Book.UpdateBookLibrary;
 
 public class UpdateBookLibraryCommandValidator : AbstractValidator<UpdateBookLibraryCommand>
 {

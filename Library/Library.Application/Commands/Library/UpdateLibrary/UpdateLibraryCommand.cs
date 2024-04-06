@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Library.UpdateLibrary;
 
 public struct UpdateLibraryCommand : IRequest<ResultViewModel<Unit>>
 {

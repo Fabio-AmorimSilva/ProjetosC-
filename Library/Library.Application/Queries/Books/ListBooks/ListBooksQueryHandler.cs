@@ -1,4 +1,7 @@
-﻿namespace Library.Application.Queries;
+﻿using Library.Application.ViewModels.Authors;
+using Library.Application.ViewModels.Library;
+
+namespace Library.Application.Queries.Books.ListBooks;
 
 public class ListBooksQueryHandler(LibraryContext context) : IRequestHandler<ListBooksQuery, ResultViewModel<IEnumerable<ListBookViewModel>>>
 {

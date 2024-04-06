@@ -1,4 +1,4 @@
-﻿namespace Library.Application.ViewModels;
+﻿namespace Library.Application.ViewModels.Authors;
 
 public readonly record struct AuthorViewModel
 {

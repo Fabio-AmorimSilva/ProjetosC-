@@ -1,13 +1,7 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Library.CreateLibrary;
 
-public struct CreateLibraryCommand : IRequest<ResultViewModel<Unit>>
+public struct CreateLibraryCommand(string name, string city) : IRequest<ResultViewModel<Unit>>
 {
-    public string Name { get; init; }
-    public string City { get; init; }
-
-    public CreateLibraryCommand(string name, string city)
-    {
-        Name = name;
-        City = city;
-    }
+    public string Name { get; init; } = name;
+    public string City { get; init; } = city;
 }

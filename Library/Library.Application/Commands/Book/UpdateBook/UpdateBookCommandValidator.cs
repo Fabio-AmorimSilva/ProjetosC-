@@ -1,6 +1,6 @@
-﻿using Library.Domain.Messages;
+﻿using Library.Application.Commands.Book.CreateBook;
 
-namespace Library.Application.Commands;
+namespace Library.Application.Commands.Book.UpdateBook;
 
 public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
 {
@@ -11,11 +11,11 @@ public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateBookCommand.Title)));
         
         RuleFor(command => command.Title)
-            .MaximumLength(Book.TitleMaxLength)
-            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateBookCommand.Title), Book.TitleMaxLength));
+            .MaximumLength(Domain.Entities.Book.TitleMaxLength)
+            .WithMessage(ErrorMessages.HasMaxLength(nameof(CreateBookCommand.Title), Domain.Entities.Book.TitleMaxLength));
 
         RuleFor(command => command.Pages)
-            .Must(p => p > Book.PagesMinLength)
-            .WithMessage(ErrorMessages.HasToBeGreaterThan(nameof(CreateBookCommand.Pages), Book.PagesMinLength));
+            .Must(p => p > Domain.Entities.Book.PagesMinLength)
+            .WithMessage(ErrorMessages.HasToBeGreaterThan(nameof(CreateBookCommand.Pages), Domain.Entities.Book.PagesMinLength));
     }
 }

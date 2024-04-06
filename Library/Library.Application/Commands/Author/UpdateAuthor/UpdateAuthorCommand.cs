@@ -1,17 +1,14 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Author.UpdateAuthor;
 
-public struct UpdateAuthorCommand : IRequest<ResultViewModel<Unit>>
+public readonly struct UpdateAuthorCommand(
+    Guid id, 
+    string name, 
+    string country, 
+    DateTime birth
+) : IRequest<ResultViewModel<Unit>>
 {
-    public Guid Id { get; init; }
-    public string Name { get; init; }
-    public string Country { get; init; }
-    public DateTime Birth { get; init; }
-
-    public UpdateAuthorCommand(Guid id, string name, string country, DateTime birth)
-    {
-        Id = id;
-        Name = name;
-        Country = country;
-        Birth = birth;
-    }
+    public Guid Id { get; init; } = id;
+    public string Name { get; init; } = name;
+    public string Country { get; init; } = country;
+    public DateTime Birth { get; init; } = birth;
 }

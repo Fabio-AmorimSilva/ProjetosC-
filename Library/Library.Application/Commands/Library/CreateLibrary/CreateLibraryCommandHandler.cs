@@ -1,12 +1,7 @@
-﻿namespace Library.Application.Commands;
+﻿namespace Library.Application.Commands.Library.CreateLibrary;
 
-public class CreateLibraryCommandHandler : IRequestHandler<CreateLibraryCommand, ResultViewModel<Unit>>
+public class CreateLibraryCommandHandler(LibraryContext context) : IRequestHandler<CreateLibraryCommand, ResultViewModel<Unit>>
 {
-    private readonly LibraryContext _context;
-
-    public CreateLibraryCommandHandler(LibraryContext context)
-        => _context = context;
-    
     public async Task<ResultViewModel<Unit>> Handle(CreateLibraryCommand request, CancellationToken cancellationToken)
     {
         var library = new LibraryUnit(
@@ -14,8 +9,8 @@ public class CreateLibraryCommandHandler : IRequestHandler<CreateLibraryCommand,
             city: request.City
         );
 
-        await _context.Libraries.AddAsync(library, cancellationToken);
-        await _context.SaveChangesAsync(cancellationToken);
+        await context.Libraries.AddAsync(library, cancellationToken);
+        await context.SaveChangesAsync(cancellationToken);
 
         return new ResultViewModel<Unit>();
     }
