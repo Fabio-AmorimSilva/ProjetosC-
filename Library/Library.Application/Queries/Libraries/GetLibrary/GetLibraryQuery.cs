@@ -2,7 +2,7 @@
 
 namespace Library.Application.Queries.Libraries.GetLibrary;
 
-public struct GetLibraryQuery : IRequest<ResultViewModel<LibraryUnitViewModel>>
+public struct GetLibraryQuery : IRequest<ResultResponse<LibraryUnitViewModel>>
 {
     public Guid Id { get; init; }
 

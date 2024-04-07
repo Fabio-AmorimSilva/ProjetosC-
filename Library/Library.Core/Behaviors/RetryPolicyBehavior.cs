@@ -1,4 +1,6 @@
-﻿namespace Library.Core.Behaviors;
+﻿using Library.Core.Utils;
+
+namespace Library.Core.Behaviors;
 
 public class RetryPolicyBehavior<TRequest, TResponse>(ILogger<RetryPolicyBehavior<TRequest, TResponse>> logger) : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>

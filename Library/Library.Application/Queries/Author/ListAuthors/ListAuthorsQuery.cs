@@ -1,7 +1,5 @@
-﻿using Library.Application.ViewModels.Authors;
+﻿namespace Library.Application.Queries.Author.ListAuthors;
 
-namespace Library.Application.Queries.Author.ListAuthors;
-
-public struct ListAuthorsQuery : IRequest<ResultViewModel<IEnumerable<AuthorViewModel>>>
+public struct ListAuthorsQuery : IRequest<ResultResponse<IEnumerable<AuthorViewModel>>>
 {
 }

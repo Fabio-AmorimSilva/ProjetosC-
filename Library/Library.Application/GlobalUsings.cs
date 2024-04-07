@@ -17,5 +17,7 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Tokens;
 global using Ardalis.Specification.EntityFrameworkCore;
-global using Library.Domain.Messages;
+global using Library.Application.ViewModels.Authors;
+global using Library.Core.Messages;
+global using Library.Core.Responses;
 global using Library.Domain.Specifications.Authors;

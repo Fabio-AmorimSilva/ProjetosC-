@@ -2,6 +2,6 @@
 
 namespace Library.Application.Queries.Libraries.ListLibraries;
 
-public struct ListLibrariesQuery : IRequest<ResultViewModel<IEnumerable<LibraryUnitViewModel>>>
+public struct ListLibrariesQuery : IRequest<ResultResponse<IEnumerable<LibraryUnitViewModel>>>
 {
 }

@@ -1,8 +1,8 @@
 ﻿namespace Library.Application.Commands.Book.CreateBook;
 
-public class CreateBookCommandHandler(LibraryContext context) : IRequestHandler<CreateBookCommand, ResultViewModel<Guid>>
+public class CreateBookCommandHandler(LibraryContext context) : IRequestHandler<CreateBookCommand, ResultResponse<Guid>>
 {
-    public async Task<ResultViewModel<Guid>> Handle(CreateBookCommand request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<Guid>> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
         var book = new Domain.Entities.Book(
             title: request.Title,
@@ -16,6 +16,6 @@ public class CreateBookCommandHandler(LibraryContext context) : IRequestHandler<
         await context.Books.AddAsync(book, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);
 
-        return new ResultViewModel<Guid>(book.Id);
+        return new CreatedResponse<Guid>(book.Id);
     }
 }

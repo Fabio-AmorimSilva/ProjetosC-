@@ -1,8 +1,6 @@
-﻿using Library.Application.ViewModels.Authors;
+﻿namespace Library.Application.Queries.Author.GetAuthor;
 
-namespace Library.Application.Queries.Author.GetAuthor;
-
-public readonly struct GetAuthorQuery(Guid id) : IRequest<ResultViewModel<AuthorViewModel>>
+public readonly struct GetAuthorQuery(Guid id) : IRequest<ResultResponse<AuthorViewModel>>
 {
     public Guid Id { get; init; } = id;
 }

@@ -1,5 +1,4 @@
-﻿using Library.Application.ViewModels.Authors;
-using Library.Application.ViewModels.Library;
+﻿using Library.Application.ViewModels.Library;
 
 namespace Library.Application.ViewModels.Books;
 

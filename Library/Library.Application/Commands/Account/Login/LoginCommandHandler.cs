@@ -1,26 +1,28 @@
-﻿namespace Library.Application.Commands.Account.Login;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace Library.Application.Commands.Account.Login;
 
 public class LoginCommandHandler(
     LibraryContext context,
     TokenService tokenService
-) : IRequestHandler<LoginCommand, string>
+) : IRequestHandler<LoginCommand, ResultResponse<string>>
 {
-    public async Task<string> Handle(LoginCommand request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<string>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         var user = await context.Users
             .AsNoTracking()
             .FirstOrDefaultAsync(u => u.Email == request.Username, cancellationToken);
 
         if (user is null)
-            return ErrorMessages.NotFound<User>();
+            return new NotFoundResponse<string>(ErrorMessages.NotFound<User>());
 
         var verifyPassword = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
 
         if (!verifyPassword)
-            return "Wrong password or username";
+            return new NotFoundResponse<string>( "Wrong password or username");
 
         var token = tokenService.GenerateToken(user);
 
-        return token;
+        return new OkResponse<string>(token);
     }
 }

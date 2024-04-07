@@ -8,7 +8,7 @@ public class UpdateBookCommand(
     Guid authorId,
     Guid libraryId,
     BookGenre genre)
-    : IRequest<ResultViewModel<Unit>>
+    : IRequest<ResultResponse<Unit>>
 {
     public Guid Id { get; set; } = id;
     public string Title { get; init; } = title;

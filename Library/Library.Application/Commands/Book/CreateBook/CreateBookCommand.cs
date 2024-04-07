@@ -7,7 +7,7 @@ public readonly struct CreateBookCommand(
     Guid authorId,
     Guid libraryId,
     BookGenre genre)
-    : IRequest<ResultViewModel<Guid>>
+    : IRequest<ResultResponse<Guid>>
 {
     public string Title { get; init; } = title;
     public DateTime Year { get; init; } = year;

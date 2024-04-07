@@ -1,4 +1,8 @@
-﻿namespace Library.Domain.Entities;
+﻿using Library.Core.Core;
+using Library.Core.ErrorHandling;
+using Library.Core.Messages;
+
+namespace Library.Domain.Entities;
 
 public class Book : BaseEntity
 {

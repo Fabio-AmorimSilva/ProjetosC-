@@ -1,4 +1,4 @@
-﻿namespace Library.Domain.Messages;
+﻿namespace Library.Core.Messages;
 
 public class SuccessMessages
 {

@@ -2,17 +2,16 @@
 
 namespace Library.Application.Queries.Libraries.ListLibraries;
 
-public class ListLibrariesQueryHandler : IRequestHandler<ListLibrariesQuery, ResultViewModel<IEnumerable<LibraryUnitViewModel>>>
+public class ListLibrariesQueryHandler : IRequestHandler<ListLibrariesQuery, ResultResponse<IEnumerable<LibraryUnitViewModel>>>
 {
     private readonly LibraryContext _context;
 
     public ListLibrariesQueryHandler(LibraryContext context)
         => _context = context;
     
-    public async Task<ResultViewModel<IEnumerable<LibraryUnitViewModel>>> Handle(ListLibrariesQuery request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<IEnumerable<LibraryUnitViewModel>>> Handle(ListLibrariesQuery request, CancellationToken cancellationToken)
     {
         var libraries = await _context.Libraries
-            .AsNoTrackingWithIdentityResolution()
             .Select(l => new LibraryUnitViewModel
             {
                 Name = l.Name,
@@ -20,6 +19,6 @@ public class ListLibrariesQueryHandler : IRequestHandler<ListLibrariesQuery, Res
             })
             .ToListAsync(cancellationToken);
 
-        return new ResultViewModel<IEnumerable<LibraryUnitViewModel>>(libraries);
+        return new OkResponse<IEnumerable<LibraryUnitViewModel>>(libraries);
     }
 }

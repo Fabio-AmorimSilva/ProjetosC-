@@ -1,11 +1,11 @@
-﻿namespace Library.Domain.Entities.ErrorHandling;
+﻿namespace Library.Core.ErrorHandling;
 
 public class Result
 {
     public bool Success { get; }
     public string? Message { get; }
 
-    private Result(bool success, string? message = null)
+    protected Result(bool success, string? message = null)
     {
         Success = success;
         Message = message;

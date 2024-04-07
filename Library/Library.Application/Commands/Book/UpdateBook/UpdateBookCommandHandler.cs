@@ -1,14 +1,14 @@
 ﻿namespace Library.Application.Commands.Book.UpdateBook;
 
-public class UpdateBookCommandHandler(LibraryContext context) : IRequestHandler<UpdateBookCommand, ResultViewModel<Unit>>
+public class UpdateBookCommandHandler(LibraryContext context) : IRequestHandler<UpdateBookCommand, ResultResponse<Unit>>
 {
-    public async Task<ResultViewModel<Unit>> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<Unit>> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
     {
         var book = await context.Books
             .FirstOrDefaultAsync(b => b.Id == request.Id, cancellationToken);
 
         if (book is null)
-            return new ResultViewModel<Unit>(ErrorMessages.NotFound<User>());
+            return new ResultResponse<Unit>(ErrorMessages.NotFound<User>());
         
         var result = book.UpdateBook(
             title: request.Title, 
@@ -20,10 +20,10 @@ public class UpdateBookCommandHandler(LibraryContext context) : IRequestHandler<
         );
 
         if (result is { Success: false, Message: not null })
-            return new ResultViewModel<Unit>(result.Message);
+            return new ResultResponse<Unit>(result.Message);
         
         await context.SaveChangesAsync(cancellationToken);
 
-        return new ResultViewModel<Unit>("Book has been updated!");
+        return new NoContentResponse<Unit>();
     }
 }

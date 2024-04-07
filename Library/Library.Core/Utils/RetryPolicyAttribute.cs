@@ -1,4 +1,4 @@
-﻿namespace Library.Application.Utils;
+﻿namespace Library.Core.Utils;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class RetryPolicyAttribute : Attribute

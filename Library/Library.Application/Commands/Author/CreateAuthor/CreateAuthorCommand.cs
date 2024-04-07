@@ -4,7 +4,7 @@ public class CreateAuthorCommand(
     string name, 
     string country, 
     DateTime birth
-) : IRequest<ResultViewModel<Unit>>
+) : IRequest<ResultResponse<Guid>>
 {
     public string Name { get; init; } = name;
     public string Country { get; init; } = country;

@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Library.UpdateLibrary;
 
-public struct UpdateLibraryCommand : IRequest<ResultViewModel<Unit>>
+public struct UpdateLibraryCommand : IRequest<ResultResponse<Unit>>
 {
     public Guid Id { get; init; }
     public string Name { get; init; }

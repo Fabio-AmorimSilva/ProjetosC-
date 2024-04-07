@@ -1,8 +1,8 @@
 ﻿namespace Library.Application.Commands.Author.CreateAuthor;
 
-public class CreateAuthorCommandHandler(LibraryContext context) : IRequestHandler<CreateAuthorCommand, ResultViewModel<Unit>>
+public class CreateAuthorCommandHandler(LibraryContext context) : IRequestHandler<CreateAuthorCommand, ResultResponse<Guid>>
 {
-    public async Task<ResultViewModel<Unit>> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<Guid>> Handle(CreateAuthorCommand request, CancellationToken cancellationToken)
     {
         var author = new Domain.Entities.Author(
             name: request.Name,
@@ -15,11 +15,11 @@ public class CreateAuthorCommandHandler(LibraryContext context) : IRequestHandle
             .AnyAsync(cancellationToken);
 
         if (authorNameAlreadyExists)
-            return new ResultViewModel<Unit>(ErrorMessages.AlreadyExists(nameof(CreateAuthorCommand.Name)));
+            return new ResultResponse<Guid>(ErrorMessages.AlreadyExists(nameof(CreateAuthorCommand.Name)));
 
         await context.Authors.AddAsync(author, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);
 
-        return new ResultViewModel<Unit>();
+        return new CreatedResponse<Guid>(author.Id);
     }
 }

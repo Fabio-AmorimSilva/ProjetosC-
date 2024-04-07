@@ -5,7 +5,7 @@ public readonly struct SignupCommand(
     string email,
     string password,
     Role role)
-    : IRequest<ResultViewModel<Unit>>
+    : IRequest<ResultResponse<Guid>>
 {
     public string Name { get; init; } = name;
     public string Email { get; init; } = email;

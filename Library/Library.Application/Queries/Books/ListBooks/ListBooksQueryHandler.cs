@@ -1,14 +1,12 @@
-﻿using Library.Application.ViewModels.Authors;
-using Library.Application.ViewModels.Library;
+﻿using Library.Application.ViewModels.Library;
 
 namespace Library.Application.Queries.Books.ListBooks;
 
-public class ListBooksQueryHandler(LibraryContext context) : IRequestHandler<ListBooksQuery, ResultViewModel<IEnumerable<ListBookViewModel>>>
+public class ListBooksQueryHandler(LibraryContext context) : IRequestHandler<ListBooksQuery, ResultResponse<IEnumerable<ListBookViewModel>>>
 {
-    public async Task<ResultViewModel<IEnumerable<ListBookViewModel>>> Handle(ListBooksQuery request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<IEnumerable<ListBookViewModel>>> Handle(ListBooksQuery request, CancellationToken cancellationToken)
     {
         var books = await context.Books
-            .AsNoTrackingWithIdentityResolution()
             .Select(b => new ListBookViewModel
             {
                 Book = new BookViewModel
@@ -33,6 +31,6 @@ public class ListBooksQueryHandler(LibraryContext context) : IRequestHandler<Lis
             })
             .ToListAsync(cancellationToken);
         
-        return new ResultViewModel<IEnumerable<ListBookViewModel>>(books);
+        return new OkResponse<IEnumerable<ListBookViewModel>>(books);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Microsoft.EntityFrameworkCore;
+﻿using Library.Core.Core;
+
+namespace Microsoft.EntityFrameworkCore;
 
 public static class EntityTypeBuilderExtensions
 {

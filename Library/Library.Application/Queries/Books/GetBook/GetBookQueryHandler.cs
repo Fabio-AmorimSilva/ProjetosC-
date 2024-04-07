@@ -1,19 +1,19 @@
 ﻿namespace Library.Application.Queries.Books.GetBook;
 
-public class GetBookQueryHandler : IRequestHandler<GetBookQuery , ResultViewModel<BookViewModel>>
+public class GetBookQueryHandler : IRequestHandler<GetBookQuery , ResultResponse<BookViewModel>>
 {
     private readonly LibraryContext _context;
 
     public GetBookQueryHandler(LibraryContext context)
         => _context = context;
     
-    public async Task<ResultViewModel<BookViewModel>> Handle(GetBookQuery request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<BookViewModel>> Handle(GetBookQuery request, CancellationToken cancellationToken)
     {
         var book = await _context.Books.AsNoTracking().FirstOrDefaultAsync(b => b.Id == request.Id, cancellationToken);
         if (book is null)
-            return new ResultViewModel<BookViewModel>(ErrorMessages.NotFound<Book>());
+            return new ResultResponse<BookViewModel>(ErrorMessages.NotFound<Book>());
 
-        return new ResultViewModel<BookViewModel>(new BookViewModel
+        return new OkResponse<BookViewModel>(new BookViewModel
         {
             Title = book.Title,
             Genre = book.Genre,

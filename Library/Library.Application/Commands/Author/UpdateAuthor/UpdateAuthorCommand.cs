@@ -5,7 +5,7 @@ public readonly struct UpdateAuthorCommand(
     string name, 
     string country, 
     DateTime birth
-) : IRequest<ResultViewModel<Unit>>
+) : IRequest<ResultResponse<Unit>>
 {
     public Guid Id { get; init; } = id;
     public string Name { get; init; } = name;

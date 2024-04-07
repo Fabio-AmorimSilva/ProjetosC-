@@ -1,18 +1,15 @@
-﻿using Library.Application.ViewModels.Authors;
+﻿namespace Library.Application.Queries.Author.ListAuthors;
 
-namespace Library.Application.Queries.Author.ListAuthors;
-
-public class ListAuthorsQueryHandler : IRequestHandler<ListAuthorsQuery, ResultViewModel<IEnumerable<AuthorViewModel>>>
+public class ListAuthorsQueryHandler : IRequestHandler<ListAuthorsQuery, ResultResponse<IEnumerable<AuthorViewModel>>>
 {
     private readonly LibraryContext _context;
 
     public ListAuthorsQueryHandler(LibraryContext context)
         => _context = context;
         
-    public async Task<ResultViewModel<IEnumerable<AuthorViewModel>>> Handle(ListAuthorsQuery request, CancellationToken cancellationToken)
+    public async Task<ResultResponse<IEnumerable<AuthorViewModel>>> Handle(ListAuthorsQuery request, CancellationToken cancellationToken)
     {
         var authors = await _context.Authors
-            .AsNoTrackingWithIdentityResolution()
             .Select(a => new AuthorViewModel
             {
                 Name = a.Name,
@@ -21,6 +18,6 @@ public class ListAuthorsQueryHandler : IRequestHandler<ListAuthorsQuery, ResultV
             })
             .ToListAsync(cancellationToken);
 
-        return new ResultViewModel<IEnumerable<AuthorViewModel>>(authors);
+        return new OkResponse<IEnumerable<AuthorViewModel>>(authors);
     }
 }

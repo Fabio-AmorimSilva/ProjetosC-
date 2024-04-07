@@ -1,4 +1,6 @@
-﻿namespace Library.Infrastructure.Base;
+﻿using Library.Core.Core;
+
+namespace Library.Infrastructure.Base;
 
 public class BaseContext : DbContext
 {
