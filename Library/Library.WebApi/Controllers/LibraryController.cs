@@ -32,10 +32,10 @@ public class LibraryController(IMediator mediator) : BaseController(mediator)
         return Created($"{result.Data}", result);
     }
 
-    [HttpPut("{id:guid}")]
+    [HttpPut("{libraryId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Put(Guid id, [FromBody] UpdateLibraryCommand command)
+    public async Task<IActionResult> Put(Guid libraryId, [FromBody] UpdateLibraryCommand command)
     {
         await _mediator.Send(command);
         return NoContent();

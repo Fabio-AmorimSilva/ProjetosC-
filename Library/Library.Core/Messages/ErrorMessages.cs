@@ -15,7 +15,7 @@ public static class ErrorMessages
         => $"{field} length has to be greater than {length}.";
 
     public static string NotFound<T>()
-        => $"{typeof(T)} not found";
+        => $"{typeof(T).Name} not found";
 
     public static string AlreadyExists(string field)
         => $"{field} already exists.";

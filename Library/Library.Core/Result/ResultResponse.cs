@@ -3,7 +3,7 @@
 public class ResultResponse<T>
 {
     public T Data { get; init; }
-    public List<string>? Errors { get; init; }
+    public List<string>? Errors { get; init; } = [];
 
     public ResultResponse(T data, List<string> errors)
     {
