@@ -1,0 +1,13 @@
+C:\ProjetosC-\Library\Library.Core\bin\Debug\net8.0\Library.Core.deps.json
+C:\ProjetosC-\Library\Library.Core\bin\Debug\net8.0\Library.Core.dll
+C:\ProjetosC-\Library\Library.Core\bin\Debug\net8.0\Library.Core.pdb
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.csproj.AssemblyReference.cache
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.AssemblyInfoInputs.cache
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.AssemblyInfo.cs
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.csproj.CoreCompileInputs.cache
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.sourcelink.json
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.dll
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\refint\Library.Core.dll
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\Library.Core.pdb
+C:\ProjetosC-\Library\Library.Core\obj\Debug\net8.0\ref\Library.Core.dll
