@@ -26,6 +26,7 @@ public class AuthorController(IMediator mediator) : BaseController(mediator)
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult<Guid>> Post([FromBody] CreateAuthorCommand command)
     {
         var result = await _mediator.Send(command);
@@ -34,6 +35,8 @@ public class AuthorController(IMediator mediator) : BaseController(mediator)
 
     [HttpPut("{authorId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult> Put(Guid authorId, [FromBody] UpdateAuthorCommand command)
     {
         await _mediator.Send(command);
@@ -42,6 +45,8 @@ public class AuthorController(IMediator mediator) : BaseController(mediator)
 
     [HttpDelete("{authorId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult> Delete(Guid authorId)
     {
         var command = new DeleteAuthorCommand(authorId);

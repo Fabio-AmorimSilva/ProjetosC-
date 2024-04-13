@@ -11,6 +11,7 @@ public class AccountsController(
     [HttpPost("signup")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult> Signup([FromBody] SignupCommand command)
     {
         var result = await _mediator.Send(command);
@@ -20,6 +21,7 @@ public class AccountsController(
     [HttpPost("login")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult<ResultResponse<string>>> Login([FromBody] LoginCommand command)
     {
