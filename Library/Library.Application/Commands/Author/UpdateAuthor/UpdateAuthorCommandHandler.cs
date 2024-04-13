@@ -15,7 +15,7 @@ public class UpdateAuthorCommandHandler(LibraryContext context) : IRequestHandle
         );
 
         if (result is { Success: false, Message: not null }) 
-            return new ResultResponse<Unit>(result.Message);
+            return new UnprocessableResponse<Unit>(result.Message);
 
         await context.SaveChangesAsync(cancellationToken);
         

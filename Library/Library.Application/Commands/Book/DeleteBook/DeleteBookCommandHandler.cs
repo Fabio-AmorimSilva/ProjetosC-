@@ -8,7 +8,7 @@ public class DeleteBookCommandHandler(LibraryContext context) : IRequestHandler<
             .AnyAsync(b => b.Id == request.Id, cancellationToken);
 
         if (!bookExists)
-            return new ResultResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
 
         context.Books.Remove(new Domain.Entities.Book{ Id = request.Id });
         await context.SaveChangesAsync(cancellationToken);

@@ -8,18 +8,18 @@ public class UpdateBookAuthorCommandHandler(LibraryContext context) : IRequestHa
             .AnyAsync(a => a.Id == request.AuthorId, cancellationToken);
 
         if (authorExists is false)
-            return new ResultResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Author>());
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Author>());
 
         var book = await context.Books
             .FirstOrDefaultAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (book is null)
-            return new ResultResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
         
         var result = book.UpdateAuthor(request.AuthorId);
 
         if (!result.Success)
-            return new ResultResponse<Unit>(result.Message);
+            return new UnprocessableResponse<Unit>(result.Message);
             
         return new NoContentResponse<Unit>();
     }

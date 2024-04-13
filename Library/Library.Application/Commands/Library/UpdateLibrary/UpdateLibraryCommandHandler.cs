@@ -11,7 +11,7 @@ public class UpdateLibraryCommandHandler : IRequestHandler<UpdateLibraryCommand,
     {
         var library = await _context.Libraries.FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
         if (library is null)
-            return new ResultResponse<Unit>(ErrorMessages.NotFound<LibraryUnit>());
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<LibraryUnit>());
 
         var result = library.UpdateLibrary(
             name: request.Name,
@@ -19,9 +19,10 @@ public class UpdateLibraryCommandHandler : IRequestHandler<UpdateLibraryCommand,
         );
 
         if (!result.Success)
-            return new ResultResponse<Unit>(result.Message);
+            return new UnprocessableResponse<Unit>(result.Message);
         
         await _context.SaveChangesAsync(cancellationToken);
-        return new ResultResponse<Unit>();
+        
+        return new NoContentResponse<Unit>();
     }
 }

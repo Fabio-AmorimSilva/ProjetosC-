@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace Library.Application.Commands.Account.Login;
+﻿namespace Library.Application.Commands.Account.Login;
 
 public class LoginCommandHandler(
     LibraryContext context,
@@ -19,7 +17,7 @@ public class LoginCommandHandler(
         var verifyPassword = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
 
         if (!verifyPassword)
-            return new NotFoundResponse<string>( "Wrong password or username");
+            return new ConflictResponse<string>("Wrong password or username");
 
         var token = tokenService.GenerateToken(user);
 

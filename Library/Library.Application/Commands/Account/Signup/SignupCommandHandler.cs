@@ -9,7 +9,7 @@ public class SignupCommandHandler(LibraryContext context) : IRequestHandler<Sign
             .AnyAsync(u => u.Email == request.Email, cancellationToken);
 
         if(userExists)
-            return new ResultResponse<Guid>(ErrorMessages.AlreadyExists(nameof(LoginCommand.Username)));
+            return new ConflictResponse<Guid>(ErrorMessages.AlreadyExists(nameof(LoginCommand.Username)));
         
         var user = new User(
             name: request.Name,

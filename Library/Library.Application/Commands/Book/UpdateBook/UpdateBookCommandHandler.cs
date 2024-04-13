@@ -8,7 +8,7 @@ public class UpdateBookCommandHandler(LibraryContext context) : IRequestHandler<
             .FirstOrDefaultAsync(b => b.Id == request.Id, cancellationToken);
 
         if (book is null)
-            return new ResultResponse<Unit>(ErrorMessages.NotFound<User>());
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<User>());
         
         var result = book.UpdateBook(
             title: request.Title, 
@@ -20,7 +20,7 @@ public class UpdateBookCommandHandler(LibraryContext context) : IRequestHandler<
         );
 
         if (result is { Success: false, Message: not null })
-            return new ResultResponse<Unit>(result.Message);
+            return new UnprocessableResponse<Unit>(result.Message);
         
         await context.SaveChangesAsync(cancellationToken);
 

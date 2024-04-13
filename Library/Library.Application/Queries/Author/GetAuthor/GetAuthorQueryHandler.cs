@@ -9,7 +9,7 @@ public class GetAuthorQueryHandler(LibraryContext context) : IRequestHandler<Get
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
 
         if (author is null)
-            return new ResultResponse<AuthorViewModel>(ErrorMessages.NotFound<Domain.Entities.Author>());
+            return new NotFoundResponse<AuthorViewModel>(ErrorMessages.NotFound<Domain.Entities.Author>());
 
         return new OkResponse<AuthorViewModel>(new AuthorViewModel
         {

@@ -15,7 +15,7 @@ public class CreateAuthorCommandHandler(LibraryContext context) : IRequestHandle
             .AnyAsync(cancellationToken);
 
         if (authorNameAlreadyExists)
-            return new ResultResponse<Guid>(ErrorMessages.AlreadyExists(nameof(CreateAuthorCommand.Name)));
+            return new ConflictResponse<Guid>(ErrorMessages.AlreadyExists(nameof(CreateAuthorCommand.Name)));
 
         await context.Authors.AddAsync(author, cancellationToken);
         await context.SaveChangesAsync(cancellationToken);

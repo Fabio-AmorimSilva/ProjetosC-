@@ -16,7 +16,7 @@ public class GetLibraryQueryHandler : IRequestHandler<GetLibraryQuery, ResultRes
             .FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
 
         if (library is null)
-            return new ResultResponse<LibraryUnitViewModel>(ErrorMessages.NotFound<LibraryUnit>());
+            return new NotFoundResponse<LibraryUnitViewModel>(ErrorMessages.NotFound<LibraryUnit>());
 
         return new OkResponse<LibraryUnitViewModel>(new LibraryUnitViewModel
         {

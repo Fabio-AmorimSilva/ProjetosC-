@@ -13,11 +13,11 @@ public class DeleteLibraryCommandHandler : IRequestHandler<DeleteLibraryCommand,
             .FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
 
         if (library is null)
-            return new ResultResponse<Unit>(ErrorMessages.NotFound<LibraryUnit>());
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<LibraryUnit>());
 
         _context.Libraries.Remove(library);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new ResultResponse<Unit>();
+        return new NoContentResponse<Unit>();
     }
 }
