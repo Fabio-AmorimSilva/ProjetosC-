@@ -11,7 +11,9 @@ public class LibraryUnit : BaseEntity
     
     public string Name { get; set; }
     public string City { get; set; }
-    public List<Book?> Books { get; set; } = [];
+    
+    private List<Book> _books = [];
+    public IReadOnlyCollection<Book> Books => _books;
 
     public LibraryUnit(
         string name, 
@@ -44,4 +46,13 @@ public class LibraryUnit : BaseEntity
         
         return Result.SuccessResult();
     }
+
+    public Book? GetBook(Guid bookId)
+        => _books.FirstOrDefault(b => b.Id == bookId);
+    
+    public void AddBook(Book book)
+        => _books.Add(book);
+
+    public void DeleteBook(Book book)
+        => _books.Remove(book);
 }

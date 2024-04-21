@@ -4,9 +4,9 @@ public class UpdateAuthorCommandValidator : AbstractValidator<UpdateAuthorComman
 {
     public UpdateAuthorCommandValidator()
     {
-        RuleFor(command => command.Id)
+        RuleFor(command => command.AuthorId)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateAuthorCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateAuthorCommand.AuthorId)));
         
         RuleFor(command => command.Name)
             .NotEmpty()

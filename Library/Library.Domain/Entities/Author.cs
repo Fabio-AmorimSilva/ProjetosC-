@@ -12,7 +12,9 @@ public class Author : BaseEntity
     public string Name { get; set; }
     public string Country { get; set; }
     public DateTime Birth { get; set; }
-    public List<Book> Books { get; set; } = [];
+    
+    private List<Book> _books = [];
+    public IReadOnlyCollection<Book> Books => _books;
     
     public Author( 
         string name, 
@@ -52,4 +54,13 @@ public class Author : BaseEntity
         
         return Result.SuccessResult();
     }
+
+    public Book? GetBook(Guid bookId)
+        => _books.FirstOrDefault(b => b.Id == bookId);
+    
+    public void AddBook(Book book)
+        => _books.Add(book);
+
+    public void DeleteBook(Book book)
+        => _books.Remove(book);
 }

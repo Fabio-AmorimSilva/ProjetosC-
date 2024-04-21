@@ -25,21 +25,15 @@ public class Book : BaseEntity
         string title, 
         DateTime year, 
         int pages, 
-        Guid authorId,
-        Guid libraryId,
         BookGenre genre
     ) 
     {
         Guard.HasSizeLessThan(title, TitleMaxLength, nameof(Title));
         Guard.IsGreaterThan(pages, PagesMinLength, nameof(pages));
-        Guard.IsDefault(authorId, nameof(authorId));
-        Guard.IsDefault(libraryId, nameof(libraryId));
         
         Title = title;
         Year = year;
         Pages = pages;
-        AuthorId = authorId;
-        LibraryId = libraryId;
         Genre = genre;
     }
 
@@ -47,8 +41,6 @@ public class Book : BaseEntity
         string title,
         DateTime year,
         int pages,
-        Guid authorId,
-        Guid libraryId,
         BookGenre genre
     )
     {
@@ -61,17 +53,9 @@ public class Book : BaseEntity
         if(pages <= PagesMinLength)
             return Result.FailureResult(ErrorMessages.HasToBeGreaterThan(nameof(pages), PagesMinLength));
         
-        if(authorId == default)
-            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(authorId)));
-        
-        if(libraryId == default)
-            return Result.FailureResult(ErrorMessages.CannotBeEmpty(nameof(libraryId)));
-        
         Title = title;
         Year = year;
         Pages = pages;
-        AuthorId = authorId;
-        LibraryId = libraryId;
         Genre = genre;
         
         return Result.SuccessResult();

@@ -4,9 +4,9 @@ public class UpdateLibraryCommandValidator : AbstractValidator<UpdateLibraryComm
 {
     public UpdateLibraryCommandValidator()
     {
-        RuleFor(command => command.Id)
+        RuleFor(command => command.LibraryUnitId)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateLibraryCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(UpdateLibraryCommand.LibraryUnitId)));
         
         RuleFor(command => command.Name)
             .MaximumLength(LibraryUnit.NameMaxLength)

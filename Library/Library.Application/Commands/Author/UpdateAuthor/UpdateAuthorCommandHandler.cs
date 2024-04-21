@@ -4,7 +4,7 @@ public class UpdateAuthorCommandHandler(LibraryContext context) : IRequestHandle
 {
     public async Task<ResultResponse<Unit>> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
     {
-        var author = await context.Authors.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
+        var author = await context.Authors.FirstOrDefaultAsync(a => a.Id == request.AuthorId, cancellationToken);
         if (author is null)
             return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Author>());
         

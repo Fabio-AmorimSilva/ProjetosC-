@@ -10,7 +10,7 @@ public class DeleteLibraryCommandHandler : IRequestHandler<DeleteLibraryCommand,
     public async Task<ResultResponse<Unit>> Handle(DeleteLibraryCommand request, CancellationToken cancellationToken)
     {
         var library = await _context.Libraries
-            .FirstOrDefaultAsync(l => l.Id == request.Id, cancellationToken);
+            .FirstOrDefaultAsync(l => l.Id == request.LibraryUnitId, cancellationToken);
 
         if (library is null)
             return new NotFoundResponse<Unit>(ErrorMessages.NotFound<LibraryUnit>());

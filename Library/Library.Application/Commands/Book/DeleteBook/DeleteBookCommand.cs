@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Book.DeleteBook;
 
-public class DeleteBookCommand(Guid id) : IRequest<ResultResponse<Unit>>
+public readonly struct DeleteBookCommand(Guid bookId) : IRequest<ResultResponse<Unit>>
 {
-    public Guid Id { get; set; } = id;
+    public Guid BookId { get; init; } = bookId;
 }

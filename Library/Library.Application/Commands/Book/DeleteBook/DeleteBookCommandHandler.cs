@@ -5,12 +5,12 @@ public class DeleteBookCommandHandler(LibraryContext context) : IRequestHandler<
     public async Task<ResultResponse<Unit>> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
         var bookExists = await context.Books
-            .AnyAsync(b => b.Id == request.Id, cancellationToken);
+            .AnyAsync(b => b.Id == request.BookId, cancellationToken);
 
         if (!bookExists)
             return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
 
-        context.Books.Remove(new Domain.Entities.Book{ Id = request.Id });
+        context.Books.Remove(new Domain.Entities.Book{ Id = request.BookId });
         await context.SaveChangesAsync(cancellationToken);
 
         return new NoContentResponse<Unit>();

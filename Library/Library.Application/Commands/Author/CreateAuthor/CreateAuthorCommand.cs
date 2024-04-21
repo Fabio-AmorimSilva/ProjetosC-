@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Author.CreateAuthor;
 
-public class CreateAuthorCommand(
+public readonly struct CreateAuthorCommand(
     string name, 
     string country, 
     DateTime birth

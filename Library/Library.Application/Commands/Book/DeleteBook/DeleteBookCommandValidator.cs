@@ -4,8 +4,8 @@ public class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
 {
     public DeleteBookCommandValidator()
     {
-        RuleFor(command => command.Id)
+        RuleFor(command => command.BookId)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(DeleteBookCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(DeleteBookCommand.BookId)));
     }
 }

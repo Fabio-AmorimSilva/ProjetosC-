@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Commands.Library.DeleteLibrary;
 
-public readonly struct DeleteLibraryCommand(Guid id) : IRequest<ResultResponse<Unit>>
+public readonly struct DeleteLibraryCommand(Guid libraryUnitId) : IRequest<ResultResponse<Unit>>
 {
-    public Guid Id { get; init; } = id;
+    public Guid LibraryUnitId { get; init; } = libraryUnitId;
 }

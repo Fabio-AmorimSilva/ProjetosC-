@@ -4,8 +4,8 @@ public class DeleteAuthorCommandValidator : AbstractValidator<DeleteAuthorComman
 {
     public DeleteAuthorCommandValidator()
     {
-        RuleFor(command => command.Id)
+        RuleFor(command => command.AuthorId)
             .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(DeleteAuthorCommand.Id)));
+            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(DeleteAuthorCommand.AuthorId)));
     }
 }

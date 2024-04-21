@@ -24,10 +24,6 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookCommand.AuthorId)));
         
-        RuleFor(command => command.LibraryId)
-            .NotEmpty()
-            .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookCommand.LibraryId)));
-        
         RuleFor(command => command.Genre)
             .NotEmpty()
             .WithMessage(ErrorMessages.CannotBeEmpty(nameof(CreateBookCommand.Genre)));
