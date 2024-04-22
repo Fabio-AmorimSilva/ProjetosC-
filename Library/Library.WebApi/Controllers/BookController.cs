@@ -64,13 +64,16 @@ public class BookController(IMediator mediator) : BaseController(mediator)
         return NoContent();
     }
 
-    [HttpDelete("{bookId:guid}")]
+    [HttpDelete("{authorId}/books/{bookId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-    public async Task<IActionResult> Delete([FromRoute] Guid bookId)
+    public async Task<IActionResult> Delete(
+        Guid bookId, 
+        Guid authorId
+    )
     {
-        var command = new DeleteBookCommand(bookId);
+        var command = new DeleteBookCommand(bookId, authorId);
         await _mediator.Send(command);
         return NoContent();
     }

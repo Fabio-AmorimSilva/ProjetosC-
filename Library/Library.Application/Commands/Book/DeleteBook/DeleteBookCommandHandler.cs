@@ -4,13 +4,20 @@ public class DeleteBookCommandHandler(LibraryContext context) : IRequestHandler<
 {
     public async Task<ResultResponse<Unit>> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
-        var bookExists = await context.Books
-            .AnyAsync(b => b.Id == request.BookId, cancellationToken);
+        var author = await context.Authors
+            .Include(a => a.Books)
+            .FirstOrDefaultAsync(a => a.Id == request.AuthorId, cancellationToken);
 
-        if (!bookExists)
+        if (author is null)
+            return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Author>());
+
+        var book = author.GetBook(bookId: request.BookId);
+        
+        if (book is null)
             return new NotFoundResponse<Unit>(ErrorMessages.NotFound<Domain.Entities.Book>());
 
-        context.Books.Remove(new Domain.Entities.Book{ Id = request.BookId });
+        author.DeleteBook(book: book);
+        
         await context.SaveChangesAsync(cancellationToken);
 
         return new NoContentResponse<Unit>();

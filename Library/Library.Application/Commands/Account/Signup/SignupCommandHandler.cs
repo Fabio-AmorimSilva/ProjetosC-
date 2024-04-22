@@ -4,11 +4,11 @@ public class SignupCommandHandler(LibraryContext context) : IRequestHandler<Sign
 {
     public async Task<ResultResponse<Guid>> Handle(SignupCommand request, CancellationToken cancellationToken)
     {
-        var userExists = await context
+        var userNameAlreadyExists = await context
             .Users
             .AnyAsync(u => u.Email == request.Email, cancellationToken);
 
-        if(userExists)
+        if(userNameAlreadyExists)
             return new ConflictResponse<Guid>(ErrorMessages.AlreadyExists(nameof(LoginCommand.Username)));
         
         var user = new User(
