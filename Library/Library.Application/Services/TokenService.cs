@@ -1,23 +1,20 @@
 ﻿namespace Library.Application.Services;
 
-public class TokenService
+public class TokenService(IOptions<JwtConfigurationSettings> settings)
 {
-    private readonly Settings _settings;
-
-    public TokenService(IOptions<Settings> settings)
-        =>  _settings = settings.Value;
+    private readonly JwtConfigurationSettings _jwtConfigurationSettings = settings.Value;
 
     public string GenerateToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_settings.JwtKey);
+        var key = Encoding.ASCII.GetBytes(_jwtConfigurationSettings.JwtKey);
         var claims = user.GetClaims();
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(_settings.ExpireMinutes),
-            Issuer = _settings.Emissary,
-            Audience = _settings.ValidOn,
+            Expires = DateTime.UtcNow.AddMinutes(_jwtConfigurationSettings.ExpireMinutes),
+            Issuer = _jwtConfigurationSettings.Emissary,
+            Audience = _jwtConfigurationSettings.ValidOn,
             SigningCredentials = new SigningCredentials(
                 new SymmetricSecurityKey(key),
                 SecurityAlgorithms.HmacSha256Signature)

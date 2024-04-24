@@ -5,9 +5,9 @@ public static class ConfigureAuthentication
     public static IServiceCollection AddJwtConfig(this IServiceCollection services, IConfiguration configuration)
     {
         var settings = configuration.GetSection("Settings");
-        services.Configure<Settings>(settings);
+        services.Configure<JwtConfigurationSettings>(settings);
 
-        var appsSettings = settings.Get<Settings>();
+        var appsSettings = settings.Get<JwtConfigurationSettings>();
         var key = Encoding.ASCII.GetBytes(appsSettings.JwtKey);
 
         services.AddAuthentication(options =>

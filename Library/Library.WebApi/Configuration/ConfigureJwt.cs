@@ -6,7 +6,7 @@ public static class ConfigureJwt
     {
         builder.Services.AddSwaggerGen(options =>
         {
-            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 Name = "Authorization",
                 Type = SecuritySchemeType.ApiKey,
@@ -36,8 +36,8 @@ public static class ConfigureJwt
         });
         
         builder.Services.AddTransient<TokenService>();
-        builder.Services.Configure<Settings>(builder.Configuration);
-        builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
+        builder.Services.Configure<JwtConfigurationSettings>(builder.Configuration);
+        builder.Services.Configure<JwtConfigurationSettings>(builder.Configuration.GetSection("JwtConfigurationSettings"));
 
         return builder;
     }

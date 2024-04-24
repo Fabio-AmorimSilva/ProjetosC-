@@ -1,6 +1,6 @@
 ﻿namespace Library.Application.Options;
 
-public class Settings
+public class JwtConfigurationSettings
 {
     public string JwtKey { get; init; } = string.Empty;
     public double ExpireMinutes { get; init; }
