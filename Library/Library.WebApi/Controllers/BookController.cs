@@ -64,7 +64,7 @@ public class BookController(IMediator mediator) : BaseController(mediator)
         return NoContent();
     }
 
-    [HttpDelete("{authorId}/books/{bookId:guid}")]
+    [HttpDelete("{authorId:guid}/books/{bookId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
