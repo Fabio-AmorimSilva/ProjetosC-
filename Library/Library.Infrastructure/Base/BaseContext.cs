@@ -1,4 +1,4 @@
-﻿using Library.Core.Core;
+﻿using Library.Core.Entities;
 
 namespace Library.Infrastructure.Base;
 

@@ -1,4 +1,4 @@
-﻿using Library.Core.Core;
+﻿using Library.Core.Entities;
 using Library.Core.ErrorHandling;
 using Library.Core.Messages;
 
