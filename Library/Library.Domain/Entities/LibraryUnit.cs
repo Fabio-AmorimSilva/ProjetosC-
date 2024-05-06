@@ -9,8 +9,8 @@ public class LibraryUnit : BaseEntity
     public const int NameMaxLength = 80;
     public const int CityMaxLength = 80;
     
-    public string Name { get; set; }
-    public string City { get; set; }
+    public string Name { get; private set; }
+    public string City { get; private set; }
     
     private List<Book> _books = [];
     public IReadOnlyCollection<Book> Books => _books;

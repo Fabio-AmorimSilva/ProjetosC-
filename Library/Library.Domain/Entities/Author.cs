@@ -9,9 +9,9 @@ public class Author : BaseEntity
     public const int NameMaxLength = 80;
     public const int CountryMaxLength = 80;
     
-    public string Name { get; set; }
-    public string Country { get; set; }
-    public DateTime Birth { get; set; }
+    public string Name { get; private set; }
+    public string Country { get; private set; }
+    public DateTime Birth { get; private set; }
     
     private List<Book> _books = [];
     public IReadOnlyCollection<Book> Books => _books;
