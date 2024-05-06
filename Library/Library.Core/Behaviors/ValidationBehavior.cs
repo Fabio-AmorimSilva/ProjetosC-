@@ -1,6 +1,7 @@
 ﻿namespace Library.Core.Behaviors;
 
-public class ValidationBehavior<TRequest, TResponse>(IValidator<TRequest>? validator = null) : IPipelineBehavior<TRequest, TResponse>
+public class ValidationBehavior<TRequest, TResponse>(IValidator<TRequest>? validator = null) 
+    : IPipelineBehavior<TRequest, TResponse> 
     where TRequest : IRequest<TResponse>
 {
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
@@ -8,7 +9,7 @@ public class ValidationBehavior<TRequest, TResponse>(IValidator<TRequest>? valid
         if (validator is null)
             return await next();
 
-        var validationResult = await validator.ValidateAsync(request, cancellationToken)!;
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
 
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
