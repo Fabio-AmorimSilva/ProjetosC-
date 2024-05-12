@@ -4,10 +4,13 @@ public static class ConfigureDbContext
 {
     public static WebApplicationBuilder AddDbContextConfiguration(this WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<BaseContext>(options =>
+        builder.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        
+        builder.Services.AddDbContext<BaseContext>((sp, options) =>
         {
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             options.UseSqlServer(connectionString);
+            options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
         });
         
         builder.Services.AddDbContext<LibraryContext>(options =>
